@@ -1,0 +1,55 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    .logo{
+        img{
+
+        }
+    }
+    .links{
+        display: flex;
+        li{
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            list-style: none;
+            cursor: pointer;
+            margin: 0 20px;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+            i{
+                margin: 6px 0 0 5px;
+                font-size: 13px;
+            }
+            &:hover{
+                border-bottom: 1px solid black;
+            }
+    }
+}
+.input-box{
+    position: relative;
+    &:hover{
+        opacity: 0.75;
+        transition: all 0.3s ease;
+    }
+    input{
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 15px;
+        outline: none;
+        width: 350px;
+    }
+    button{
+        position: absolute;
+        right: 3%;
+        top: 22%;
+        border: none;
+        background: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 20px;
+    }
+}
+}
