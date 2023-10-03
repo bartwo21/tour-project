@@ -3,12 +3,8 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 20px;
-    .logo{
-        img{
-
-        }
-    }
     .links{
+        width: 100%;
         display: flex;
         li{
             display: flex;
@@ -19,6 +15,7 @@
             margin: 0 20px;
             border-bottom: 1px solid transparent;
             transition: all 0.3s ease;
+            white-space: nowrap;
             i{
                 margin: 6px 0 0 5px;
                 font-size: 13px;

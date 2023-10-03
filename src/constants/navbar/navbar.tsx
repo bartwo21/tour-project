@@ -2,15 +2,18 @@ import React from 'react'
 import './navbar.scss'
 import { AiOutlineSearch, AiOutlineDown } from 'react-icons/ai'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 type Props = {
     
 }
 
-const Navbar: React.FC<Props> = () => {
+const Navbar: React.FC<Props> = ({}) => {
     const [inputValue , setInputValue] = useState<string>('')
+    const navigate = useNavigate();
     const handleSearch = () => {
         console.log("searched", inputValue);
-      };
+        //Redux
+    };
     return (
         <div className='navbar'>
             <div className="logo">
