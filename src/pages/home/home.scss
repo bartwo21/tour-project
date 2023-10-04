@@ -20,7 +20,7 @@
     }
     .card {
         background-color: rgb(180, 245, 245);
-        height: 330px;
+        height: 300px;
         min-width: 30%;
         border-radius: 25px;
         display: flex;
@@ -32,19 +32,6 @@
         background-position: center;
         background-repeat: no-repeat;
       
-        img {
-          display: none;
-        }
-      
-        .background-image {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          border-radius: 25px;
-          z-index: 1;
-        }
         .card-title{
             font-weight: 500;
             font-size: 1.3rem;
@@ -54,12 +41,13 @@
         .card-p{
             margin-top: -40px;
             z-index: 2;
+            min-width: 100%;
         }
         .button{
             background-color: rgb(250, 250, 250);
             border: none;
             border-radius: 20px;
-            padding: 10px 20px;
+            padding: 10px 25px;
             cursor: pointer;
             outline: none;
             width: max-content;
@@ -71,20 +59,103 @@
         }
     }
     .card-1{
-        min-width: 60%;
+        min-width: 66%;
         .card-p{
             font-size: 2.5rem;
             font-weight: 500;
             letter-spacing: 1px;
             width: 40%;
+            color: white;
         }
     }
     .card-2{
         background-color: #59E3E6;
-        color: white;
+        color: #164E3E;
+        cursor: pointer;
+        .card-p{
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            width: 80%;
+            color: rgba(0, 0, 0, 0.863);
+        }
         max-width: 32%;
         .button{
             color: black;
+        }
+    }
+    .slick-next:before, .slick-prev:before{
+        color: rgb(255, 255, 255);
+        background-color: black;
+        border-radius: 50%;
+        font-size: 1.5rem;
+    }
+    .slider-container{
+        width: 100%;
+        margin: 60px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        .card-s{
+        
+            .slider-card{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                padding: 30px;
+                height: 320px;
+                width: 95%;
+                background-color: white;
+                border-radius: 34px;
+                border: 1px solid rgba(197, 197, 197, 0.281);
+                margin: 0 10px;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                .slider-card-title{
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    color: rgba(0, 0, 0, 0.863);
+                }
+                .slider-card-p{
+                    font-size: 1rem;
+                    font-weight: 100;
+                    color: rgba(0, 0, 0, 0.863);
+                }
+            }
+        }
+        .card-s-1{
+            .slider-card{
+                background-color: #59E3E6;
+                height: 350px;
+                
+                .slider-card-title{
+                    font-size: 1.9rem;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    color: rgba(255, 255, 255, 0.863);
+                }
+                .slider-card-p{
+                    font-size: 1.2rem;
+                    font-weight: 100;
+                    letter-spacing: 1px;
+                    color: rgba(255, 255, 255, 0.863);
+                }
+                .button{
+                    background-color: rgb(250, 250, 250);
+                    border: none;
+                    border-radius: 20px;
+                    padding: 10px 25px;
+                    cursor: pointer;
+                    outline: none;
+                    width: max-content;
+                    z-index: 2;
+                    margin-top: 20px;
+                    &:hover{
+                        background-color: #DEF1D9;
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
         }
     }
 }
