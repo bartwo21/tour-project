@@ -45,8 +45,15 @@ const Home: React.FC<Props> = ({}) => {
     infinite: false,
     speed: 500,
     slidesToShow: 3.5,
-    slidesToScroll: 2.5
-
+    slidesToScroll: 2.5,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+        }
+      },
+    ]
   };
   return (
     <div className="home">
