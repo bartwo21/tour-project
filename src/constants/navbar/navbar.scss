@@ -27,6 +27,7 @@
 }
 .input-box{
     position: relative;
+    width: 100%;
     &:hover{
         opacity: 0.75;
         transition: all 0.3s ease;
@@ -36,7 +37,7 @@
         border: 1px solid black;
         border-radius: 15px;
         outline: none;
-        width: 350px;
+        width: 100%;
     }
     button{
         position: absolute;

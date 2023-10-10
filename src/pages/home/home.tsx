@@ -1,9 +1,11 @@
 import React from 'react';
 import './home.scss';
 import img1 from './img/1.jpg';
+import img2 from './img/2.jpg';
 import img3 from './img/3.jpg';
 import img4 from './img/4.jpg';
 import img5 from './img/5.jpg';
+import img6 from './img/6.jpg';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -23,6 +25,14 @@ type SliderCards = {
   description: string;
   button: string; 
 }
+type TravelCards = {
+  img: string;
+  title: string;
+  description: string;
+  stars: number;
+  price: string;
+  button: string;
+};
 
 const Home: React.FC<Props> = ({}) => {
   const cards: Card[] = [
@@ -39,6 +49,15 @@ const Home: React.FC<Props> = ({}) => {
     { title: "Put just $299 down", description: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "" },
     { title: "Prep your packing list", description: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "" },
     { title: "Say bon voyage!", description: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "" },
+  ]
+
+  const biggerCards: Card[] = [
+    { size: 1, title: 'Card 1 Content', p: "You’ll enjoy some pretty sweet perksalong the way. You’ll enjoy some pretty sweet perksalong the way.", button: "Browse by destination", img: img2 },
+    { size: 1, title: 'Card 2 Content', p: "Lorem ipsum dolor sit amet. Destination and real traveler stories to inspire and enrich your next trip.", button: "Browse by destination", img: img6 },
+    { size: 1, title: 'Save up to $200 with Specials', p: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", button: "Browse by destination", img: "" },
+  ]
+  const travelCards: TravelCards[] = [
+    
   ]
   var settings = {
     dots: false,
@@ -90,6 +109,24 @@ const Home: React.FC<Props> = ({}) => {
             </div>
           ))}
         </Slider>
+      </div>
+      <div className="card-container">
+        {biggerCards.map((card: Card, index) => (
+            <div
+              key={index}
+              className={`card card-bigger-${index + 1}`}
+              style={{
+                flex: card.size,
+                backgroundImage: `url(${card.img})`,
+              }}>
+              <p className="card-title">{card.title}</p>
+              <p className="card-p">{card.p}</p>
+              <span className="button">{card.button}</span>
+            </div>
+          ))}
+      </div>
+      <div className="travel-cards">
+        
       </div>
     </div>
   );
