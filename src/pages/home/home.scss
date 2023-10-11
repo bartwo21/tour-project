@@ -1,3 +1,17 @@
+@mixin buttonStyles {
+    background-color: rgb(250, 250, 250);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 25px;
+            cursor: pointer;
+            outline: none;
+            width: max-content;
+            z-index: 2;
+            &:hover{
+                background-color: #DEF1D9;
+                transition: all 0.3s ease;
+            }
+}
 .home{
     width: 100%;
     .subtitle{
@@ -45,18 +59,7 @@
             color: rgba(0, 0, 0, 0.521);
         }
         .button{
-            background-color: rgb(250, 250, 250);
-            border: none;
-            border-radius: 20px;
-            padding: 10px 25px;
-            cursor: pointer;
-            outline: none;
-            width: max-content;
-            z-index: 2;
-            &:hover{
-                background-color: #DEF1D9;
-                transition: all 0.3s ease;
-            }
+            @include buttonStyles;
         }
     }
     .card-bigger-1, .card-bigger-2{
@@ -178,20 +181,40 @@
                     color: rgba(255, 255, 255, 0.863);
                 }
                 .button{
-                    background-color: rgb(250, 250, 250);
-                    border: none;
-                    border-radius: 20px;
-                    padding: 10px 10%;
-                    cursor: pointer;
-                    outline: none;
-                    width: max-content;
-                    z-index: 2;
-                    margin-top: 20px;
-                    &:hover{
-                        background-color: #DEF1D9;
-                        transition: all 0.3s ease;
-                    }
+                    @include buttonStyles;
                 }
+            }
+        }
+    }
+    .travel-cards{
+        margin: 70px 0;
+        .titles{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .subtitle{
+                h1{
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: #000000;
+                    text-align: left;
+                    letter-spacing: 1px;
+                }
+                p{
+                    font-weight: 100;
+                    text-align: left;
+                    margin: 10px auto 30px auto;
+                    font-size: 1rem;
+                }
+            }
+        }
+        button{
+            @include buttonStyles;
+            background-color: #038845;
+            color: white;
+            height: 45px;
+            &:hover{
+                background-color: #026b4d;
             }
         }
     }

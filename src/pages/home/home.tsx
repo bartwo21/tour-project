@@ -6,6 +6,16 @@ import img3 from './img/3.jpg';
 import img4 from './img/4.jpg';
 import img5 from './img/5.jpg';
 import img6 from './img/6.jpg';
+import travelimg1 from './travelimg/1.jpg';
+import travelimg2 from './travelimg/2.jpg';
+import travelimg3 from './travelimg/3.jpg';
+import travelimg4 from './travelimg/4.jpg';
+import travelimg5 from './travelimg/5.jpg';
+import mapimg1 from './mapimg/1.webp';
+import mapimg2 from './mapimg/2.webp';
+import mapimg3 from './mapimg/3.webp';
+import mapimg4 from './mapimg/4.png';
+import mapimg5 from './mapimg/5.png';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -27,9 +37,11 @@ type SliderCards = {
 }
 type TravelCards = {
   img: string;
+  map: string;
   title: string;
   description: string;
   stars: number;
+  oldPrice: string;
   price: string;
   button: string;
 };
@@ -57,7 +69,7 @@ const Home: React.FC<Props> = ({}) => {
     { size: 1, title: 'Save up to $200 with Specials', p: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", button: "Browse by destination", img: "" },
   ]
   const travelCards: TravelCards[] = [
-    
+    { img: travelimg1, map: mapimg1, title: "Travel Card 1 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "From <span>4,012</span>" ,price: "$3,719", button: "View tour" },
   ]
   var settings = {
     dots: false,
@@ -126,7 +138,18 @@ const Home: React.FC<Props> = ({}) => {
           ))}
       </div>
       <div className="travel-cards">
+        <div className="titles">
+          <div className="subtitle">
+            <h1>Ready to start traveling?</h1>
+            <p>Choose from more than 200 one-of-a-kind group travel experiences, carefully designed by experts, led by locals, and made for you.</p>
+          </div>
+          <button className="button">
+            Shop all group tours
+          </button>
+        </div>
+        <div className="slider-container">
         
+      </div>
       </div>
     </div>
   );
