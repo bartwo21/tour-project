@@ -14,8 +14,8 @@ import travelimg5 from './travelimg/5.jpg';
 import mapimg1 from './mapimg/1.webp';
 import mapimg2 from './mapimg/2.webp';
 import mapimg3 from './mapimg/3.webp';
-import mapimg4 from './mapimg/4.png';
-import mapimg5 from './mapimg/5.png';
+import mapimg4 from './mapimg/4.jpg';
+import mapimg5 from './mapimg/5.jpg';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -62,14 +62,17 @@ const Home: React.FC<Props> = ({}) => {
     { title: "Prep your packing list", description: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "" },
     { title: "Say bon voyage!", description: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "" },
   ]
-
   const biggerCards: Card[] = [
     { size: 1, title: 'Card 1 Content', p: "You’ll enjoy some pretty sweet perksalong the way. You’ll enjoy some pretty sweet perksalong the way.", button: "Browse by destination", img: img2 },
     { size: 1, title: 'Card 2 Content', p: "Lorem ipsum dolor sit amet. Destination and real traveler stories to inspire and enrich your next trip.", button: "Browse by destination", img: img6 },
     { size: 1, title: 'Save up to $200 with Specials', p: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", button: "Browse by destination", img: "" },
   ]
   const travelCards: TravelCards[] = [
-    { img: travelimg1, map: mapimg1, title: "Travel Card 1 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "From <span>4,012</span>" ,price: "$3,719", button: "View tour" },
+    { img: travelimg1, map: mapimg1, title: "Travel Card 1 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$4,012" ,price: "$3,719", button: "View tour" },
+    { img: travelimg2, map: mapimg2, title: "Travel Card 2 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$5,524" ,price: "$4,239", button: "View tour" },
+    { img: travelimg3, map: mapimg3, title: "Travel Card 3 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$6,657" ,price: "$4,719", button: "View tour" },
+    { img: travelimg4, map: mapimg4, title: "Travel Card 4 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$2,621" ,price: "$2,100", button: "View tour" },
+    { img: travelimg5, map: mapimg5, title: "Travel Card 5 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$1,912" ,price: "$1,275", button: "View tour" },
   ]
   var settings = {
     dots: false,
@@ -143,12 +146,43 @@ const Home: React.FC<Props> = ({}) => {
             <h1>Ready to start traveling?</h1>
             <p>Choose from more than 200 one-of-a-kind group travel experiences, carefully designed by experts, led by locals, and made for you.</p>
           </div>
-          <button className="button">
+          <button className="button-travel">
             Shop all group tours
           </button>
         </div>
         <div className="slider-container">
-        
+          <Slider {...settings}>
+          {travelCards.map((card: TravelCards, index: number) => (
+          <div key={index} className={`card-t card-t-${index + 1}`}>
+            <div className="travel-card">
+              <div className="image-container">
+                <div className="travel-card-img">
+                  <img src={card.img} alt="" />
+                </div>
+                <div className="travel-card-map">
+                  <img src={card.map} alt="" />
+                </div>
+              </div>
+              <div className="text-container">
+                <p className="title">{card.title}</p>
+                <p className="description">{card.description}</p>
+                <div className="stars">
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                  <span className="star"></span>
+                </div>
+                <div className="prices">
+                  <span className="old-price">From <span>{card.oldPrice}</span></span>
+                  <span className="new-price">{card.price}</span>
+                </div>
+                <span className="button">{card.button}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+          </Slider>
       </div>
       </div>
     </div>
