@@ -19,6 +19,7 @@ import mapimg5 from './mapimg/5.jpg';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { AiOutlineHeart } from 'react-icons/ai';
 
 type Props = {};
 
@@ -156,6 +157,9 @@ const Home: React.FC<Props> = ({}) => {
           <div key={index} className={`card-t card-t-${index + 1}`}>
             <div className="travel-card">
               <div className="image-container">
+                <span className="heart-button">
+                  <AiOutlineHeart className="heart" />
+                </span>
                 <div className="travel-card-img">
                   <img src={card.img} alt="" />
                 </div>

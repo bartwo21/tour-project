@@ -209,6 +209,26 @@
             overflow: hidden;
             border-top-right-radius: 25px;
             border-top-left-radius: 25px;
+            .heart-button{
+                .heart{
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    z-index: 2;
+                    cursor: pointer;
+                    color: white;
+                    font-size: 2.3rem;
+                    background-color: #ffffff86;
+                    border-radius: 50%;
+                    padding: 7px;
+                    color: rgba(0, 0, 0, 0.384);
+                    &:hover{
+                        color: #164e3e;
+                        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                    }
+                    transition: color 0.3s ease;
+                }
+            }
             .travel-card-img,
             .travel-card-map {
               width: 100%;
