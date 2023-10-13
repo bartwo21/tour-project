@@ -16,6 +16,8 @@ import mapimg2 from './mapimg/2.webp';
 import mapimg3 from './mapimg/3.webp';
 import mapimg4 from './mapimg/4.jpg';
 import mapimg5 from './mapimg/5.jpg';
+import logo1 from './logos/logo1.svg';
+import logo2 from './logos/logo2.svg';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -122,17 +124,20 @@ const Home: React.FC<Props> = ({}) => {
           ))}
       </div>
       <div className="slider-container">
-        <Slider {...settings}>
-          {sliderCards.map((card: SliderCards, index: number) => (
-            <div key={index} className={`card-s card-s-${index + 1}`}>
-              <div className="slider-card">
-                <p className="slider-card-title">{card.title}</p>
-                <p className="slider-card-p">{card.description}</p>
-                <span className="button">{card.button}</span>
+        <div className="inner-slider">
+          <Slider {...settings}>
+            {sliderCards.map((card: SliderCards, index: number) => (
+              <div key={index} className={`card-s card-s-${index + 1}`}>
+                <div className="slider-card">
+                  <p className="slider-card-title">{card.title}</p>
+                  <p className="slider-card-p">{card.description}</p>
+                  <span className="button">{card.button}</span>
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
+            ))}
+          </Slider>
+        </div>
+        
       </div>
       <div className="card-container">
         {biggerCards.map((card: Card, index) => (
@@ -151,13 +156,15 @@ const Home: React.FC<Props> = ({}) => {
       </div>
       <div className="travel-cards">
         <div className="titles">
-          <div className="subtitle">
-            <h1>Ready to start traveling?</h1>
-            <p>Choose from more than 200 one-of-a-kind group travel experiences, carefully designed by experts, led by locals, and made for you.</p>
+          <div className="inner-titles">
+            <div className="subtitle">
+              <h1>Ready to start traveling?</h1>
+              <p>Choose from more than 200 one-of-a-kind group travel experiences, carefully designed by experts, led by locals, and made for you.</p>
+            </div>
+            <button className="button-travel">
+              Shop all group tours
+            </button>
           </div>
-          <button className="button-travel">
-            Shop all group tours
-          </button>
         </div>
         <div className="slider-container">
           <Slider {...settings}>
@@ -178,13 +185,13 @@ const Home: React.FC<Props> = ({}) => {
               <div className="text-container">
                 <p className="title">{card.title}</p>
                 <p className="description">{card.description}</p>
-                <div className="stars">
+                {/* <div className="stars">
                   <span className="star"></span>
                   <span className="star"></span>
                   <span className="star"></span>
                   <span className="star"></span>
                   <span className="star"></span>
-                </div>
+                </div> */}
                 <div className="prices">
                   <span className="old-price">From <span>{card.oldPrice}</span></span>
                   <span className="new-price">{card.price}</span>
@@ -196,6 +203,14 @@ const Home: React.FC<Props> = ({}) => {
         ))}
           </Slider>
       </div>
+      </div>
+      <div className="logos">
+          <div className="logo">
+            <img src={logo1} alt="" />
+          </div>
+          <div className="logo">
+            <img src={logo2} alt="" />
+          </div>
       </div>
     </div>
   );

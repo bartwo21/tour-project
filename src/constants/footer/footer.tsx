@@ -51,32 +51,37 @@ const Footer: React.FC<Props> = ({}) => {
                 </ul>
             </div>
         </div>
-        <div className="footer-middle">
-            <div className="img">
-                <img src={img} />
+        <div className="footer-middle-side">
+            <div className="inner-footer-middle-side">
+                <div className="img">
+                    <img src={img} />
+                </div>
+                <div className="social-media-icons">
+                    <i className="icon"><BiLogoFacebook /></i>
+                    <i className="icon"><RiTwitterXLine /></i>
+                    <i className="icon"><AiOutlineInstagram /></i>
+                    <i className="icon"><BsPinterest /></i>
+                    <i className="icon"><AiFillYoutube /></i>
+                </div>
             </div>
-            <div className="social-media-icons">
-                <i className="icon"><BiLogoFacebook /></i>
-                <i className="icon"><RiTwitterXLine /></i>
-                <i className="icon"><AiOutlineInstagram /></i>
-                <i className="icon"><BsPinterest /></i>
-                <i className="icon"><AiFillYoutube /></i>
-            </div>
+            
         </div>
         <div className="footer-downside">
-            <div className="footer-downside-left">
-                <p>© 2023 Tour, Inc. All rights reserved.</p>
-            </div>
-            <div className="footer-downside-right">
-                <p>Terms & Conditions</p>
-                |
-                <p>
-                    Privacy Policy
-                </p>
-                |
-                <p>
-                    Site Map
-                </p>
+            <div className="inner-footer-downside">
+                <div className="footer-downside-left">
+                    <p>© 2023 Tour, Inc. All rights reserved.</p>
+                </div>
+                <div className="footer-downside-right">
+                    <p>Terms & Conditions</p>
+                    |
+                    <p>
+                        Privacy Policy
+                    </p>
+                    |
+                    <p>
+                        Site Map
+                    </p>
+                </div>
             </div>
         </div>
     </div>
