@@ -330,7 +330,7 @@
         width: 100%;
         margin: 0;
         .slick-prev, .slick-next{
-          width: 40%;
+          width: 41%;
         }
         .slick-slide{
           > div{
@@ -386,7 +386,7 @@
     }
   }
   .logos{
-    width: 70%;
+    width: 85%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -394,6 +394,7 @@
     margin-bottom: 40px;
     .logo{
       cursor: pointer;
+      margin: 0 10px;
     }
   }
 }
@@ -411,10 +412,22 @@
     .button{
       bottom: 0;
       margin: 0 0 20px 0;
+      left: 20px;
     }
   }
-  .button-travel{
-    margin-bottom: 40px;
+  .home{ 
+    .travel-cards{
+      .titles{ 
+        .inner-titles {
+          justify-content: center;
+        }
+      }
+    }
   }
+    .button-travel{
+      margin-bottom: 40px;
+    }
+  
+ 
 }
 
