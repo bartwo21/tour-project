@@ -1,53 +1,57 @@
-.navbar{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 20px;
-    .links{
-        width: 100%;
+.navbar-container{
+    width: 60%;
+    margin: 0 auto;
+    .navbar{
         display: flex;
-        li{
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 20px;
+        .links{
+            width: 100%;
             display: flex;
-            align-items: center;
-            padding: 10px;
-            list-style: none;
-            cursor: pointer;
-            margin: 0 20px;
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            i{
-                margin: 6px 0 0 5px;
-                font-size: 13px;
-            }
-            &:hover{
-                border-bottom: 1px solid black;
-            }
+            li{
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                list-style: none;
+                cursor: pointer;
+                margin: 0 20px;
+                border-bottom: 1px solid transparent;
+                transition: all 0.3s ease;
+                white-space: nowrap;
+                i{
+                    margin: 6px 0 0 5px;
+                    font-size: 13px;
+                }
+                &:hover{
+                    border-bottom: 1px solid black;
+                }
+        }
     }
-}
-.input-box{
-    position: relative;
-    width: 100%;
-    &:hover{
-        opacity: 0.75;
-        transition: all 0.3s ease;
-    }
-    input{
-        padding: 10px;
-        border: 1px solid black;
-        border-radius: 15px;
-        outline: none;
+    .input-box{
+        position: relative;
         width: 100%;
+        &:hover{
+            opacity: 0.75;
+            transition: all 0.3s ease;
+        }
+        input{
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 15px;
+            outline: none;
+            width: 100%;
+        }
+        button{
+            position: absolute;
+            right: 3%;
+            top: 22%;
+            border: none;
+            background: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
     }
-    button{
-        position: absolute;
-        right: 3%;
-        top: 22%;
-        border: none;
-        background: none;
-        outline: none;
-        cursor: pointer;
-        font-size: 20px;
     }
-}
 }

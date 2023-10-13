@@ -83,9 +83,17 @@ const Home: React.FC<Props> = ({}) => {
     slidesToScroll: 2.5,
     responsive: [
       {
+        breakpoint: 1560,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        }
+      },
+      {
         breakpoint: 1024,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
         }
       },
     ]
