@@ -1,19 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './navbar.scss'
 import { AiOutlineSearch, AiOutlineDown } from 'react-icons/ai'
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { createDataFunc } from '../../store/features/search/searchSlice'
 type Props = {
     
 }
 
 const Navbar: React.FC<Props> = ({}) => {
-    const [inputValue , setInputValue] = useState<string>('')
     const navigate = useNavigate();
-    const handleSearch = () => {
-        console.log("searched", inputValue);
-        //Redux
-    };
+    const [inputValue , setInputValue] = useState<string>('')
+    
+    const dispatch = useDispatch();
+    const { data } = useSelector((state: any) => state.data);
+    console.log(data)
+
+    //aratma yaptıgı zaman aratma yaptıgı .tsx sayfasına gitsin ve aratma yaptıgı kelimeyi oraya taşısın
     return (
         <div className='navbar-container'>
             <div className='navbar'>
@@ -32,7 +35,7 @@ const Navbar: React.FC<Props> = ({}) => {
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder='Search for a destination, hotel, or deal'
                     />
-                    <button onClick={handleSearch}>
+                    <button onClick={() => dispatch(createDataFunc(inputValue))}>
                         <AiOutlineSearch />
                     </button>
                 </div>
