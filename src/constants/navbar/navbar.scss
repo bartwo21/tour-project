@@ -6,6 +6,9 @@
         justify-content: space-around;
         align-items: center;
         margin-top: 20px;
+        .logo {
+            cursor: pointer;
+        }
         .links{
             width: 100%;
             display: flex;
