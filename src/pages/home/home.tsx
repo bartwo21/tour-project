@@ -51,11 +51,11 @@ type TravelCards = {
 
 const Home: React.FC<Props> = ({}) => {
   const cards: Card[] = [
-    { size: 2, title: 'Card 1 Content', p: "Lorem ipsum dolor sit amet.", button: "Browse by destination", img: img1 },
-    { size: 1, title: 'Card 2 Content', p: "Lorem ipsum dolor sit amet.", button: "Browse by destination", img: "" },
-    { size: 1, title: 'Card 3 Content', p: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "Browse by destination", img: img3 },
-    { size: 1, title: 'Card 4 Content', p: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "Browse by destination", img: img4 },
-    { size: 1, title: 'Card 5 Content', p: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "Browse by destination", img: img5 },
+    { size: 2, title: 'OPEN A WORLD OF POSSIBILITIES', p: "Lorem ipsum dolor sit amet.", button: "Browse by destination", img: img1 },
+    { size: 1, title: 'Save up to $200 per person', p: "Lorem ipsum dolor sit amet.", button: "Browse by destination", img: "" },
+    { size: 1, title: 'Off-season travel', p: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "Find your off-season tour", img: img3 },
+    { size: 1, title: 'Grand Tours', p: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "Shop Grand Tours", img: img4 },
+    { size: 1, title: 'New & trending', p: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "Check out what's new", img: img5 },
   ];
 
   const sliderCards: SliderCards[] = [
@@ -66,16 +66,16 @@ const Home: React.FC<Props> = ({}) => {
     { title: "Say bon voyage!", description: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "" },
   ]
   const biggerCards: Card[] = [
-    { size: 1, title: 'Card 1 Content', p: "You’ll enjoy some pretty sweet perksalong the way. You’ll enjoy some pretty sweet perksalong the way.", button: "Browse by destination", img: img2 },
-    { size: 1, title: 'Card 2 Content', p: "Lorem ipsum dolor sit amet. Destination and real traveler stories to inspire and enrich your next trip.", button: "Browse by destination", img: img6 },
-    { size: 1, title: 'Save up to $200 with Specials', p: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", button: "Browse by destination", img: "" },
+    { size: 1, title: 'Traveling with 7+', p: "You’ll enjoy some pretty sweet perksalong the way. You’ll enjoy some pretty sweet perksalong the way.", button: "Browse by destination", img: img2 },
+    { size: 1, title: 'Ready, set, get inspired', p: "Lorem ipsum dolor sit amet. Destination and real traveler stories to inspire and enrich your next trip.", button: "Browse by destination", img: img6 },
+    { size: 1, title: 'Save up to $200 with Specials', p: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", button: "Shop last-minute deals", img: "" },
   ]
   const travelCards: TravelCards[] = [
-    { img: travelimg1, map: mapimg1, title: "Travel Card 1 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$4,012" ,price: "$3,719", button: "View tour" },
-    { img: travelimg2, map: mapimg2, title: "Travel Card 2 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$5,524" ,price: "$4,239", button: "View tour" },
-    { img: travelimg3, map: mapimg3, title: "Travel Card 3 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$6,657" ,price: "$4,719", button: "View tour" },
-    { img: travelimg4, map: mapimg4, title: "Travel Card 4 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$2,621" ,price: "$2,100", button: "View tour" },
-    { img: travelimg5, map: mapimg5, title: "Travel Card 5 Content", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$1,912" ,price: "$1,275", button: "View tour" },
+    { img: travelimg1, map: mapimg1, title: "Dolmabahce Sarayi", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$4,012" ,price: "$3,719", button: "View tour" },
+    { img: travelimg2, map: mapimg2, title: "Norway Mountains", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$5,524" ,price: "$4,239", button: "View tour" },
+    { img: travelimg3, map: mapimg3, title: "Majestic seas in Antalya", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$6,657" ,price: "$4,719", button: "View tour" },
+    { img: travelimg4, map: mapimg4, title: "Australian Cliffs", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$2,621" ,price: "$2,100", button: "View tour" },
+    { img: travelimg5, map: mapimg5, title: "Maldives hotel by the sea", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$1,912" ,price: "$1,275", button: "View tour" },
   ]
   var settings = {
     dots: false,
@@ -185,13 +185,6 @@ const Home: React.FC<Props> = ({}) => {
               <div className="text-container">
                 <p className="title">{card.title}</p>
                 <p className="description">{card.description}</p>
-                {/* <div className="stars">
-                  <span className="star"></span>
-                  <span className="star"></span>
-                  <span className="star"></span>
-                  <span className="star"></span>
-                  <span className="star"></span>
-                </div> */}
                 <div className="prices">
                   <span className="old-price">From <span>{card.oldPrice}</span></span>
                   <span className="new-price">{card.price}</span>

@@ -53,7 +53,7 @@
     background-repeat: no-repeat;
     flex-wrap: wrap;
     .card-title {
-      font-weight: 500;
+      font-weight: 700;
       font-size: 1.2rem;
       letter-spacing: 2px;
       z-index: 2;
@@ -63,7 +63,7 @@
       z-index: 2;
       min-width: 100%;
       font-weight: 400;
-      color: rgba(0, 0, 0, 0.521);
+      color: rgba(0, 0, 0, 0.664);
     }
     .button {
       @include buttonStyles;
@@ -110,11 +110,14 @@
   }
   .card-1 {
     min-width: 66%;
+    .card-title{
+      color: white;
+    }
     .card-p {
-      font-size: 2.3rem;
+      font-size: 2.4rem;
       font-weight: 500;
       letter-spacing: 1px;
-      width: 40%;
+      width: 60%;
       color: white;
     }
   }

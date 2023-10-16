@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './navbar.scss'
 import { AiOutlineSearch, AiOutlineDown } from 'react-icons/ai'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { createDataFunc } from '../../store/features/search/searchSlice'
 type Props = {
