@@ -1,14 +1,20 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {
-    query: string;
-}
+type MatchingSearch = {
+  term: string;
+  title: string;
+  desc: string;
+  img: string;
+};
 
-const SearchQueryPage = ({ query }: Props) => {
+const SearchQueryPage: React.FC<{ matchingSearch: MatchingSearch }> = ({ matchingSearch }) => {
   return (
-    <div>Aradığınız : {query}</div>
-    // query obje olacak ve içindeki değerler sayfada gösterilecek
-  )
-}
+    <div>
+      <h2>{matchingSearch.title}</h2>
+      <p>{matchingSearch.desc}</p>
+      <img src={matchingSearch.img} alt={matchingSearch.title} />
+    </div>
+  );
+};
 
-export default SearchQueryPage
+export default SearchQueryPage;

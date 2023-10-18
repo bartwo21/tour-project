@@ -7,18 +7,21 @@ import searchs from "./Searchs";
 const SearchResultsPage: React.FC = ({}) => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
-
-  const isThereASearch = (query: string) => {
-    if (searchs.includes(query)) {
-      return <SearchQueryPage query={query} />;
+  
+  const isThereASearch = (query: string | null) => {
+    const matchingSearch = searchs.find((search) => search.term === query);
+    if (matchingSearch) {
+      return <SearchQueryPage matchingSearch={matchingSearch} />;
     }
     return (
-      <p>We couldn't find anything you were looking for with <strong>{query || ""}</strong>
+      <p>
+        We couldn't find anything you were looking for with{" "}
+        <strong>{query || ""}</strong>
       </p>
     );
   };
 
-  return <div>{isThereASearch(query || "")}</div>;
+  return <div>{isThereASearch(query)}</div>;
 };
 
 export default SearchResultsPage;
