@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './navbar.scss'
 import { AiOutlineSearch, AiOutlineDown } from 'react-icons/ai'
 import { useNavigate, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { createDataFunc } from '../../store/features/search/searchSlice'
+import { useSearchParams } from 'react-router-dom'
+
 type Props = {
     
 }
@@ -13,8 +15,13 @@ const Navbar: React.FC<Props> = ({}) => {
     const dispatch = useDispatch();
     const { data } = useSelector((state: any) => state.data);
 
+    const [searchParams, setSearchParams] = useSearchParams();
+    
     const handleSearch = () => {
-        data ? navigate(`/search/${data}`) : navigate("/")
+        if (data) {
+            setSearchParams({ q: data });
+            navigate(`/sr?q=${data}`);
+        }
     }
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
