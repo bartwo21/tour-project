@@ -1,67 +1,103 @@
-.navbar-container{
+.navbar-container {
     width: 60%;
     margin: 0 auto;
-    .navbar{
+
+    .navbar {
         min-width: 100%;
         display: flex;
         justify-content: space-around;
         align-items: center;
         margin-top: 20px;
+        .active {
+            font-weight: 500;
+            color: #164E3E;
+        }
         .logo {
             cursor: pointer;
         }
-        .links{
+
+        .links {
             width: 60%;
             display: flex;
             justify-content: flex-end;
-            li{
+            li, .li {
                 display: flex;
                 align-items: center;
-                padding: 5px;
                 list-style: none;
                 cursor: pointer;
                 margin: 0 20px;
                 border-bottom: 1px solid transparent;
                 transition: border 0.3s ease;
                 white-space: nowrap;
-                font-size: .9rem;
-                i{
+                font-size: 0.9rem;
+                text-decoration: none;
+                .dropdown-content {
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    top: 65px;
+                    background-color: white; 
+                    border: 1px solid black; 
+                    border-radius: 5px; 
+                    width: 17%;
+                    height: 10%;
+                    .dropdown-link{
+                        text-decoration: none;
+                        color: black;
+                        font-size: 1rem;
+                        border-bottom: 1px solid transparent;
+                        margin: 0 10px;
+                        &:hover {
+                            color: #164E3E;
+                            border-bottom: 1px solid black;
+                        }
+                    }
+                }
+
+                i {
                     margin: 6px 0 0 5px;
                     font-size: 13px;
                 }
-                &:hover{
+
+                &:hover {
+                    color: black;
                     border-bottom: 1px solid black;
                 }
+            }
         }
-    }
-    .input-box{
-        position: relative;
-        width: 30%;
-        &:hover{
-            opacity: 0.75;
-            transition: all 0.3s ease;
+
+        .input-box {
+            position: relative;
+            width: 30%;
+
+            &:hover {
+                opacity: 0.75;
+                transition: all 0.3s ease;
+            }
+
+            input {
+                padding: 10px;
+                border: 1px solid black;
+                border-radius: 15px;
+                outline: none;
+                width: 100%;
+            }
+
+            button {
+                position: absolute;
+                right: 3%;
+                top: 22%;
+                border: none;
+                background: none;
+                outline: none;
+                cursor: pointer;
+                font-size: 20px;
+            }
         }
-        input{
-            padding: 10px;
-            border: 1px solid black;
-            border-radius: 15px;
-            outline: none;
-            width: 100%;
-        }
-        button{
-            position: absolute;
-            right: 3%;
-            top: 22%;
-            border: none;
-            background: none;
-            outline: none;
-            cursor: pointer;
-            font-size: 20px;
-        }
-    }
     }
 }
+
 @media screen and (max-width: 1300px) {
-    // mobile navbar
-    
+    // Mobile navbar styles
 }
