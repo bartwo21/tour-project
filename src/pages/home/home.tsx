@@ -18,10 +18,11 @@ import mapimg4 from './mapimg/4.jpg';
 import mapimg5 from './mapimg/5.jpg';
 import logo1 from './logos/logo1.svg';
 import logo2 from './logos/logo2.svg';
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { AiOutlineHeart } from 'react-icons/ai';
+import TravelCardsSlider from "../../../components/TravelCardsSlider/TravelCardsSlider";
+import CardContainer from "../../../components/CardContainer/CardContainer";
+import InfoCardSlider from "../../../components/InfoCardSlider/InfoCardSlider";
 
 type Props = {};
 
@@ -66,9 +67,9 @@ const Home: React.FC<Props> = ({}) => {
     { title: "Say bon voyage!", description: "Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.", button: "" },
   ]
   const biggerCards: Card[] = [
-    { size: 1, title: 'Traveling with 7+', p: "You’ll enjoy some pretty sweet perksalong the way. You’ll enjoy some pretty sweet perksalong the way.", button: "Browse by destination", img: img2 },
+    { size: 1, title: 'Traveling with 7+', p: "You’ll enjoy some pretty sweet perksalong the way.", button: "Browse by destination", img: img2 },
     { size: 1, title: 'Ready, set, get inspired', p: "Lorem ipsum dolor sit amet. Destination and real traveler stories to inspire and enrich your next trip.", button: "Browse by destination", img: img6 },
-    { size: 1, title: 'Save up to $200 with Specials', p: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", button: "Shop last-minute deals", img: "" },
+    { size: 1, title: 'Save up to $200 with Specials', p: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, quibusdam. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, quibusdam.", button: "Shop last-minute deals", img: "" },
   ]
   const travelCards: TravelCards[] = [
     { img: travelimg1, map: mapimg1, title: "Dolmabahce Sarayi", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$4,012" ,price: "$3,719", button: "View tour" },
@@ -77,29 +78,6 @@ const Home: React.FC<Props> = ({}) => {
     { img: travelimg4, map: mapimg4, title: "Australian Cliffs", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$2,621" ,price: "$2,100", button: "View tour" },
     { img: travelimg5, map: mapimg5, title: "Maldives hotel by the sea", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$1,912" ,price: "$1,275", button: "View tour" },
   ]
-  var settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3.5,
-    slidesToScroll: 2.5,
-    responsive: [
-      {
-        breakpoint: 1560,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      },
-    ]
-  };
   return (
     <div className="home">
       <h1 className="subtitle">Immersive guided tours, all around the globe</h1>
@@ -107,53 +85,9 @@ const Home: React.FC<Props> = ({}) => {
         Explore with a friend, the whole family, or solo. However—and wherever—you want to go, our
         expert-planned group travel experiences make it easy to see the world.
       </h3>
-      <div className="card-container">
-        {cards.map((card: Card, index) => (
-            <div
-              key={index}
-              className={`card card-${index + 1}`}
-              style={{
-                flex: card.size,
-                backgroundImage: `url(${card.img})`,
-              }}
-            >
-              <p className="card-title">{card.title}</p>
-              <p className="card-p">{card.p}</p>
-              <span className="button">{card.button}</span>
-            </div>
-          ))}
-      </div>
-      <div className="slider-container">
-        <div className="inner-slider">
-          <Slider {...settings}>
-            {sliderCards.map((card: SliderCards, index: number) => (
-              <div key={index} className={`card-s card-s-${index + 1}`}>
-                <div className="slider-card">
-                  <p className="slider-card-title">{card.title}</p>
-                  <p className="slider-card-p">{card.description}</p>
-                  <span className="button">{card.button}</span>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
-        
-      </div>
-      <div className="card-container">
-        {biggerCards.map((card: Card, index) => (
-            <div
-              key={index}
-              className={`card card-bigger-${index + 1}`}
-              style={{
-                flex: card.size,
-                backgroundImage: `url(${card.img})`,
-              }}>
-              <p className="card-title">{card.title}</p>
-              <p className="card-p">{card.p}</p>
-              <span className="button">{card.button}</span>
-            </div>
-          ))}
-      </div>
+      <CardContainer cards={cards} />
+      <InfoCardSlider InfoCards={sliderCards} />
+      <CardContainer cards={biggerCards} />
       <div className="travel-cards">
         <div className="titles">
           <div className="inner-titles">
@@ -166,36 +100,7 @@ const Home: React.FC<Props> = ({}) => {
             </button>
           </div>
         </div>
-        <div className="slider-container">
-          <Slider {...settings}>
-          {travelCards.map((card: TravelCards, index: number) => (
-          <div key={index} className={`card-t card-t-${index + 1}`}>
-            <div className="travel-card">
-              <div className="image-container">
-                <span className="heart-button">
-                  <AiOutlineHeart className="heart" />
-                </span>
-                <div className="travel-card-img">
-                  <img src={card.img} alt="" />
-                </div>
-                <div className="travel-card-map">
-                  <img src={card.map} alt="" />
-                </div>
-              </div>
-              <div className="text-container">
-                <p className="title">{card.title}</p>
-                <p className="description">{card.description}</p>
-                <div className="prices">
-                  <span className="old-price">From <span>{card.oldPrice}</span></span>
-                  <span className="new-price">{card.price}</span>
-                </div>
-                <span className="button">{card.button}</span>
-              </div>
-            </div>
-          </div>
-        ))}
-          </Slider>
-      </div>
+        <TravelCardsSlider travelCards={travelCards} />
       </div>
       <div className="logos">
           <div className="logo">

@@ -63,51 +63,13 @@
       z-index: 2;
       min-width: 100%;
       font-weight: 400;
-      color: rgba(0, 0, 0, 0.664);
+      color: rgba(0, 0, 0, 0.822);
     }
     .button {
       @include buttonStyles;
     }
   }
-  .card-bigger-1,
-  .card-bigger-2 {
-    .card-title,
-    .card-p {
-      color: white;
-    }
-    .card-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      line-height: 40px;
-    }
-  }
-  .card-bigger-3 {
-    min-width: 100%;
-    background-color: #449ce4;
-    height: 160px;
-    position: relative;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    .card-title {
-      font-size: 2.3rem;
-      font-weight: 500;
-      letter-spacing: 1px;
-      color: white;
-    }
-    .card-p {
-      font-size: 1.2rem;
-      font-weight: 100;
-      letter-spacing: 1px;
-      width: 80%;
-      color: rgba(255, 255, 255, 0.897);
-    }
-    .button {
-      position: absolute;
-      right: 0;
-      margin-right: 30px;
-    }
-  }
+  
   .card-1 {
     min-width: 66%;
     .card-title{
@@ -126,7 +88,7 @@
     color: #164e3e;
     cursor: pointer;
     .card-p {
-      font-size: 2rem;
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: 1px;
       width: 80%;
@@ -135,6 +97,16 @@
     max-width: 400px;
     .button {
       color: black;
+    }
+  }
+  .card-3{
+    min-width: 100%;
+    .card-title{
+      font-size: 2rem;
+    }
+    .card-p{
+      font-size: 1.2rem;
+      color: #0000008e;
     }
   }
   .slick-next:before,
@@ -296,9 +268,6 @@
             .description{
                 font-weight: 200;
             }
-            .stars {
-            }
-      
             .prices {
               .old-price{
                 margin-right: 5px;
