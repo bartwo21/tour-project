@@ -20,11 +20,11 @@ import logo1 from './logos/logo1.svg';
 import logo2 from './logos/logo2.svg';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import TravelCardsSlider from "../../../components/TravelCardsSlider/TravelCardsSlider";
+import TravelCard from "../../../components/TravelCard/TravelCard";
 import CardContainer from "../../../components/CardContainer/CardContainer";
-import InfoCardSlider from "../../../components/InfoCardSlider/InfoCardSlider";
+import InfoCard from "../../../components/InfoCard/InfoCard";
+import Slider from 'react-slick';
 
-type Props = {};
 
 type Card = {
   size: number;
@@ -50,7 +50,7 @@ type TravelCards = {
   button: string;
 };
 
-const Home: React.FC<Props> = ({}) => {
+const Home = ({}) => {
   const cards: Card[] = [
     { size: 2, title: 'OPEN A WORLD OF POSSIBILITIES', p: "Lorem ipsum dolor sit amet.", button: "Browse by destination", img: img1 },
     { size: 1, title: 'Save up to $200 per person', p: "Lorem ipsum dolor sit amet.", button: "Browse by destination", img: "" },
@@ -78,6 +78,29 @@ const Home: React.FC<Props> = ({}) => {
     { img: travelimg4, map: mapimg4, title: "Australian Cliffs", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$2,621" ,price: "$2,100", button: "View tour" },
     { img: travelimg5, map: mapimg5, title: "Maldives hotel by the sea", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", stars: 4.5,oldPrice: "$1,912" ,price: "$1,275", button: "View tour" },
   ]
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3.5,
+    slidesToScroll: 2.5,
+    responsive: [
+      {
+        breakpoint: 1560,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      },
+    ]
+  };
   return (
     <div className="home">
       <h1 className="subtitle">Immersive guided tours, all around the globe</h1>
@@ -86,7 +109,15 @@ const Home: React.FC<Props> = ({}) => {
         expert-planned group travel experiences make it easy to see the world.
       </h3>
       <CardContainer cards={cards} />
-      <InfoCardSlider InfoCards={sliderCards} />
+      <div className="slider-container">
+        <div className="inner-slider">
+          <Slider {...settings}>
+            {sliderCards.map((card: SliderCards, index: number) => (
+              <InfoCard card={card} index={index} />
+              ))}
+          </Slider>
+        </div>
+      </div>
       <CardContainer cards={biggerCards} />
       <div className="travel-cards">
         <div className="titles">
@@ -100,8 +131,13 @@ const Home: React.FC<Props> = ({}) => {
             </button>
           </div>
         </div>
-        <TravelCardsSlider travelCards={travelCards} />
-      </div>
+        <div className="slider-container">
+          <Slider {...settings}>
+          {travelCards.map((card: TravelCards, index: number) => (
+            <TravelCard card={card} index={index} />
+            ))}
+          </Slider>
+        </div>
       <div className="logos">
           <div className="logo">
             <img src={logo1} alt="" />
@@ -110,7 +146,8 @@ const Home: React.FC<Props> = ({}) => {
             <img src={logo2} alt="" />
           </div>
       </div>
-    </div>
+      </div>
+      </div>
   );
 };
 
