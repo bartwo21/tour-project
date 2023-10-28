@@ -8,10 +8,6 @@
         justify-content: space-around;
         align-items: center;
         margin-top: 20px;
-        .active {
-            font-weight: 500;
-            color: #164E3E;
-        }
         .logo {
             cursor: pointer;
         }
@@ -31,6 +27,9 @@
                 white-space: nowrap;
                 font-size: 0.9rem;
                 text-decoration: none;
+                &:visited {
+                    color: black;
+                }
                 .dropdown-content {
                     position: absolute;
                     display: flex;
@@ -51,6 +50,7 @@
                         &:hover {
                             color: #164E3E;
                             border-bottom: 1px solid black;
+                            transition: all 0.3s ease;
                         }
                     }
                 }
@@ -64,6 +64,7 @@
                     color: black;
                     border-bottom: 1px solid black;
                 }
+                
             }
         }
 

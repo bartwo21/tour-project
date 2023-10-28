@@ -1,32 +1,28 @@
-type Card = {
-    size: number;
-    title: string;
-    p: string;
-    button: string;
-    img: string;
+type props = {
+    card: {
+      title: string;
+      p: string;
+      button: string;
+      img: string;
+      size: number;
+    };
+    index: number;
   };
-type CardContainerProps = {
-  cards: Card[];
-};
 
-const CardContainer = ({ cards }: CardContainerProps) => {
+const CardContainer = ({ card, index }: props) => {
   return (
-    <div className="card-container">
-      {cards.map((card, index) => (
         <div
           key={index}
           className={`card card-${index + 1}`}
           style={{
-            flex: (card as Card).size,
-            backgroundImage: `url(${(card as Card).img})`,
+            flex: card.size,
+            backgroundImage: `url(${card.img})`,
           }}
         >
-          <p className="card-title">{(card as Card).title}</p>
-          <p className="card-p">{(card as Card).p}</p>
-          <span className="button">{(card as Card).button}</span>
+          <p className="card-title">{card.title}</p>
+          <p className="card-p">{card.p}</p>
+          <span className="button">{card.button}</span>
         </div>
-      ))}
-    </div>
   );
 };
 

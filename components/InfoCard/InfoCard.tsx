@@ -1,5 +1,13 @@
+type props = {
+  card: {
+    title: string;
+    description: string;
+    button: string;
+  };
+  index: number;
+}
 
-const InfoCard = ({ card, index }: any) => {
+const InfoCard = ({ card, index }: props) => {
   return (
     <div key={index} className={`card-s card-s-${index + 1}`}>
       <div className="slider-card">

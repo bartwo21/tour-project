@@ -1,2 +1,10 @@
-// background: rgb(255,227,205);
-// background: linear-gradient(90deg, rgba(255,227,205,1) 0%, rgba(255,243,235,1) 50%, rgba(255,255,255,1) 100%);
+.travel-deals{
+   .gradient-container{
+    background: rgb(255,227,205);
+    background: linear-gradient(0deg, rgba(255,227,205,1) 0%, rgba(255,243,235,1) 50%, rgba(255,255,255,1) 100%);
+    text-align: center;
+    h1{
+        color: #315801;
+    }
+   }
+}
