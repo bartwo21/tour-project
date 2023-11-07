@@ -8,6 +8,7 @@ import Home from './pages/home/home.tsx'
 import TravelDeals from './pages/travelDeals/TravelDeals.tsx'
 import SearchResultsPage from './pages/SearchResultsPage/SearchResultsPage.tsx'
 import NotFoundPage from './pages/notFound/NotFoundPage.tsx'
+import Login from './pages/Login/Login.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
@@ -16,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/' element={<App />} >
           <Route path="" element={<Home />} />
           <Route path='/travel-deals' element={<TravelDeals />} />
-          <Route path='/destinations' element={<h1>Destinations</h1>} />
+          <Route path='/login' element={<Login />} />
           <Route path='/travelstyles' element={<TravelDeals />} />
           <Route path='/aboutus' element={<h1>About Us</h1>} />
           <Route path="/sr" element={<SearchResultsPage />} />

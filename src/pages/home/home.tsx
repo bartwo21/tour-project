@@ -1,4 +1,3 @@
-import React from 'react';
 import { cards, biggerCards, sliderCards, travelCards } from './cardsArray';
 import './home.scss';
 import logo1 from './logos/logo1.svg';
@@ -9,6 +8,10 @@ import TravelCard from "../../../components/TravelCard/TravelCard";
 import CardContainer from "../../../components/CardContainer/CardContainer";
 import InfoCard from "../../../components/InfoCard/InfoCard";
 import Slider from 'react-slick';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { hideNotification, showNotification } from './../../store/features/notification/notificationSlice';
+import { selectUser } from './../../store/features/authSlice/authSlice';
 
 type Card = {
   size: number;
@@ -58,6 +61,22 @@ const Home = ({}) => {
       },
     ]
   };
+  
+  const user = useSelector(selectUser);
+
+  const notificationState = useSelector((state: any) => state.notification.showNotification);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(hideNotification());
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [dispatch, notificationState]);
+  useEffect(() => {
+    !user && dispatch(showNotification());
+  }, [user]);
+
   return (
     <div className="home">
       <h1 className="subtitle">Immersive guided tours, all around the globe</h1>
@@ -112,6 +131,11 @@ const Home = ({}) => {
           </div>
       </div>
       </div>
+      {notificationState && (
+          <div className="notification">
+            {user ? <p>Welcome {user.name} !</p> : <p>Login to get the latest deals !</p>}
+          </div>
+        )}
       </div>
   );
 };

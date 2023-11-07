@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './navbar.scss';
 import { AiOutlineSearch, AiOutlineDown } from 'react-icons/ai';
 import { useNavigate, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createDataFunc } from '../../store/features/search/searchSlice';
 import { useSearchParams } from 'react-router-dom';
+import { selectUser } from '../../store/features/authSlice/authSlice';
+import { logout } from '../../store/features/authSlice/authSlice';
 
 type Props = {};
 
@@ -14,23 +16,25 @@ const Navbar: React.FC<Props> = ({}) => {
     const { data } = useSelector((state: any) => state.data);
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const [destinationsDropdownOpen, setDestinationsDropdownOpen] = useState(false);
+    const [signorlogin, setsignorlogin] = useState(false);
     const [travelStylesDropdownOpen, setTravelStylesDropdownOpen] = useState(false);
-    
+    const user = useSelector(selectUser);
+
     const handleSearch = () => {
         if (data) {
             setSearchParams({ q: data });
             navigate(`/sr?q=${data}`);
+            console.log(searchParams)
         }
     };
 
     const handleDropdownClick = (dropdown: string) => {
         if (dropdown === 'destinations') {
-            setDestinationsDropdownOpen(!destinationsDropdownOpen);
+            setsignorlogin(!signorlogin);
             setTravelStylesDropdownOpen(false);
         } else if (dropdown === 'travelStyles') {
             setTravelStylesDropdownOpen(!travelStylesDropdownOpen);
-            setDestinationsDropdownOpen(false);
+            setsignorlogin(false);
         }
     };
 
@@ -42,6 +46,10 @@ const Navbar: React.FC<Props> = ({}) => {
     const activeLinksBorderBottom = (isActive: boolean) => {
         return isActive ? { borderBottom: '1px solid black' } : {};
     }
+    const handleLogout = () => {
+        dispatch(logout());
+        dispatch(showNotificationAction());
+    }
     return (
         <div className="navbar-container">
             <div className="navbar">
@@ -50,17 +58,6 @@ const Navbar: React.FC<Props> = ({}) => {
                 </NavLink>
                 <ul className="links">
                     <NavLink className="li" to="travel-deals" style={({isActive}) => activeLinksBorderBottom(isActive)}>Travel deals</NavLink>
-                    <li
-                        onClick={() => handleDropdownClick('destinations')}
-                    >
-                        Destinations <i><AiOutlineDown /></i>
-                        {destinationsDropdownOpen && (
-                            <div className="dropdown-content">
-                                <NavLink to="destination1" className="dropdown-link" style={({isActive}) => activeLinksBorderBottom(isActive)}>Destination 1</NavLink>
-                                <NavLink to="destination2" className="dropdown-link" style={({isActive}) => activeLinksBorderBottom(isActive)}>Destination 2</NavLink>
-                            </div>
-                        )}
-                    </li>
                     <li
                         onClick={() => handleDropdownClick('travelStyles')}
                     >
@@ -73,6 +70,11 @@ const Navbar: React.FC<Props> = ({}) => {
                         )}
                     </li>
                     <NavLink to="aboutus" className="li" style={({isActive}) => activeLinksBorderBottom(isActive)}>About us</NavLink>
+                    {user ? (
+                        <NavLink to="/" className="li" onClick={handleLogout}>Logout</NavLink>
+                    ) : (
+                        <NavLink to="login" className="li" style={({isActive}) => activeLinksBorderBottom(isActive)}>Login</NavLink>
+                    )}
                 </ul>
                 <div className="input-box">
                     <input
@@ -86,8 +88,13 @@ const Navbar: React.FC<Props> = ({}) => {
                     </button>
                 </div>
             </div>
+            
         </div>
     );
 };
 
 export default Navbar;
+function showNotificationAction(): any {
+    throw new Error('Function not implemented.');
+}
+

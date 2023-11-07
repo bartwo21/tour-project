@@ -1,10 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
-import  searchSlide  from "./features/search/searchSlice";
-
-
+import { configureStore } from '@reduxjs/toolkit';
+import searchSlice from './features/search/searchSlice';
+import notificationReducer from './features/notification/notificationSlice';
+import userReducer from './features/authSlice/authSlice';
 
 export const store = configureStore({
-    reducer: {
-        data: searchSlide
-    }
-})
+  reducer: {
+    data: searchSlice,
+    notification: notificationReducer,
+    user: userReducer,
+  },
+});

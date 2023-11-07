@@ -1,12 +1,14 @@
 import { AiOutlineHeart } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../src/store/features/authSlice/authSlice';
 const TravelCard = ({ card, index }: any) => {
+  const user = useSelector(selectUser);
+
   return (
           <div key={index} className={`card-t card-t-${index + 1}`}>
             <div className="travel-card">
               <div className="image-container">
-                <span className="heart-button">
-                  <AiOutlineHeart className="heart" />
-                </span>
+                {user && <span className="heart-button"><AiOutlineHeart className="heart" /></span>}
                 <div className="travel-card-img">
                   <img src={card.img} alt="" />
                 </div>
