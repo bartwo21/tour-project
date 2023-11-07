@@ -81,7 +81,7 @@ const Navbar: React.FC<Props> = ({}) => {
                         type="text"
                         onChange={(e) => dispatch(createDataFunc(e.target.value))}
                         onKeyDown={handleKeyDown}
-                        placeholder="Search for a destination, hotel, or deal"
+                        placeholder="Search for a hotel or deal..."
                     />
                     <button onClick={handleSearch}>
                         <AiOutlineSearch />

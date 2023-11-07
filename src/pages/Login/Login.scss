@@ -56,18 +56,13 @@
         }
         .show-password{
             position: absolute;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            border: none;
             right: 0;
             bottom: 0;
             height: 100%;
             width: 60px;
             background-color: transparent;
             cursor: pointer;
-            &:hover {
-                background-color: rgb(245, 245, 245);
-                transition: background-color .3s ease;
-            }
         }
       }
       

@@ -1,6 +1,7 @@
 .navbar-container {
     width: 60%;
-    margin: 0 auto;
+    margin: 5px auto;
+
     .notification {
         position: fixed;
         top: 20px;
@@ -97,8 +98,7 @@
 
         .input-box {
             position: relative;
-            width: 30%;
-
+            width: 60%;
             &:hover {
                 opacity: 0.75;
                 transition: all 0.3s ease;
@@ -127,5 +127,35 @@
 }
 
 @media screen and (max-width: 1300px) {
-    // Mobile navbar styles
-}
+        .navbar-container {
+            width: 100%;
+        }
+    
+        .navbar {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 10px;
+            .links {
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between !important;
+                margin: 10px 0;
+                li, .li {
+                    padding: 6px !important;
+                    border-bottom: none;
+                    font-size: 1.3rem !important;
+                    .dropdown-content {
+                        top: 35px; 
+                        width: 100%;
+                        flex-direction: column;
+                        z-index: 3;
+                        .dropdown-link {
+                            margin: 5px 0;
+                            border-bottom: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    

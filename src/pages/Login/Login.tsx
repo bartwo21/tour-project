@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { useDispatch } from "react-redux";
-import { showNotification as showNotificationAction } from "../../store/features/notification/notificationSlice";
 import { login } from "../../store/features/authSlice/authSlice";
 
 const Login = () => {
@@ -15,14 +14,14 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickButton = () => {
-    const isValidEmail = /\S+@\S+\.\S+/.test(email);
-    if (!isValidEmail) {
-      return;
+    if (name && email && password) {
+      const isValidEmail = /\S+@\S+\.\S+/.test(email);
+      if (!isValidEmail) {
+        return;
+      }
+      navigate("/");
+      dispatch(login({ name, email, password }));
     }
-
-    navigate("/");
-    dispatch(showNotificationAction());
-    dispatch(login({ name, email, password, loggedIn: true }));
   };
 
   const handleShowPassword = () => {
@@ -42,7 +41,7 @@ const Login = () => {
         </div>
         <div className="input-space">
           <input
-            type="text"
+            type="email"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
