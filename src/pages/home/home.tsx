@@ -26,6 +26,7 @@ type TravelCards = {
   img: string;
   map: string;
   title: string;
+  url: string;
   description: string;
   stars: number;
   oldPrice: string;

@@ -7,6 +7,7 @@ import { createDataFunc } from '../../store/features/search/searchSlice';
 import { useSearchParams } from 'react-router-dom';
 import { selectUser } from '../../store/features/authSlice/authSlice';
 import { logout } from '../../store/features/authSlice/authSlice';
+import { travelCards } from '../../pages/home/cardsArray';
 
 type Props = {};
 
@@ -61,11 +62,12 @@ const Navbar: React.FC<Props> = ({}) => {
                     <li
                         onClick={() => handleDropdownClick('travelStyles')}
                     >
-                        Travel styles <i><AiOutlineDown /></i>
+                        Travels <i><AiOutlineDown /></i>
                         {travelStylesDropdownOpen && (
                             <div className="dropdown-content">
-                                <NavLink to="style1" className="dropdown-link" style={({isActive}) => activeLinksBorderBottom(isActive)}>Style 1</NavLink>
-                                <NavLink to="style2" className="dropdown-link" style={({isActive}) => activeLinksBorderBottom(isActive)}>Style 2</NavLink>
+                                {travelCards.map((card) => (
+                                    <NavLink to={`/sr?q=${card.url}`} className="dropdown-link" style={({isActive}) => activeLinksBorderBottom(isActive)}>{card.title}</NavLink>
+                                ))}
                             </div>
                         )}
                     </li>

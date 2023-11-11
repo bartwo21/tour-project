@@ -1,0 +1,131 @@
+.container{
+    width: 60%;
+    margin: 0 auto;
+    .content{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 80px 0;
+        .left-img {
+            height: 450px;
+            object-fit: contain;
+            overflow: hidden;
+            img{
+                width: 350px;
+                height: 100%;
+                cursor: pointer;
+                object-fit: cover;
+                transition: transform 0.5s;
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+        .bottom{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .card-infos{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                margin: 0 0 30px 40px;
+                h2{
+                    display: flex;
+                    align-items: center;
+                    font-size: 3rem;
+                    margin-bottom: 20px;
+                    color: #31584A;
+                    font-weight: bold;
+                }
+                .days{
+                    font-size: 1rem;
+                    margin-bottom: 20px;
+                }
+                .details{
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 30px 40px 0 0;
+                    .group-size{
+                        .size-title{
+                            font-size: 1.5rem;
+                        }
+                        .size-value{
+                            font-size: 1rem;
+                            font-weight: 200;
+                        }
+                    }
+                    .reviews{
+                        .review-title{
+                            font-size: 1.5rem;
+                        }
+                        .stars{
+                            font-weight: 200;
+                        }
+                    }
+                    .button{
+                        button{
+                            background-color: #31584A;
+                            color: white;
+                            border: none;
+                            border-radius: 10px;
+                            padding: 10px 20px;
+                            font-size: 1rem;
+                            cursor: pointer;
+                            transition: background-color 0.3s ease;
+                            &:hover{
+                                background-color: #164e3e;
+                            }
+                        }
+                    }
+                    .heart-button{
+                        background-color: #ffffff86;
+                        border-radius: 50%;
+                        border: 1px solid #31584A;
+                        display: flex;
+                        align-items: center;
+                        height: 42px;
+                        .heart{
+                            padding: 6px;
+                            cursor: pointer;
+                            color: white;
+                            color: rgba(0, 0, 0, 0.384);
+                            border-radius: 50%;
+                            &:hover{
+                                color: #164e3e;
+                                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                            }
+                            transition: color 0.3s ease;
+                        }
+                    }
+                }
+            }
+            .bottom-imgs{
+                display: flex;
+                align-items: flex-end;
+                margin: 20px 0 0 0;
+                flex-wrap: wrap;
+                .bottom-img{
+                    margin: 0 0 0 40px;
+                    height: 175px;
+                    overflow: hidden;
+                    img{
+                        width: 200px;
+                        height: 100%;
+                        transition: transform 0.5s;
+                        cursor: pointer;
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+            }
+        }
+        .desc{
+                font-size: 1.5rem;
+                font-weight: 200;
+                margin: 40px auto 0 auto;
+        }
+    }
+}

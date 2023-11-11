@@ -44,6 +44,7 @@
             width: 60%;
             display: flex;
             justify-content: flex-end;
+            margin-right: 10px;
             li, .li {
                 display: flex;
                 align-items: center;
@@ -61,24 +62,30 @@
                 .dropdown-content {
                     position: absolute;
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
                     justify-content: space-around;
                     top: 65px;
                     background-color: rgb(255, 255, 255); 
                     box-shadow: rgba(0, 0, 0, 0.199) 0px 5px 15px;
                     border-radius: 10px; 
-                    width: 17%;
-                    height: 10%;
+                    width: 15%;
+                    height: 25%;
+                    flex-wrap: wrap;
+                    z-index: 2;
+                    padding: 10px;
+                    min-width: 300px;
                     .dropdown-link{
                         text-decoration: none;
                         color: black;
                         font-size: 1rem;
                         border-bottom: 1px solid transparent;
-                        margin: 0 10px;
+                        width: 100%;
+                        border-bottom: 1px solid rgba(236, 236, 236, 0.637);
+                        transition: border 0.3s ease;
                         &:hover {
                             color: #164E3E;
                             border-bottom: 1px solid black;
-                            transition: all 0.3s ease;
                         }
                     }
                 }
