@@ -35,6 +35,7 @@ const initialState = {
 const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
 
   const [state , dispatch] = useReducer(reducer, initialState);
+  const [open, setOpen] = useState(false);
   const [data , setData] = useState<{
     date: Date;
     person: number;
@@ -61,6 +62,7 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
         ticket: state.ticket,
         isFormSubmitted: true,
       })
+      setOpen(true);
     }
   }
 
@@ -170,6 +172,9 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
           nameSurname={data.nameSurname}
           email={data.email}
           ticket={data.ticket}
+          onePrice={parseInt(matchingSearch.price)}
+          open={open}
+          setOpen={setOpen}
         />
       )}
     </div>
