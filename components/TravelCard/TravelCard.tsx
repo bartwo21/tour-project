@@ -22,8 +22,8 @@ const TravelCard = ({ card, index }: any) => {
                 <p className="title">{card.title}</p>
                 <p className="description">{card.description}</p>
                 <div className="prices">
-                  <span className="old-price">From <span>{card.oldPrice}</span></span>
-                  <span className="new-price">{card.price}</span>
+                  <span className="old-price">From <span>${card.oldPrice}</span></span>
+                  <span className="new-price">${card.price}</span>
                 </div>
                 <span className="button" onClick={() => {navigate(`/sr?q=${card.url}`)}}>{card.button}</span>
               </div>

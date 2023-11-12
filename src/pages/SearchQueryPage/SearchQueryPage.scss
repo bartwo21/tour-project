@@ -121,11 +121,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 80px 0;
+        margin-bottom: 80px;
         .inputs{
             display: flex;
             justify-content: center;
-            padding: 40px 0;
+            flex-wrap: wrap;
             .row{
                 margin: 0 40px;
                 .box{
@@ -137,7 +137,7 @@
                         height: 40px;
                         line-height: 28px;
                         padding: 0 1rem;
-                        border: 2px solid rgb(170, 170, 170);
+                        border: 1px solid rgb(170, 170, 170);
                         border-radius: 8px;
                         outline: none;
                         background-color: #f7f7f7c2;
@@ -150,7 +150,7 @@
                          outline: none;
                          border-color: #164e3e;
                          background-color: #fff;
-                         box-shadow: 0 0 0 2px #164e3e6e;
+                         box-shadow: 0 0 0 1px #164e3e6e;
                          
                         }
                        }
@@ -162,6 +162,17 @@
                         }
                         p{
                             margin: 0px 10px 10px 0;
+                        }
+                    }
+                    .date{
+                        .rs-picker-toggle ,.rs-btn ,.rs-btn-default{
+                            border-radius: 7px;
+                            border: 1px solid rgb(170, 170, 170);
+                            transition: .3s ease;
+                            &:hover, &:focus {
+                                border-color: #164e3e ;
+                                box-shadow: 0 0 0 1px #164e3e6e;
+                            }
                         }
                     }
                 }

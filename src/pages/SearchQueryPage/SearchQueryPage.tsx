@@ -1,9 +1,11 @@
 import { AiOutlineHeart } from 'react-icons/ai';
 import "./SearchQueryPage.scss";
-import { useReducer } from 'react';
-import { DateRangePicker } from 'rsuite';
+import { useReducer, useState } from 'react';
+import { DateRangePicker, Divider } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 import reducer from "./reducer"
+import Payment from "../../../components/Payment/Payment"
+
 type SearchQueryPageProps = {
   matchingSearch: MatchingSearch;
 }
@@ -27,12 +29,39 @@ const initialState = {
   nameSurname: '',
   email: '',
   ticket: '',
+  isFormSubmitted: false,
 }
 
 const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
+
   const [state , dispatch] = useReducer(reducer, initialState);
+  const [data , setData] = useState<{
+    date: Date;
+    person: number;
+    nameSurname: string;
+    email: string;
+    ticket: string;
+    isFormSubmitted: boolean;
+  }>({
+    date: state.date,
+    person: state.person,
+    nameSurname: state.nameSurname,
+    email: state.email,
+    ticket: state.ticket,
+    isFormSubmitted: state.isFormSubmitted,
+  })
+
   const handleSubmit = () => {
-    console.log(state);
+    if(state.date !== null && state.person !== 0 && state.nameSurname !== '' && state.email !== '' && state.ticket !== '') {
+      setData({
+        date: state.date,
+        person: state.person,
+        nameSurname: state.nameSurname,
+        email: state.email,
+        ticket: state.ticket,
+        isFormSubmitted: true,
+      })
+    }
   }
 
   return (
@@ -44,7 +73,7 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
         <div className="bottom">
           <div className="card-infos">
             <h2>{matchingSearch.title}</h2>
-            <p className='days'>8 days |  11 days with London extension</p>
+            <p className='days'>The daily price is equivalent to ${matchingSearch.price}</p>
             <div className="details">
               <div className="group-size">
                 <p className='size-title'>Group Size</p>
@@ -71,6 +100,7 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
         </div>
       <p className='desc'>{matchingSearch.description}</p>
       </div>
+      <Divider />
       <div className="reservation">
         <div className="inputs">
           <div className="row">
@@ -80,7 +110,7 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
             </div>
             <div className="box">
               <h3>Date</h3>
-              <DateRangePicker format="dd-MM-yyyy" placeholder="Select Date Range" name='date' onChange={
+              <DateRangePicker className='date' format="dd-MM-yyyy" placeholder="Select Date Range" name='date' onChange={
                   (e) => dispatch({ type: 'SET_DATE', payload: e })  
               } />
             </div>
@@ -115,13 +145,13 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
             <div className="box">
               <h3>Ticket</h3>
               <div className="button-box">
-                <input type="radio" value="our" name="flight" className='radio-button' onChange={
+                <input type="radio" value="Our" name="flight" className='radio-button' onChange={
                   (e) => dispatch({ type: 'SET_TICKET', payload: e.target.value })
                 }/>
                 <p>Book our airfare package from</p>
               </div>
               <div className="button-box">
-                <input type="radio" value="self" name="flight" className='radio-button' onChange={
+                <input type="radio" value="Himself" name="flight" className='radio-button' onChange={
                   (e) => dispatch({ type: 'SET_TICKET', payload: e.target.value })
                 }/>
                 <p>I will book my own flights</p>
@@ -133,6 +163,15 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
           <button onClick={handleSubmit}>Reservation</button>
         </div>
       </div>
+      {data.isFormSubmitted && (
+        <Payment
+          person={data.person}
+          date={data.date}
+          nameSurname={data.nameSurname}
+          email={data.email}
+          ticket={data.ticket}
+        />
+      )}
     </div>
   );
 };

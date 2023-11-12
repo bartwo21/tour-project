@@ -35,11 +35,11 @@ const cards = [
     { size: 1, title: 'Save up to $200 with Specials', p: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, quibusdam. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, quibusdam.", button: "Shop last-minute deals", img: "" },
   ]
   const travelCards = [
-    { img: travelimg1, map: mapimg1, url: "dolmabahce", title: "Dolmabahce Sarayi", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", groupSize: "15 travelers", stars: 5, oldPrice: "$4,012" , price: "$3,719", button: "View tour" },
-    { img: travelimg2, map: mapimg2, url: "norway", title: "Norway Mountains", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", groupSize: "12 travelers",stars: 4, oldPrice: "$5,524" , price: "$4,239", button: "View tour" },
-    { img: travelimg3, map: mapimg3, url: "antalya", title: "Majestic seas in Antalya", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", groupSize: "5 travelers",stars: 3, oldPrice: "$6,657" , price: "$4,719", button: "View tour" },
-    { img: travelimg4, map: mapimg4, url: "australian", title: "Australian Cliffs", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", groupSize: "10 travelers",stars: 4, oldPrice: "$2,621" , price: "$2,100", button: "View tour" },
-    { img: travelimg5, map: mapimg5, url: "maldives", title: "Maldives hotel by the sea", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", groupSize: "22 travelers",stars: 5, oldPrice: "$1,912" , price: "$1,275", button: "View tour" },
+    { img: travelimg1, map: mapimg1, url: "dolmabahce", title: "Dolmabahce Sarayi", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", groupSize: "15 travelers", stars: 5, oldPrice: "4012" , price: "3719", button: "View tour" },
+    { img: travelimg2, map: mapimg2, url: "norway", title: "Norway Mountains", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", groupSize: "12 travelers",stars: 4, oldPrice: "5524" , price: "4239", button: "View tour" },
+    { img: travelimg3, map: mapimg3, url: "antalya", title: "Majestic seas in Antalya", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", groupSize: "5 travelers",stars: 3, oldPrice: "6657" , price: "4719", button: "View tour" },
+    { img: travelimg4, map: mapimg4, url: "australian", title: "Australian Cliffs", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", groupSize: "10 travelers",stars: 4, oldPrice: "2621" , price: "2100", button: "View tour" },
+    { img: travelimg5, map: mapimg5, url: "maldives", title: "Maldives hotel by the sea", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, odit!", groupSize: "22 travelers",stars: 5, oldPrice: "1912" , price: "1275", button: "View tour" },
   ]
 
     export {cards, sliderCards, biggerCards, travelCards};
