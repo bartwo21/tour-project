@@ -1,4 +1,3 @@
-import React from "react";
 import "./Payment.scss";
 import { Button, Modal } from "rsuite";
 type Props = {
