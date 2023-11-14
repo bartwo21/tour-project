@@ -68,6 +68,7 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
 
   return (
     <div className='container'>
+      <h3 className='subtitle'>Travel Details</h3>
       <div className="content">
         <div className="left-img">
           <img src={matchingSearch.img} alt={matchingSearch.title} />

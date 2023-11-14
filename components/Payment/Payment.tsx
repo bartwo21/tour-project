@@ -13,12 +13,12 @@ type Props = {
 };
 
 const Payment = ({
-  person,
-  date,
-  nameSurname,
-  email,
-  ticket,
-  onePrice,
+  // person,
+  // date,
+  // nameSurname,
+  // email,
+  // ticket,
+  // onePrice,
   openPayment,
   setOpenPayment,
 }: Props) => {
