@@ -40,6 +40,7 @@
         background-color: #FBFBFB;
         border-radius: 7px 0 0 7px;
         padding: 20px;
+        width: 80%;
       .title {
         display: flex;
         justify-content: space-between;
@@ -52,6 +53,9 @@
       .payment-areas {
         margin: 15px;
         .creditCard {
+          border :1px solid #c9c9c9;
+          border-radius: 5px;
+          padding: 20px;
           .select-credit {
             display: flex;
             justify-content: space-between;
@@ -69,7 +73,7 @@
             .right {
                 margin: auto 0;
                 img{
-                    width: 70px;
+                    width: 60px;
                     margin-left: 5px;
                 }
             }
@@ -123,13 +127,12 @@
           border: 1px solid #c9c9c9;
           border-radius: 5px;
           padding: 20px;
-          margin-top: 30px;
+          margin-top: 60px;
           .select-paypal {
             display: flex;
             justify-content: space-between;
             .left {
               label{
-                color: #164E3E;
                 font-size: 1.1rem;
                 margin-left: 8px;
               }
@@ -142,8 +145,28 @@
                 margin: auto 0;
                 img{
                     width: 100px;
-                    margin-right: 20px;
+                    margin-left: 10px;
                 }
+            }
+          }
+          .paypal-input{
+            .name-surname{
+              label{
+                font-size: 0.9rem;
+                color: #9e9ea7;
+              }
+              input{
+                @include cardInput;
+              }
+            }
+            .input{
+              label{
+                font-size: 0.9rem;
+                color: #9e9ea7;
+              }
+              input{
+                @include cardInput;
+            }
             }
           }
         }
@@ -154,13 +177,42 @@
         background-color: #164E3E;
         border-radius: 0 7px 7px 0;
         color: #fff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         .title{
             text-align: center;
-            margin-top: 20px;
+            margin-bottom: 30px;
             h3{
                 font-size: 1.8rem;
                 letter-spacing: 1px;
             }
+        }
+        .row{
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 0;
+          .col{
+            margin-bottom: 20px;
+            p{
+              color: rgb(223, 223, 223)
+            }
+          }
+          .col-right{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+          }
+        }
+        .buttons{
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          >button{
+            margin-left: 10px;
+          }
         }
     }
   }

@@ -1,27 +1,26 @@
 import { AiOutlineHeart } from 'react-icons/ai';
 import "./SearchQueryPage.scss";
 import { useReducer, useState } from 'react';
-import { DateRangePicker, Divider } from 'rsuite';
+import { DateRangePicker, Divider, useToaster, Notification } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 import reducer from "./reducer"
 import Payment from "../../../components/Payment/Payment"
+import { selectUser } from '../../store/features/authSlice/authSlice';
+import { useSelector } from 'react-redux';
 
 type SearchQueryPageProps = {
-  matchingSearch: MatchingSearch;
-}
-
-type MatchingSearch = {
-  img: string;
-  map: string;
-  title: string;
-  url: string;
-  description: string;
-  groupSize: string;
-  stars: number;
-  oldPrice: string;
-  price: string;
-  button: string;
+  matchingSearch: {
+    id: number;
+    title: string;
+    description: string;
+    img: string;
+    price: string;
+    groupSize: string;
+    stars: string;
+  };
 };
+
+
 
 const initialState = {
   date: null,
@@ -34,6 +33,8 @@ const initialState = {
 
 const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
 
+  const user = useSelector(selectUser);
+  const toaster = useToaster();
   const [state , dispatch] = useReducer(reducer, initialState);
   const [openPayment, setOpenPayment] = useState(false);
   const [data , setData] = useState<{
@@ -63,8 +64,19 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
         isFormSubmitted: true,
       })
       setOpenPayment(true);
+    } else {
+      toaster.push(<Notification>
+        <div className="notification-content">
+          <h5>Reservation Error !</h5>
+          <p>Please fill in the requested information ⚠️</p>
+        </div>
+      </Notification>, {
+        placement: 'topEnd',
+        duration: 3000,
+      });
     }
   }
+
 
   return (
     <div className='container'>
@@ -86,7 +98,7 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
                 <p className='review-title'>Reviews</p>
                 <div className="stars">{matchingSearch.stars} stars</div>
               </div>
-              <span className="heart-button"><AiOutlineHeart size={40} className="heart"/></span>
+              {user && <span className="heart-button"><AiOutlineHeart size={40} className="heart"/></span>}
             </div>
           </div>
           <div className="bottom-imgs">
@@ -104,7 +116,8 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
       <p className='desc'>{matchingSearch.description}</p>
       </div>
       <Divider />
-      <div className="reservation">
+      {user ? (
+        <div className="reservation">
         <div className="inputs">
           <div className="row">
             <div className="box">
@@ -166,6 +179,11 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
           <button onClick={handleSubmit}>Reservation</button>
         </div>
       </div>
+      ): (
+      <div className="no-login">
+        <h2 className='no-login-title'>You must be logged in to make a reservation !</h2>
+      </div>
+      )}
       {data.isFormSubmitted && (
         <Payment
           person={data.person}
@@ -183,4 +201,3 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
 };
 
 export default SearchQueryPage
-
