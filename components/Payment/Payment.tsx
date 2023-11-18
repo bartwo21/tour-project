@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Payment.scss";
 import { Button, Divider, Modal, Notification, useToaster } from "rsuite";
-import React from "react";
+
 type Props = {
   person: number;
   date: Date;

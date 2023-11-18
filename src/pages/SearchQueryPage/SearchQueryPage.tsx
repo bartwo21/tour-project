@@ -20,8 +20,6 @@ type SearchQueryPageProps = {
   };
 };
 
-
-
 const initialState = {
   date: null,
   person: 0,
@@ -76,7 +74,6 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
       });
     }
   }
-
 
   return (
     <div className='container'>
