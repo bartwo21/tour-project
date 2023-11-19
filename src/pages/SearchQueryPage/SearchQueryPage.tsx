@@ -10,13 +10,13 @@ import { useSelector } from 'react-redux';
 
 type SearchQueryPageProps = {
   matchingSearch: {
-    id: number;
+    id?: number;
     title: string;
     description: string;
     img: string;
     price: string;
     groupSize: string;
-    stars: string;
+    stars: number;
   };
 };
 
