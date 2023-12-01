@@ -7,6 +7,7 @@ import reducer from "./reducer"
 import Payment from "../../../components/Payment/Payment"
 import { selectUser } from '../../store/features/authSlice/authSlice';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 type SearchQueryPageProps = {
   matchingSearch: {
@@ -33,6 +34,7 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
 
   const user = useSelector(selectUser);
   const toaster = useToaster();
+  const navigate = useNavigate();
   const [state , dispatch] = useReducer(reducer, initialState);
   const [openPayment, setOpenPayment] = useState(false);
   const [data , setData] = useState<{
@@ -178,7 +180,7 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
       </div>
       ): (
       <div className="no-login">
-        <h2 className='no-login-title'>You must be logged in to make a reservation !</h2>
+        <h2 className='no-login-title'>You must be <span className='login' onClick={() => navigate("/login")}>logged in</span> to make a reservation !</h2>
       </div>
       )}
       {data.isFormSubmitted && (

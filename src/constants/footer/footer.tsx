@@ -57,11 +57,11 @@ const Footer: React.FC<Props> = ({}) => {
                     <img src={img} />
                 </div>
                 <div className="social-media-icons">
-                    <i className="icon"><BiLogoFacebook /></i>
-                    <i className="icon"><RiTwitterXLine /></i>
-                    <i className="icon"><AiOutlineInstagram /></i>
-                    <i className="icon"><BsPinterest /></i>
-                    <i className="icon"><AiFillYoutube /></i>
+                    <i className="icon"><BiLogoFacebook size={25}/></i>
+                    <i className="icon"><RiTwitterXLine size={25}/></i>
+                    <i className="icon"><AiOutlineInstagram size={25}/></i>
+                    <i className="icon"><BsPinterest size={25}/></i>
+                    <i className="icon"><AiFillYoutube size={25}/></i>
                 </div>
             </div>
             

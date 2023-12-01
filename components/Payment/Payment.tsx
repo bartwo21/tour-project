@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Payment.scss";
 import { Button, Divider, Modal, Notification, useToaster } from "rsuite";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   person: number;
@@ -23,6 +24,8 @@ const Payment = ({
   openPayment,
   setOpenPayment,
 }: Props) => {
+  const toaster = useToaster();
+  const navigate = useNavigate();
   const [cardType, setCardType] = useState<'visa' | 'mastercard' | null>(null);
   const [selectedSection, setSelectedSection] = useState<'credit' | 'paypal' | null>('credit');
   const [paymentSubmitted, setPaymentSubmitted] = useState<boolean>(false);
@@ -69,7 +72,6 @@ const Payment = ({
   const dateRange = formattedDates.join(" - ");
   const startDate = new Date(formattedDates[0]);
   const endDate = new Date(formattedDates[1]);
-  const toaster = useToaster();
 
   const timeDifference = endDate.getTime() - startDate.getTime();
   const dayDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
@@ -89,6 +91,7 @@ const Payment = ({
           paypalNameSurname: '',
           paypalEmail: '',
         })
+        navigate('/');
         return toaster.push(<Notification>
           <div className="notification-content">
             <h5>Payment Success !</h5>

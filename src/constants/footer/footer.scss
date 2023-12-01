@@ -57,16 +57,17 @@
                 width: 50%;
                 i{
                     margin-right: 10px;
-                    font-size: .9rem;
                     cursor: pointer;
                     border: 1px solid #ffffff5d;
                     color: white;
                     border-radius: 50%;
-                    padding: 7px 9px 3px 9px;
                     &:hover{
                     border: 1px solid #ffffff;
                     }
                     transition: border 0.3s ease;
+                    >svg{
+                        margin: 8px 8px 2px 8px;
+                    }
                 }
             } 
         }
@@ -119,9 +120,10 @@
                 .social-media-icons{
                     width: 100%;
                     margin-top: 25px;
+                    display: flex;
+                    justify-content: center;
                     i{
                         font-size: 1.5rem;
-                        padding: 10px 15px 5px 15px;
                     }
                 }
             }

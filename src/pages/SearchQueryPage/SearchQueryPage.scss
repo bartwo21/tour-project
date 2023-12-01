@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   margin: 30px auto;
-  background: linear-gradient(180deg, #f3f8e6cb 0%, #f3f8e652 50%, #ffffff);
+  background: linear-gradient(180deg, #e8f8e6cb 0%, #f3f8e652 50%, #ffffff);
   padding: 10px 0;
   .subtitle{
     font-size: 1.5rem;
@@ -224,8 +224,17 @@
   }
   .no-login{
     text-align: center;
+    margin-top: 40px;
     .no-login-title{
       font-size: 2rem;
+      .login{
+        cursor: pointer;
+        color: #1f976b;
+        &:hover{
+          color: #31584a;
+          transition: color 0.3s ease;
+        }
+      }
     }
   }
 }

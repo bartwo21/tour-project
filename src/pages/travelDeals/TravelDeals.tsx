@@ -5,10 +5,10 @@ const TravelDeals = () => {
   
   return (
     <div className="travel-deals">
-      <div className="gradient-container">
+      <div className="travel-cards-container">
         <h1>Black Friday travel deals</h1>
-          <div className="sections">
-            {/* three sections */}
+          <div className="travel-cards">
+            
           </div>
       </div>
     </div>

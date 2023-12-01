@@ -3,10 +3,13 @@ import { useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/features/authSlice/authSlice";
+import { useToaster, Notification } from "rsuite";
+
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const toaster = useToaster();
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -21,6 +24,14 @@ const Login = () => {
       }
       navigate("/");
       dispatch(login({ name, email, password }));
+  
+      toaster.push(<Notification>
+        <div className="notification-content">
+          <h6>Successfully logged in 🎉</h6>
+        </div>
+      </Notification>, {
+        placement: 'topEnd',
+      });
     }
   };
 
