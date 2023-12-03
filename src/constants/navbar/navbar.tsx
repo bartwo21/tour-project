@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./navbar.scss";
-import { AiOutlineSearch, AiOutlineDown, AiOutlineUp } from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineDown } from "react-icons/ai";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createDataFunc } from "../../store/features/search/searchSlice";
