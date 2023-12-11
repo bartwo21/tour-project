@@ -2,7 +2,21 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../src/store/features/authSlice/authSlice';
 import { useNavigate } from 'react-router-dom';
-const TravelCard = ({ card, index }: any) => {
+import './TravelCard.scss';
+
+type TravelCards = {
+  img: string;
+  map: string;
+  title: string;
+  url: string;
+  description: string;
+  stars: number;
+  oldPrice: number;
+  price: number;
+  button: string;
+};
+
+const TravelCard = ({ card, index }: { card: TravelCards, index: number}) => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
 

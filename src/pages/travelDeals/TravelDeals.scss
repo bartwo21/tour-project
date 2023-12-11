@@ -1,13 +1,98 @@
 .travel-deals{
-    background: linear-gradient(0deg, #f3f8e6cb 0%, #f3f8e652 50%, #ffffff);
+    padding-bottom: 40px;
+    min-height: 80vh;
     .travel-cards-container{
-    height: 70vh;
-    width: 60%;
-    margin: 0 auto;
     text-align: center;
-    h1{
-        margin-top: 30px;
-        color: #315801;
+    .titles{
+        background: linear-gradient(0deg, #f3f8e6cb 0%, #f3f8e652 50%, #ffffff);
+        width: 100%;
+        padding: 40px 0;
+        h1{
+            margin: 30px 0 20px 0;
+            color: #315801;
+        }
+        p{
+            width: 40%;
+            margin: 5px auto;
+        }
+    }
+    .travels{
+        width: 60%;
+        margin: 0 auto;
+        .filter-tab{
+            box-shadow: rgba(33, 35, 38, 0.205) 0px 10px 10px -10px;
+            ul{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin-top: 30px;
+                border: 1px solid #00000028;
+                border-radius: 5px;
+                li{
+                    position: relative;
+                    border-right: 1px solid #00000028;
+                    cursor: pointer;
+                    list-style: none;
+                    width: 50%;
+                    text-align: left;
+                    .select-box-title{
+                        padding: 15px 20px;
+                        span{
+                            font-weight: 700;
+                            &:hover{
+                                text-decoration: underline;
+                                color: #3d6e00;
+                            }
+                        }
+                        i{
+                            position: absolute;
+                            right: 20px;
+                            top: 35%;
+                        }
+                    }
+                    
+                    .dropdown-content {
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        top: 60px;
+                        background-color: rgb(255, 255, 255); 
+                        box-shadow: rgba(0, 0, 0, 0.199) 0px 5px 15px;
+                        border-radius: 5px; 
+                        min-height: 200px;
+                        flex-wrap: wrap;
+                        z-index: 22;
+                        padding: 10px;
+                        width: 15%;
+                        min-width: 250px;
+                        cursor: default;
+                        .dropdown-link{
+                            color: black;
+                            font-size: 1rem;
+                            width: 100%;
+                            display: flex;
+                            input {
+                                width: 30px;
+                                height: 20px;
+                            }
+                            label{
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .travel-cards{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+            .card-t{
+                max-width: 360px;
+            }
+        }
     }
    }
 }

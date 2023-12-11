@@ -15,8 +15,8 @@ type SearchQueryPageProps = {
     title: string;
     description: string;
     img: string;
-    price: string;
-    groupSize: string;
+    price: number;
+    groupSize: number;
     stars: number;
   };
 };
@@ -190,7 +190,7 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
           nameSurname={data.nameSurname}
           email={data.email}
           ticket={data.ticket}
-          onePrice={parseInt(matchingSearch.price)}
+          onePrice={matchingSearch.price}
           openPayment={openPayment}
           setOpenPayment={setOpenPayment}
         />

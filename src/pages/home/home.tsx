@@ -9,31 +9,6 @@ import CardContainer from "../../../components/CardContainer/CardContainer";
 import InfoCard from "../../../components/InfoCard/InfoCard";
 import Slider from 'react-slick';
 
-type Card = {
-  size: number;
-  title: string;
-  p: string;
-  button: string;
-  img: string;
-};
-
-type SliderCards = {
-  title: string;
-  description: string;
-  button: string; 
-}
-type TravelCards = {
-  img: string;
-  map: string;
-  title: string;
-  url: string;
-  description: string;
-  stars: number;
-  oldPrice: string;
-  price: string;
-  button: string;
-};
-
 const Home = ({}) => {
   const settings = {
     dots: false,
@@ -69,21 +44,21 @@ const Home = ({}) => {
         expert-planned group travel experiences make it easy to see the world.
       </h3>
       <div className="card-container">
-        {cards.map((card: Card, index: number) => (
+        {cards.map((card, index) => (
           <CardContainer card={card} index={index} />
         ))}
       </div>
       <div className="slider-container">
         <div className="inner-slider">
           <Slider {...settings}>
-            {sliderCards.map((card: SliderCards, index: number) => (
+            {sliderCards.map((card, index) => (
               <InfoCard card={card} index={index} />
               ))}
           </Slider>
         </div>
       </div>
       <div className="card-container">
-        {biggerCards.map((card: Card, index: number) => (
+        {biggerCards.map((card, index) => (
           <CardContainer card={card} index={index} />
         ))}
       </div>
@@ -101,7 +76,7 @@ const Home = ({}) => {
         </div>
         <div className="slider-container">
           <Slider {...settings}>
-          {travelCards.map((card: TravelCards, index: number) => (
+          {travelCards.map((card, index) => (
             <TravelCard card={card} index={index} />
             ))}
           </Slider>

@@ -1,0 +1,122 @@
+@mixin buttonStyles {
+    background-color: rgb(250, 250, 250);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 18px;
+    cursor: pointer;
+    outline: none;
+    width: max-content;
+    z-index: 2;
+    &:hover {
+      background-color: #def1d9;
+    }
+    transition: background-color 0.3s ease;
+  }
+.card-t {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-height: 650px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 25px;
+    .travel-card {
+      .image-container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-top-right-radius: 25px;
+        border-top-left-radius: 25px;
+        .heart-button{
+            .heart{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: 2;
+                cursor: pointer;
+                color: white;
+                font-size: 2.3rem;
+                background-color: #ffffff86;
+                border-radius: 50%;
+                padding: 7px;
+                color: rgba(0, 0, 0, 0.384);
+                &:hover{
+                    color: #164e3e;
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                }
+                transition: color 0.3s ease;
+            }
+        }
+        .travel-card-img,
+        .travel-card-map {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .travel-card-img {
+          opacity: 1;
+        }
+        &:hover {
+          .travel-card-img {
+            opacity: 0;
+          }
+          .travel-card-map {
+            opacity: 1;
+          }
+        }
+      }
+      .text-container {
+        padding: 10px 20px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        .title,
+        .description,
+        .stars,
+        .prices,
+        .button {
+          position: relative;
+          margin-bottom: 10px;
+          width: 100%;
+        }
+        .title{
+            font-weight: 700;
+            margin-top: 15px;
+        }
+        .description{
+            font-weight: 200;
+        }
+        .prices {
+          .old-price{
+            margin-right: 5px;
+            span{
+                text-decoration: line-through;
+            }
+          }
+          .new-price{
+            font-weight: 700;
+            color: #038845
+          }
+        }
+  
+        .button {
+            @include buttonStyles;
+            border: 1px solid black;
+            &:hover{
+                background-color: #164e3e;
+                color: white;
+            }
+            transition: background-color 0.3s ease;
+        }
+      }
+    }
+  }
