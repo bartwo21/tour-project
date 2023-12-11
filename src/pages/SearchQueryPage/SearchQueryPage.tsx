@@ -5,13 +5,13 @@ import { DateRangePicker, Divider, useToaster, Notification } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 import reducer from "./reducer"
 import Payment from "../../../components/Payment/Payment"
-import { selectUser } from '../../store/features/authSlice/authSlice';
-import { useSelector } from 'react-redux';
+import { selectUser, selectFavoriteCards, toggleFavoriteCard } from '../../store/features/authSlice/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 type SearchQueryPageProps = {
   matchingSearch: {
-    id?: number;
+    id: number;
     title: string;
     description: string;
     img: string;
@@ -35,6 +35,8 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
   const user = useSelector(selectUser);
   const toaster = useToaster();
   const navigate = useNavigate();
+  const dispatchCard = useDispatch();
+  const favoriteCards  = useSelector(selectFavoriteCards);
   const [state , dispatch] = useReducer(reducer, initialState);
   const [openPayment, setOpenPayment] = useState(false);
   const [data , setData] = useState<{
@@ -76,7 +78,6 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
       });
     }
   }
-
   return (
     <div className='container'>
       <h3 className='subtitle'>Travel Details</h3>
@@ -97,7 +98,13 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
                 <p className='review-title'>Reviews</p>
                 <div className="stars">{matchingSearch.stars} stars</div>
               </div>
-              {user && <span className="heart-button"><AiOutlineHeart size={40} className="heart"/></span>}
+              {user && <span className={
+                favoriteCards.includes(matchingSearch.id) ? "heart-button heart-button-active" : "heart-button"
+              } onClick={
+                () => {
+                  dispatchCard(toggleFavoriteCard(matchingSearch.id))
+                }
+              }><AiOutlineHeart size={40} className="heart"/></span>}
             </div>
           </div>
           <div className="bottom-imgs">

@@ -18,11 +18,31 @@ const Navbar: React.FC<Props> = ({}) => {
   const dispatch = useDispatch();
   const toaster = useToaster();
   const { data } = useSelector((state: any) => state.data);
+  const user = useSelector(selectUser);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [travelStylesDropdownOpen, setTravelStylesDropdownOpen] =
     useState(false);
-  const user = useSelector(selectUser);
+  const [filterData, setFilterData] = useState<any[]>([]);
+  const [wordEntered, setWordEntered] = useState<string>("");
+
+  const handleFilter = (e: any) => {
+    const searchWord = e.target.value;
+    setWordEntered(searchWord);
+    const newFilter = travelCards.filter((value) => {
+      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+    });
+    if (searchWord === "") {
+      setFilterData([]);
+    } else {
+      setFilterData(newFilter);
+    }
+  };
+
+  const clearInput = () => {
+    setFilterData([]);
+    setWordEntered("");
+  };
 
   const handleSearch = () => {
     if (data) {
@@ -62,6 +82,7 @@ const Navbar: React.FC<Props> = ({}) => {
   const ref = useRef(null);
   useClickAway(ref, () => {
     setTravelStylesDropdownOpen(false);
+    // setFilterData([]);
   });
 
   return (
@@ -138,13 +159,39 @@ const Navbar: React.FC<Props> = ({}) => {
         <div className="input-box">
           <input
             type="text"
-            onChange={(e) => dispatch(createDataFunc(e.target.value))}
+            onChange={(e) => {
+              dispatch(createDataFunc(e.target.value));
+              handleFilter(e);
+            }}
+            value={wordEntered}
             onKeyDown={handleKeyDown}
             placeholder="Search for a hotel or deal..."
           />
-          <button onClick={handleSearch}>
-            <AiOutlineSearch />
-          </button>
+          {filterData.length === 0 ? (
+            <button onClick={handleSearch}>
+              <AiOutlineSearch />
+            </button>
+          ) : (
+            <h5 onClick={clearInput}>x</h5>
+          )}
+
+          {filterData.length != 0 && (
+            <div className="data-result" ref={ref}>
+              {filterData.slice(0, 5).map((card) => (
+                <NavLink
+                  to={`/sr?q=${card.url}`}
+                  className="data-link"
+                  onClick={() => {
+                    setFilterData([]);
+                    setWordEntered("");
+                  }}
+                >
+                  <img src={card.img} alt={card.title} />
+                  <p>{card.title}</p>
+                </NavLink>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -37,11 +37,24 @@
                     text-align: left;
                     .select-box-title{
                         padding: 15px 20px;
+                        &:hover{
+                            .sort-info, i, span{
+                                color: #3d6e00;
+                            }
+                        }
                         span{
                             font-weight: 700;
                             &:hover{
                                 text-decoration: underline;
-                                color: #3d6e00;
+                            }
+                        }
+                        .sort-info{
+                            text-align: right;
+                            opacity: 0.7;
+                            position: absolute;
+                            right: 40px;
+                            &:hover{
+                                text-decoration: none;
                             }
                         }
                         i{
@@ -49,6 +62,20 @@
                             right: 20px;
                             top: 35%;
                         }
+                    }
+                    .up{
+                        width: 13px;
+                        height: 13px;
+                        transform-origin: center;
+                        transform: translateY(0px) rotate(180deg);
+                        transition: transform 0.2s ease-in-out;
+                    }
+                    .down{
+                        width: 13px;
+                        height: 13px;
+                        transform-origin: center;
+                        transform: translateY(0px) rotate(0deg);
+                        transition: transform 0.2s ease-in-out;
                     }
                     
                     .dropdown-content {

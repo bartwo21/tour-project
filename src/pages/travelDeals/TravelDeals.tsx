@@ -16,6 +16,7 @@ const TravelDeals = () => {
 
   const [filteredCards, setFilteredCards] = useState<
     {
+      id: number;
       img: string;
       map: string;
       url: string;
@@ -27,8 +28,13 @@ const TravelDeals = () => {
       oldPrice: number;
       price: number;
       button: string;
+      favorite: boolean;
     }[]
-  >(travelCards);
+  >(
+    travelCards.sort((a, b) => {
+      return parseFloat(b.price.toString()) - parseFloat(a.price.toString());
+    })
+  );
   const [dropdownStates, setDropdownStates] = useState<{
     destination: boolean;
     price: boolean;
@@ -79,7 +85,7 @@ const TravelDeals = () => {
       const aValue = parseFloat((a as any)[type]);
       const bValue = parseFloat((b as any)[type]);
 
-      if (dropdownStates.sort) {
+      if (!dropdownStates.sort) {
         return aValue - bValue;
       } else {
         return bValue - aValue;
@@ -261,6 +267,7 @@ const TravelDeals = () => {
                   className="select-box-title"
                 >
                   <span>Sort</span>
+                  {dropdownStates.sort ? <span className="sort-info">Price: Low to high</span> : <span className="sort-info">Price: High to low</span>}
                   <i className={dropdownStates.sort ? "up" : "down"}>
                     <AiOutlineDown />
                   </i>

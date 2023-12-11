@@ -103,6 +103,17 @@
               transition: color 0.3s ease;
             }
           }
+          .heart-button-active{
+            border: 1px solid #007e2aa2;
+            .heart{
+                background-color: #00ca43a2;
+                color: white;
+                transition: background-color 0.3s ease;
+                &:hover{
+                  color: white;
+                }
+            }
+        }
         }
       }
       .bottom-imgs {

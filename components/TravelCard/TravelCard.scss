@@ -47,6 +47,16 @@
                 transition: color 0.3s ease;
             }
         }
+        .heart-button-active{
+            .heart{
+                background-color: #00ca43a2;
+                color: white;
+                transition: background-color 0.3s ease;
+                &:hover{
+                  color: white;
+                }
+            }
+        }
         .travel-card-img,
         .travel-card-map {
           width: 100%;

@@ -109,6 +109,7 @@ const biggerCards = [
 
 const travelCards = [
   {
+    id: 0,
     img: travelimg1,
     map: mapimg1,
     url: "dolmabahce",
@@ -119,10 +120,12 @@ const travelCards = [
     groupSize: 2,
     stars: 5,
     oldPrice: 4012,
-    price: 211,
+    price: 95,
     button: "View tour",
+    favorite: false,
   },
   {
+    id: 1,
     img: travelimg2,
     map: mapimg2,
     url: "norway",
@@ -135,8 +138,10 @@ const travelCards = [
     oldPrice: 5524,
     price: 321,
     button: "View tour",
+    favorite: false,
   },
   {
+    id: 2,
     img: travelimg3,
     map: mapimg3,
     url: "antalya",
@@ -149,8 +154,10 @@ const travelCards = [
     oldPrice: 6657,
     price: 456,
     button: "View tour",
+    favorite: false,
   },
   {
+    id: 3,
     img: travelimg4,
     map: mapimg4,
     url: "australian",
@@ -163,8 +170,10 @@ const travelCards = [
     oldPrice: 2621,
     price: 123,
     button: "View tour",
+    favorite: false,
   },
   {
+    id: 4,
     img: travelimg5,
     map: mapimg5,
     url: "maldives",
@@ -177,6 +186,7 @@ const travelCards = [
     oldPrice: 1912,
     price: 341,
     button: "View tour",
+    favorite: false,
   },
 ];
 

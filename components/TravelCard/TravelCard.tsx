@@ -1,10 +1,11 @@
 import { AiOutlineHeart } from 'react-icons/ai';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../src/store/features/authSlice/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser, toggleFavoriteCard, selectFavoriteCards } from '../../src/store/features/authSlice/authSlice';
 import { useNavigate } from 'react-router-dom';
 import './TravelCard.scss';
 
 type TravelCards = {
+  id: number;
   img: string;
   map: string;
   title: string;
@@ -14,17 +15,27 @@ type TravelCards = {
   oldPrice: number;
   price: number;
   button: string;
+  favorite: boolean;
 };
 
 const TravelCard = ({ card, index }: { card: TravelCards, index: number}) => {
   const user = useSelector(selectUser);
+  const favoriteCards  = useSelector(selectFavoriteCards);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
 
   return (
           <div key={index} className={`card-t card-t-${index + 1}`}>
             <div className="travel-card">
               <div className="image-container">
-                {user && <span className="heart-button"><AiOutlineHeart className="heart" /></span>}
+                {user && <span onClick={
+                  () => {
+                    dispatch(toggleFavoriteCard(card.id))
+                  }
+                } className={
+                  favoriteCards.includes(card.id) ? "heart-button heart-button-active" : "heart-button"
+                }><AiOutlineHeart className="heart" /></span>}
                 <div className="travel-card-img">
                   <img src={card.img} alt="" />
                 </div>
