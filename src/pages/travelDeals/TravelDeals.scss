@@ -88,6 +88,7 @@
                         box-shadow: rgba(0, 0, 0, 0.199) 0px 5px 15px;
                         border-radius: 5px; 
                         min-height: 200px;
+                        gap: 20px;
                         flex-wrap: wrap;
                         z-index: 22;
                         padding: 10px;
@@ -123,3 +124,25 @@
     }
    }
 }
+
+@media screen and (max-width: 1400px) {
+    .travel-deals{
+        .travel-cards-container{
+        .travels{
+            .filter-tab{
+                ul{
+                    flex-direction: column;
+                    li{
+                        width: 100%;
+                        border-bottom: 1px solid #00000028;
+                        }
+                        .dropdown-content {
+                            top: 50px !important;
+                            min-width: 200px !important;
+                        }
+                    }
+                }
+            }
+        }
+       }
+    }

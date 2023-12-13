@@ -5,6 +5,7 @@ import { RiTwitterXLine } from 'react-icons/ri'
 import { AiOutlineInstagram, AiFillYoutube } from 'react-icons/ai'
 import { BsPinterest } from 'react-icons/bs'
 import img from './img/1.png'
+import { Link } from 'react-router-dom'
 
 type Props = {}
 
@@ -15,39 +16,38 @@ const Footer: React.FC<Props> = ({}) => {
             <div className="column">
                 <h3>Contact us</h3>
                 <ul>
-                    <li>1-214-2412</li>
-                    <li>Help Center</li>
-                    <li>Live Chat</li>
-                    <li>FAQs</li>
+                    <Link to="https://github.com/bartwo21/tour-project" target='_blank' className='li'>1-214-2412</Link>
+                    <Link to="https://github.com/bartwo21/tour-project" target='_blank' className='li'>Help Center</Link>
+                    <Link to="https://github.com/bartwo21/tour-project" target='_blank' className='li'>Live Chat</Link>
+                    <Link to="https://github.com/bartwo21/tour-project" target='_blank' className='li'>FAQs</Link>
                 </ul>
             </div>
             <div className="column">
                 <h3>Resources</h3>
                 <ul>
-                    <li>Flights</li>
-                    <li>Hotels</li>
-                    <li>Car Rentals</li>
-                    <li>Travel Insurance</li>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Flights</Link>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Hotels</Link>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Car Rentals</Link>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Travel Insurance</Link>
                 </ul>
             </div>
             <div className="column">
                 <h3>Our company</h3>
                 <ul>
-                    <li>About</li>
-                    <li>Press</li>
-                    <li>Careers</li>
-                    <li>Investors</li>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>About</Link>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Press</Link>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Careers</Link>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Investors</Link>
                 </ul>
             </div>
             <div className="column">
                 <h3>Other Tour brands</h3>
                 <ul>
-                    <li>Study Abroad</li>
-                    <li>Go Ahead Tours</li>
-                    <li>City Tours</li>
-                    <li>Grand Circle Cruise Line</li>
-                    <li>Gap Year</li>
-                    <li>Ultimate Break</li>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Go Ahead Tours</Link>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>City Tours</Link>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Grand Circle Cruise Line</Link>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Gap Year</Link>
+                    <Link className='li' to="https://github.com/bartwo21/tour-project" target='_blank'>Ultimate Break</Link>
                 </ul>
             </div>
         </div>
@@ -57,11 +57,11 @@ const Footer: React.FC<Props> = ({}) => {
                     <img src={img} />
                 </div>
                 <div className="social-media-icons">
-                    <i className="icon"><BiLogoFacebook size={25}/></i>
-                    <i className="icon"><RiTwitterXLine size={25}/></i>
-                    <i className="icon"><AiOutlineInstagram size={25}/></i>
-                    <i className="icon"><BsPinterest size={25}/></i>
-                    <i className="icon"><AiFillYoutube size={25}/></i>
+                    <Link to="https://github.com/bartwo21/tour-project" target='_blank' className="icon"><BiLogoFacebook size={25}/></Link>
+                    <Link to="https://github.com/bartwo21/tour-project" target='_blank' className="icon"><RiTwitterXLine size={25}/></Link>
+                    <Link to="https://github.com/bartwo21/tour-project" target='_blank' className="icon"><AiOutlineInstagram size={25}/></Link>
+                    <Link to="https://github.com/bartwo21/tour-project" target='_blank' className="icon"><BsPinterest size={25}/></Link>
+                    <Link to="https://github.com/bartwo21/tour-project" target='_blank' className="icon"><AiFillYoutube size={25}/></Link>
                 </div>
             </div>
             
@@ -72,15 +72,15 @@ const Footer: React.FC<Props> = ({}) => {
                     <p>© 2023 Tour, Inc. All rights reserved.</p>
                 </div>
                 <div className="footer-downside-right">
-                    <p>Terms & Conditions</p>
+                    <Link className='p' to="https://github.com/bartwo21/tour-project" target='_blank'>Terms & Conditions</Link>
                     |
-                    <p>
+                    <Link className='p' to="https://github.com/bartwo21/tour-project" target='_blank'>
                         Privacy Policy
-                    </p>
+                    </Link>
                     |
-                    <p>
+                    <Link className='p' to="https://github.com/bartwo21/tour-project" target='_blank'>
                         Site Map
-                    </p>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ import "./Login.scss";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/features/authSlice/authSlice";
 import { useToaster, Notification } from "rsuite";
+import { motion } from "framer-motion";
 
 
 const Login = () => {
@@ -41,7 +42,15 @@ const Login = () => {
 
   return (
     <div className="page">
-      <div className="container">
+      <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1,
+        delay: 0.1,
+        ease: [0, 0.71, 0.2, 1.01]
+      }}
+      className="container">
         <h1>Login</h1>
         <div className="input-space">
           <input
@@ -68,10 +77,13 @@ const Login = () => {
             {showPassword ? "Hide" : "Show"}
           </button>
         </div>
-        <button onClick={handleClickButton} className="button">
+        <motion.button 
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        onClick={handleClickButton} className="button">
           Login
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
     </div>
   );
 };

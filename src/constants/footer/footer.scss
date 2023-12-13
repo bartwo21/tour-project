@@ -18,9 +18,11 @@
                 margin-bottom: 10px;
             }
             ul{
+                display: flex;
+                flex-direction: column;
                 list-style: none;
                 padding: 0 15px 0 0;
-                li {
+                .li {
                     margin: 0 0 5px 0;
                     cursor: pointer;
                     font-size: .9rem;
@@ -55,7 +57,7 @@
                 justify-content: space-between;
                 align-items: center;
                 width: 50%;
-                i{
+                .icon{
                     margin-right: 10px;
                     cursor: pointer;
                     border: 1px solid #ffffff5d;
@@ -86,7 +88,8 @@
             .footer-downside-right{
                 display: flex;
                 align-items: center;
-                p{
+                .p{
+                    color: white;
                     cursor: pointer;
                     margin: 0 5px 0 5px;
                     &:hover{

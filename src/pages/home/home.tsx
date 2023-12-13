@@ -76,9 +76,9 @@ const Home = ({}) => {
         </div>
         <div className="slider-container">
           <Slider {...settings}>
-          {travelCards.map((card, index) => (
+          {travelCards.slice(0, 4).map((card, index) => (
             <TravelCard card={card} index={index} />
-            ))}
+          ))}
           </Slider>
         </div>
       <div className="logos">

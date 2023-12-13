@@ -2,7 +2,8 @@ import "./TravelDeals.scss";
 import TravelCard from "../../../components/TravelCard/TravelCard";
 import { travelCards } from "../home/cardsArray";
 import { AiOutlineDown } from "react-icons/ai";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 // multiple select
 
@@ -13,7 +14,7 @@ const TravelDeals = () => {
   const prices = [100, 200, 400];
   const groupSizes = [{ from: 0, to: 5 }, { from: 6, to: 10 }, { from: 11, to: 15 }];
   const [rememberCheckedInputs, setRememberCheckedInputs] = useState<string[]>([]);
-
+  const controls = useAnimation(); 
   const [filteredCards, setFilteredCards] = useState<
     {
       id: number;
@@ -93,6 +94,11 @@ const TravelDeals = () => {
     });
     setFilteredCards(sorted);
   };
+
+  useEffect(() => {
+    controls.set({ y: 2 });
+    controls.start({ y: 0 });
+  }, [filteredCards]);
 
   return (
     <div className="travel-deals">
@@ -275,11 +281,13 @@ const TravelDeals = () => {
               </li>
             </ul>
           </div>
-          <div className="travel-cards">
+          <motion.div
+          animate={controls}
+          className="travel-cards">
             {filteredCards.map((card, index) => {
               return <TravelCard card={card} index={index} />;
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

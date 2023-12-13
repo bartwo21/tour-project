@@ -2,6 +2,8 @@ import { AiOutlineHeart } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser, toggleFavoriteCard, selectFavoriteCards } from '../../src/store/features/authSlice/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { motion, useInView, useAnimation } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import './TravelCard.scss';
 
 type TravelCards = {
@@ -24,9 +26,28 @@ const TravelCard = ({ card, index }: { card: TravelCards, index: number}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, {once: true});
+
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView]);
 
   return (
-          <div key={index} className={`card-t card-t-${index + 1}`}>
+          <motion.div
+          ref={ref}
+          variants={{
+            hidden: { opacity: 0, y: 85 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          initial="hidden"
+          animate={mainControls}
+          transition={{ duration: 0.5, delay: 0.05 }}
+          key={index} className={`card-t card-t-${index + 1}`}>
             <div className="travel-card">
               <div className="image-container">
                 {user && <span onClick={
@@ -53,7 +74,7 @@ const TravelCard = ({ card, index }: { card: TravelCards, index: number}) => {
                 <span className="button" onClick={() => {navigate(`/sr?q=${card.url}`)}}>{card.button}</span>
               </div>
             </div>
-          </div>
+          </motion.div>
   );
 };
 

@@ -89,7 +89,7 @@
                     min-width: 250px;
                     overflow: hidden;
                     overflow-y: auto;
-                    height: 150px;
+                    height: 225px;
                     &::-webkit-scrollbar {
                         width: 10px;
                         background-color: #f1f1f1;
@@ -216,8 +216,6 @@
                     font-size: 1.3rem !important;
                     .dropdown-content {
                         top: 35px; 
-                        flex-direction: row !important;
-                        height: min-content !important;
                         z-index: 3;
                         .dropdown-link {
                             margin: 5px 0;
