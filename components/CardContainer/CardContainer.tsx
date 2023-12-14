@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 type props = {
     card: {
       title: string;
@@ -21,7 +23,7 @@ const CardContainer = ({ card, index }: props) => {
         >
           <p className="card-title">{card.title}</p>
           <p className="card-p">{card.p}</p>
-          <span className="button">{card.button}</span>
+          <Link to="/login" className="button">{card.button}</Link>
         </div>
   );
 };

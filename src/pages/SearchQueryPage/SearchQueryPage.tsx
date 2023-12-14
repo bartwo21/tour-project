@@ -1,6 +1,6 @@
 import { AiOutlineHeart } from 'react-icons/ai';
 import "./SearchQueryPage.scss";
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { DateRangePicker, Divider, useToaster, Notification } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 import reducer from "./reducer"
@@ -8,18 +8,10 @@ import Payment from "../../../components/Payment/Payment"
 import { selectUser, selectFavoriteCards, toggleFavoriteCard } from '../../store/features/authSlice/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { travelCards } from '../home/cardsArray';
+import NotFoundPage from '../notFound/NotFoundPage';
 
-type SearchQueryPageProps = {
-  matchingSearch: {
-    id: number;
-    title: string;
-    description: string;
-    img: string;
-    price: number;
-    groupSize: number;
-    stars: number;
-  };
-};
 
 const initialState = {
   date: null,
@@ -30,8 +22,7 @@ const initialState = {
   isFormSubmitted: false,
 }
 
-const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
-
+const SearchQueryPage = () => {
   const user = useSelector(selectUser);
   const toaster = useToaster();
   const navigate = useNavigate();
@@ -54,7 +45,15 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
     ticket: state.ticket,
     isFormSubmitted: state.isFormSubmitted,
   })
+  const query = window.location.pathname.slice(1);
+  const matchingSearch = travelCards.find((travelCards) => travelCards.url === query) || undefined
 
+  if (!matchingSearch) {
+    return (
+      <NotFoundPage />
+    );
+  }
+  useEffect(() => {}, []);
   const handleSubmit = () => {
     if(state.date !== null && state.person !== 0 && state.nameSurname !== '' && state.email !== '' && state.ticket !== '') {
       setData({
@@ -79,7 +78,12 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
     }
   }
   return (
-    <div className='container'>
+    <motion.div 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: .3 }}
+    className='container'>
       <h3 className='subtitle'>Travel Details</h3>
       <div className="content">
         <div className="left-img">
@@ -109,13 +113,13 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
           </div>
           <div className="bottom-imgs">
             <div className="bottom-img">
-              <img src={matchingSearch.img} alt={matchingSearch.title} />
+              <img src={matchingSearch.img2} alt={matchingSearch.title} />
             </div>
             <div className="bottom-img">
-              <img src={matchingSearch.img} alt={matchingSearch.title} />
+              <img src={matchingSearch.img3} alt={matchingSearch.title} />
             </div>
             <div className="bottom-img">
-              <img src={matchingSearch.img} alt={matchingSearch.title} />
+              <img src={matchingSearch.img4} alt={matchingSearch.title} />
             </div>
           </div>
         </div>
@@ -202,7 +206,7 @@ const SearchQueryPage = ({ matchingSearch }: SearchQueryPageProps) => {
           setOpenPayment={setOpenPayment}
         />
       )}
-    </div>
+    </motion.div>
   );
 };
 

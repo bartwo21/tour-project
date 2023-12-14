@@ -8,6 +8,8 @@ import TravelCard from "../../../components/TravelCard/TravelCard";
 import CardContainer from "../../../components/CardContainer/CardContainer";
 import InfoCard from "../../../components/InfoCard/InfoCard";
 import Slider from 'react-slick';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Home = ({}) => {
   const settings = {
@@ -37,7 +39,12 @@ const Home = ({}) => {
   // const user = useSelector(selectUser);
 
   return (
-    <div className="home">
+    <motion.div 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: .5 }}
+    className="home">
       <h1 className="subtitle">Immersive guided tours, all around the globe</h1>
       <h3 className="title">
         Explore with a friend, the whole family, or solo. However—and wherever—you want to go, our
@@ -69,9 +76,9 @@ const Home = ({}) => {
               <h1>Ready to start traveling?</h1>
               <p>Choose from more than 200 one-of-a-kind group travel experiences, carefully designed by experts, led by locals, and made for you.</p>
             </div>
-            <button className="button-travel">
+            <Link to="/travel-deals" className="button-travel">
               Shop all group tours
-            </button>
+            </Link>
           </div>
         </div>
         <div className="slider-container">
@@ -90,7 +97,7 @@ const Home = ({}) => {
           </div>
       </div>
       </div>
-      </div>
+      </motion.div>
   );
 };
 

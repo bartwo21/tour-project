@@ -10,6 +10,11 @@ import { logout } from "../../store/features/authSlice/authSlice";
 import { travelCards } from "../../pages/home/cardsArray";
 import { useClickAway } from "react-use";
 import { useToaster, Notification } from "rsuite";
+import { motion } from "framer-motion";
+
+// travels sekmesini kapatmak için tıkladıgımda kapanıp bir daha açılıyor. fixle
+// neden link kullanırken to= ile bir yere yönlendirme yaptığımızda sayfa scroll'u en üstte olmuyor?
+// /antalya gibi bir yere gittiğimizde framer motion traveller arası geçiş yaparken çalışmıyor
 
 type Props = {};
 
@@ -122,17 +127,21 @@ const Navbar: React.FC<Props> = ({}) => {
               <AiOutlineDown />
             </i>
             {travelStylesDropdownOpen && (
-              <div className="dropdown-content" ref={ref}>
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              className="dropdown-content" ref={ref}>
                 {travelCards.map((card) => (
                   <NavLink
-                    to={`/sr?q=${card.url}`}
+                    to={`/${card.url}`}
                     className="dropdown-link"
                     style={({ isActive }) => activeLinksBorderBottom(isActive)}
                   >
                     {card.title}
                   </NavLink>
                 ))}
-              </div>
+              </motion.div>
             )}
           </li>
           <NavLink
@@ -176,10 +185,14 @@ const Navbar: React.FC<Props> = ({}) => {
           )}
 
           {filterData.length != 0 && (
-            <div className="data-result" ref={ref}>
+            <motion.div 
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="data-result" ref={ref}>
               {filterData.slice(0, 5).map((card) => (
                 <NavLink
-                  to={`/sr?q=${card.url}`}
+                  to={`/${card.url}`}
                   className="data-link"
                   onClick={() => {
                     setFilterData([]);
@@ -190,7 +203,7 @@ const Navbar: React.FC<Props> = ({}) => {
                   <p>{card.title}</p>
                 </NavLink>
               ))}
-            </div>
+            </motion.div>
           )}
         </div>
       </div>

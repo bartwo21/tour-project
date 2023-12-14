@@ -6,10 +6,10 @@ import { Provider } from 'react-redux'
 import { store } from './store/store.tsx'
 import Home from './pages/home/home.tsx'
 import TravelDeals from './pages/travelDeals/TravelDeals.tsx'
-import SearchResultsPage from './pages/SearchResultsPage/SearchResultsPage.tsx'
 import NotFoundPage from './pages/notFound/NotFoundPage.tsx'
 import Login from './pages/Login/Login.tsx'
 import AboutUs from './pages/aboutUs/AboutUs.tsx'
+import SearchQueryPage from './pages/SearchQueryPage/SearchQueryPage.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path='/login' element={<Login />} />
           <Route path='/travelstyles' element={<TravelDeals />} />
           <Route path='/aboutus' element={<AboutUs />} />
-          <Route path="/sr" element={<SearchResultsPage />} />
+          <Route path=":url" element={<SearchQueryPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

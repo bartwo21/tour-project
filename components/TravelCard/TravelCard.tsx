@@ -41,12 +41,12 @@ const TravelCard = ({ card, index }: { card: TravelCards, index: number}) => {
           <motion.div
           ref={ref}
           variants={{
-            hidden: { opacity: 0, y: 85 },
+            hidden: { opacity: 0, y: 25 },
             visible: { opacity: 1, y: 0 },
           }}
           initial="hidden"
           animate={mainControls}
-          transition={{ duration: 0.5, delay: 0.05 }}
+          transition={{ duration: 0.4 }}
           key={index} className={`card-t card-t-${index + 1}`}>
             <div className="travel-card">
               <div className="image-container">
@@ -67,11 +67,13 @@ const TravelCard = ({ card, index }: { card: TravelCards, index: number}) => {
               <div className="text-container">
                 <p className="title">{card.title}</p>
                 <p className="description">{card.description}</p>
-                <div className="prices">
-                  <span className="old-price">From <span>${card.oldPrice}</span></span>
-                  <span className="new-price">${card.price}</span>
+                <div className="bottom-row">
+                  <div className="prices">
+                    <span className="old-price">From <span>${card.oldPrice}</span></span>
+                    <span className="new-price">${card.price}</span>
+                  </div>
+                  <span className="button" onClick={() => {navigate(`/${card.url}`)}}>{card.button}</span>
                 </div>
-                <span className="button" onClick={() => {navigate(`/sr?q=${card.url}`)}}>{card.button}</span>
               </div>
             </div>
           </motion.div>

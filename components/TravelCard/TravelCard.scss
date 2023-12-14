@@ -1,12 +1,14 @@
 @mixin buttonStyles {
     background-color: rgb(250, 250, 250);
     border: none;
-    border-radius: 12px;
-    padding: 10px 18px;
+    border-radius: 22px;
+    padding: 10px 15px;
+    text-align: center;
     cursor: pointer;
     outline: none;
     width: max-content;
     z-index: 2;
+    width: 60%;
     &:hover {
       background-color: #def1d9;
     }
@@ -105,27 +107,32 @@
         .description{
             font-weight: 200;
         }
-        .prices {
-          .old-price{
-            margin-right: 5px;
-            span{
-                text-decoration: line-through;
+        .bottom-row{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .prices {
+              .old-price{
+                margin-right: 5px;
+                span{
+                    text-decoration: line-through;
+                }
+              }
+              .new-price{
+                font-weight: 700;
+                color: #038845
+              }
             }
-          }
-          .new-price{
-            font-weight: 700;
-            color: #038845
-          }
-        }
-  
-        .button {
-            @include buttonStyles;
-            border: 1px solid black;
-            &:hover{
-                background-color: #164e3e;
-                color: white;
+      
+            .button {
+                @include buttonStyles;
+                border: 1px solid black;
+                &:hover{
+                    background-color: #000000;
+                    color: white;
+                }
+                transition: background-color 0.3s ease;
             }
-            transition: background-color 0.3s ease;
         }
       }
     }

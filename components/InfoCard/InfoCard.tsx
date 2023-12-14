@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 type props = {
   card: {
     title: string;
@@ -13,7 +15,7 @@ const InfoCard = ({ card, index }: props) => {
       <div className="slider-card">
         <p className="slider-card-title">{card.title}</p>
         <p className="slider-card-p">{card.description}</p>
-        <span className="button">{card.button}</span>
+        <Link to="/login" className="button">{card.button}</Link>
       </div>
     </div>
   )

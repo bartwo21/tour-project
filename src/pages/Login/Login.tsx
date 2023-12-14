@@ -77,12 +77,10 @@ const Login = () => {
             {showPassword ? "Hide" : "Show"}
           </button>
         </div>
-        <motion.button 
-        whileHover={{ scale: 1.05 }}
-        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        <button
         onClick={handleClickButton} className="button">
           Login
-        </motion.button>
+        </button>
       </motion.div>
     </div>
   );

@@ -4,16 +4,51 @@ import img3 from "./img/3.jpg";
 import img4 from "./img/4.jpg";
 import img5 from "./img/5.jpg";
 import img6 from "./img/6.jpg";
-import travelimg1 from "./travelimg/1.jpg";
-import travelimg2 from "./travelimg/2.jpg";
-import travelimg3 from "./travelimg/3.jpg";
-import travelimg4 from "./travelimg/4.jpg";
-import travelimg5 from "./travelimg/5.jpg";
 import mapimg1 from "./mapimg/1.webp";
 import mapimg2 from "./mapimg/2.webp";
 import mapimg3 from "./mapimg/3.webp";
 import mapimg4 from "./mapimg/4.jpg";
 import mapimg5 from "./mapimg/5.jpg";
+import antalya from "./travelimg/antalya.jpg";
+import antalya2 from "./travelimg/antalya2.jpg";
+import antalya3 from "./travelimg/antalya3.jpg";
+import antalya4 from "./travelimg/antalya4.jpg";
+import australia from "./travelimg/australia.jpg";
+import australia2 from "./travelimg/australia2.jpg";
+import australia3 from "./travelimg/australia3.jpg";
+import australia4 from "./travelimg/australia4.jpg";
+import dolmabahce from "./travelimg/dolmabahce.jpg";
+import dolmabahce2 from "./travelimg/dolmabahce2.jpg";
+import dolmabahce3 from "./travelimg/dolmabahce3.jpg";
+import dolmabahce4 from "./travelimg/dolmabahce4.jpg";
+import germany from "./travelimg/germany.jpg";
+import germany2 from "./travelimg/germany2.jpg";
+import germany3 from "./travelimg/germany3.jpg";
+import germany4 from "./travelimg/germany4.jpg";
+import greece from "./travelimg/greece.jpg";
+import greece2 from "./travelimg/greece2.jpg";
+import greece3 from "./travelimg/greece3.jpg";
+import greece4 from "./travelimg/greece4.jpg";
+import italy from "./travelimg/italy.jpg";
+import italy2 from "./travelimg/italy2.jpg";
+import italy3 from "./travelimg/italy3.jpg";
+import italy4 from "./travelimg/italy4.jpg";
+import japan from "./travelimg/japan.jpg";
+import japan2 from "./travelimg/japan2.jpg";
+import japan3 from "./travelimg/japan3.jpg";
+import japan4 from "./travelimg/japan4.jpg";
+import norway from "./travelimg/norway.jpg";
+import norway2 from "./travelimg/norway2.jpg";
+import norway3 from "./travelimg/norway3.jpg";
+import norway4 from "./travelimg/norway4.jpg";
+import paris from "./travelimg/paris.jpg";
+import paris2 from "./travelimg/paris2.jpg";
+import paris3 from "./travelimg/paris3.jpg";
+import paris4 from "./travelimg/paris4.jpg";
+import maldives from "./travelimg/maldives.jpg";
+import maldives2 from "./travelimg/maldives2.jpg";
+import maldives3 from "./travelimg/maldives3.jpg";
+import maldives4 from "./travelimg/maldives4.jpg";
 const cards = [
   {
     size: 2,
@@ -110,7 +145,10 @@ const biggerCards = [
 const travelCards = [
   {
     id: 0,
-    img: travelimg1,
+    img: dolmabahce,
+    img2: dolmabahce2,
+    img3: dolmabahce3,
+    img4: dolmabahce4,
     map: mapimg1,
     url: "dolmabahce",
     title: "Dolmabahce Sarayi",
@@ -126,7 +164,10 @@ const travelCards = [
   },
   {
     id: 1,
-    img: travelimg2,
+    img: norway,
+    img2: norway2,
+    img3: norway3,
+    img4: norway4,
     map: mapimg2,
     url: "norway",
     title: "Norway Mountains",
@@ -142,7 +183,10 @@ const travelCards = [
   },
   {
     id: 2,
-    img: travelimg3,
+    img: antalya,
+    img2: antalya2,
+    img3: antalya3,
+    img4: antalya4,
     map: mapimg3,
     url: "antalya",
     title: "Majestic seas in Antalya",
@@ -158,7 +202,10 @@ const travelCards = [
   },
   {
     id: 3,
-    img: travelimg4,
+    img: australia,
+    img2: australia2,
+    img3: australia3,
+    img4: australia4,
     map: mapimg4,
     url: "australian",
     title: "Australian Cliffs",
@@ -174,7 +221,10 @@ const travelCards = [
   },
   {
     id: 4,
-    img: travelimg5,
+    img: maldives,
+    img2: maldives2,
+    img3: maldives3,
+    img4: maldives4,
     map: mapimg5,
     url: "maldives",
     title: "Maldives hotel by the sea",
@@ -190,7 +240,10 @@ const travelCards = [
   },
   {
     id: 5,
-    img: travelimg1,
+    img: germany,
+    img2: germany2,
+    img3: germany3,
+    img4: germany4,
     map: mapimg1,
     url: "germany",
     title: "Germany's beautiful castles",
@@ -206,7 +259,10 @@ const travelCards = [
   },
   {
     id: 6,
-    img: travelimg2,
+    img: paris,
+    img2: paris2,
+    img3: paris3,
+    img4: paris4,
     map: mapimg2,
     url: "france",
     title: "Paris Eiffel Tower",
@@ -222,7 +278,10 @@ const travelCards = [
   },
   {
     id: 7,
-    img: travelimg3,
+    img: italy,
+    img2: italy2,
+    img3: italy3,
+    img4: italy4,
     map: mapimg3,
     url: "italy",
     title: "Italy's beautiful streets",
@@ -238,7 +297,10 @@ const travelCards = [
   },
   {
     id: 8,
-    img: travelimg4,
+    img: japan,
+    img2: japan2,
+    img3: japan3,
+    img4: japan4,
     map: mapimg4,
     url: "japan",
     title: "Japan's beautiful temples",
@@ -254,7 +316,10 @@ const travelCards = [
   },
   {
     id: 9,
-    img: travelimg5,
+    img: greece,
+    img2: greece2,
+    img3: greece3,
+    img4: greece4,
     map: mapimg5,
     url: "greece",
     title: "Greece's beautiful beaches",
