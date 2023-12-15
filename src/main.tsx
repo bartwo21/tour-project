@@ -10,10 +10,12 @@ import NotFoundPage from './pages/notFound/NotFoundPage.tsx'
 import Login from './pages/Login/Login.tsx'
 import AboutUs from './pages/aboutUs/AboutUs.tsx'
 import SearchQueryPage from './pages/SearchQueryPage/SearchQueryPage.tsx'
+import ScrollToTop from './constants/scrollToTop/scrollToTop.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<App />} >
           <Route path="" element={<Home />} />

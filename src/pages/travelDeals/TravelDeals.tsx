@@ -73,7 +73,6 @@ const TravelDeals = () => {
     firstIntervalValue: number,
     secondIntervalValue: number
   ) => {
-    console.log(firstIntervalValue, secondIntervalValue);
     const filtered = travelCards.filter(
       (card: { [key: string]: any }) =>
         card[type] >= firstIntervalValue && card[type] <= secondIntervalValue

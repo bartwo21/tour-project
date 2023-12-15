@@ -8,13 +8,8 @@ import { useSearchParams } from "react-router-dom";
 import { selectUser } from "../../store/features/authSlice/authSlice";
 import { logout } from "../../store/features/authSlice/authSlice";
 import { travelCards } from "../../pages/home/cardsArray";
-import { useClickAway } from "react-use";
 import { useToaster, Notification } from "rsuite";
 import { motion } from "framer-motion";
-
-// travels sekmesini kapatmak için tıkladıgımda kapanıp bir daha açılıyor. fixle
-// neden link kullanırken to= ile bir yere yönlendirme yaptığımızda sayfa scroll'u en üstte olmuyor?
-// /antalya gibi bir yere gittiğimizde framer motion traveller arası geçiş yaparken çalışmıyor
 
 type Props = {};
 
@@ -24,12 +19,24 @@ const Navbar: React.FC<Props> = ({}) => {
   const toaster = useToaster();
   const { data } = useSelector((state: any) => state.data);
   const user = useSelector(selectUser);
+  const dropdownRef = useRef<HTMLLIElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [travelStylesDropdownOpen, setTravelStylesDropdownOpen] =
     useState(false);
   const [filterData, setFilterData] = useState<any[]>([]);
   const [wordEntered, setWordEntered] = useState<string>("");
+
+  const handleClickOutsideDropdown = (e: any) => {
+    if (
+      travelStylesDropdownOpen &&
+      !dropdownRef.current?.contains(e.target as Node)
+    ) {
+      setTravelStylesDropdownOpen(false);
+    }
+  };
+  window.addEventListener("click", handleClickOutsideDropdown);
 
   const handleFilter = (e: any) => {
     const searchWord = e.target.value;
@@ -53,7 +60,7 @@ const Navbar: React.FC<Props> = ({}) => {
     if (data) {
       setSearchParams({ q: data });
       navigate(`/sr?q=${data}`);
-      console.log(searchParams);
+      searchParams;
     }
   };
 
@@ -84,11 +91,6 @@ const Navbar: React.FC<Props> = ({}) => {
       }
     );
   };
-  const ref = useRef(null);
-  useClickAway(ref, () => {
-    setTravelStylesDropdownOpen(false);
-    // setFilterData([]);
-  });
 
   return (
     <div className="navbar-container">
@@ -121,7 +123,10 @@ const Navbar: React.FC<Props> = ({}) => {
           >
             Travel deals
           </NavLink>
-          <li onClick={() => handleDropdownClick("travelStyles")}>
+          <li
+            onClick={() => handleDropdownClick("travelStyles")}
+            ref={dropdownRef}
+          >
             Travels
             <i className={travelStylesDropdownOpen ? "up" : "down"}>
               <AiOutlineDown />
@@ -131,7 +136,8 @@ const Navbar: React.FC<Props> = ({}) => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-              className="dropdown-content" ref={ref}>
+                className="dropdown-content"
+              >
                 {travelCards.map((card) => (
                   <NavLink
                     to={`/${card.url}`}
@@ -175,6 +181,7 @@ const Navbar: React.FC<Props> = ({}) => {
             value={wordEntered}
             onKeyDown={handleKeyDown}
             placeholder="Search for a hotel or deal..."
+            ref={inputRef}
           />
           {filterData.length === 0 ? (
             <button onClick={handleSearch}>
@@ -185,11 +192,12 @@ const Navbar: React.FC<Props> = ({}) => {
           )}
 
           {filterData.length != 0 && (
-            <motion.div 
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="data-result" ref={ref}>
+            <motion.div
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="data-result"
+            >
               {filterData.slice(0, 5).map((card) => (
                 <NavLink
                   to={`/${card.url}`}

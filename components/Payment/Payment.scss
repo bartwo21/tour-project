@@ -33,6 +33,12 @@
       color: rgb(192, 192, 192);
     }
   }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   .rs-modal-body {
     display: flex;
     .left-card {
@@ -91,6 +97,15 @@
                 margin-bottom: 20px;
                 input {
                     @include cardInput;
+                }
+                .credit-card-input{
+                    display: flex;
+                    position: relative;
+                    i{
+                      position: absolute;
+                      right: 10px;
+                      top: 14px;
+                    }
                 }
                 label {
                     font-size: 0.9rem;

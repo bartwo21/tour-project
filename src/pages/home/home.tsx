@@ -34,9 +34,7 @@ const Home = ({}) => {
         }
       },
     ]
-  };
-  
-  // const user = useSelector(selectUser);
+  }; 
 
   return (
     <motion.div 
@@ -83,7 +81,7 @@ const Home = ({}) => {
         </div>
         <div className="slider-container">
           <Slider {...settings}>
-          {travelCards.slice(0, 4).map((card, index) => (
+          {travelCards.slice(4, 8).map((card, index) => (
             <TravelCard card={card} index={index} />
           ))}
           </Slider>

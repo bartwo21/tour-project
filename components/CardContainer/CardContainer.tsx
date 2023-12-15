@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { selectUser } from "../../src/store/features/authSlice/authSlice";
 
 type props = {
     card: {
@@ -11,7 +13,9 @@ type props = {
     index: number;
   };
 
-const CardContainer = ({ card, index }: props) => {
+  
+  const CardContainer = ({ card, index }: props) => {
+  const user = useSelector(selectUser);
   return (
         <div
           key={index}
@@ -23,7 +27,9 @@ const CardContainer = ({ card, index }: props) => {
         >
           <p className="card-title">{card.title}</p>
           <p className="card-p">{card.p}</p>
-          <Link to="/login" className="button">{card.button}</Link>
+          <Link to={
+            user ? '/travel-deals' : '/login'
+          } className="button">{card.button}</Link>
         </div>
   );
 };
