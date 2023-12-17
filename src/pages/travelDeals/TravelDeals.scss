@@ -114,15 +114,24 @@
         }
         .travel-cards{
             display: flex;
+            justify-content: left;
             flex-wrap: wrap;
             gap: 30px;
             margin-top: 30px;
             .card-t{
-                max-width: 360px;
+                flex: 1 1;
+                min-width: 290px;
+                max-width: 31.5%;
             }
         }
     }
    }
+}
+
+@media screen and (max-width: 1600px) {
+        .card-t{
+            max-width: 100% !important;
+        }
 }
 
 @media screen and (max-width: 1400px) {
@@ -142,7 +151,17 @@
                         }
                     }
                 }
+                .travel-cards{
+                    .card-t{
+                        max-width: 100%;
+                    }
+                }
             }
         }
        }
     }
+@media screen and (max-width: 600px) {
+    .travel-cards{
+        justify-content: center !important;
+    }
+}

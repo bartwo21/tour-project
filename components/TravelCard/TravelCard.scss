@@ -94,6 +94,7 @@
         height: 100%;
         .title,
         .description,
+        .description2,
         .stars,
         .prices,
         .button {
@@ -105,8 +106,12 @@
             font-weight: 700;
             margin-top: 15px;
         }
-        .description{
+        .description, .description2{
             font-weight: 200;
+        }
+        .description2{
+            font-size: 0.8rem;
+            margin-top: -5px;
         }
         .bottom-row{
             display: flex;

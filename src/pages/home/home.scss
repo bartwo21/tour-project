@@ -223,6 +223,14 @@
         padding: 40px 0;
         width: 100%;
         margin: 0;
+        .description ,.description2{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .text-container{
+          height: 220px;
+        }
         .slick-prev, .slick-next{
           width: 41%;
         }

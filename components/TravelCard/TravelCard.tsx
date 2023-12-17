@@ -67,6 +67,7 @@ const TravelCard = ({ card, index }: { card: TravelCards, index: number}) => {
               <div className="text-container">
                 <p className="title">{card.title}</p>
                 <p className="description">{card.description}</p>
+                <p className="description2">Fuga hic quas veritatis blanditiis.</p>
                 <div className="bottom-row">
                   <div className="prices">
                     <span className="old-price">From <span>${card.oldPrice}</span></span>

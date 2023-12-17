@@ -185,6 +185,7 @@ const SearchQueryPage = () => {
                   placeholder="Select Date Range"
                   name="date"
                   onChange={(e) => dispatch({ type: "SET_DATE", payload: e })}
+                  showOneCalendar
                 />
               </div>
               <div className="box">

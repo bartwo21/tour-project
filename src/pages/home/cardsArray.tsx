@@ -333,6 +333,44 @@ const travelCards = [
     button: "View tour",
     favorite: false,
   },
+  {
+    id: 10,
+    img: antalya4,
+    img2: antalya2,
+    img3: antalya,
+    img4: antalya2,
+    map: mapimg1,
+    url: "izmir",
+    title: "Izmir's city life",
+    destination: "Turkey",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga hic quas veritatis blanditiis officiis recusandae.",
+    groupSize: 13,
+    stars: 5,
+    oldPrice: 1912,
+    price: 51,
+    button: "View tour",
+    favorite: false,
+  },
+  {
+    id: 11,
+    img: italy4,
+    img2: italy2,
+    img3: italy,
+    img4: italy2,
+    map: mapimg2,
+    url: "spain",
+    title: "Spain's beaches and city life",
+    destination: "Spain",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga hic quas veritatis blanditiis officiis recusandae.",
+    groupSize: 3,
+    stars: 4,
+    oldPrice: 1212,
+    price: 198,
+    button: "View tour",
+    favorite: false,
+  }
 ];
 
 export { cards, sliderCards, biggerCards, travelCards };
