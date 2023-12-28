@@ -7,7 +7,7 @@ import {
 } from "../../src/store/features/authSlice/authSlice";
 import { useNavigate } from "react-router-dom";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./TravelCard.scss";
 
 type TravelCards = {
@@ -34,6 +34,7 @@ const TravelCard = ({ card, index }: { card: TravelCards; index: number }) => {
   const isInView = useInView(ref, { once: true });
 
   const mainControls = useAnimation();
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     if (isInView) {
@@ -70,18 +71,18 @@ const TravelCard = ({ card, index }: { card: TravelCards; index: number }) => {
               <AiOutlineHeart className="heart" />
             </span>
           )}
-          <div className="travel-card-img">
-            <img src={card.img} alt="" />
+          <div
+            className="travel-card-img"
+            style={{
+              filter: imageLoaded
+                ? "none"
+                : "blur(20px) grayscale(60%) drop-shadow(8px 8px 10px gray)",
+            }}
+          >
+            <img src={card.img} alt="" onLoad={() => setImageLoaded(true)} />
           </div>
           <div className="travel-card-map">
-            <img
-              src={card.map}
-              alt=""
-              onLoad={() => {
-                mainControls.start("visible");
-                console.log("loaded");
-              }}
-            />
+            <img src={card.map} alt="" />
           </div>
         </div>
         <div className="text-container">
