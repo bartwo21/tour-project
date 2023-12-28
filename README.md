@@ -33,6 +33,7 @@ Welcome to the Tour Page project! I'm Bartu Çakır, and this project is part of
 - Users can select a tour, make reservations, and simulate the payment process for a realistic user journey.
 ### Filtering
 - Integrated options to filter the tour list based on criteria such as price and city, providing users with a tailored browsing experience.
+- When filtering is applied, the filtered value is added to the page's URL using searchParams, and upon reopening the page with that URL, the filtering is re-applied.
 ### Search Functionality
 - Implemented a search bar at the top right, allowing users to easily search for tours.
 - Tours are dynamically filtered based on the letters entered, with matching results displayed below the search bar.
