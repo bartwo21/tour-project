@@ -1,146 +1,180 @@
 @mixin buttonStyles {
-    background-color: rgb(250, 250, 250);
-    border: none;
-    border-radius: 22px;
-    padding: 10px 15px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    width: max-content;
-    z-index: 2;
-    width: 60%;
-    &:hover {
-      background-color: #def1d9;
-    }
-    transition: background-color 0.3s ease;
+  background-color: rgb(250, 250, 250);
+  border: none;
+  border-radius: 22px;
+  padding: 10px 15px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  width: max-content;
+  z-index: 2;
+  width: 60%;
+  &:hover {
+    background-color: #def1d9;
   }
+  transition: background-color 0.3s ease;
+}
 .card-t {
-    position: relative;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 25px;
-    min-height: 450px;
-    .travel-card {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      .image-container {
-        position: relative;
-        min-height: 225px;
-        overflow: hidden;
-        border-top-right-radius: 25px;
-        border-top-left-radius: 25px;
-        .heart-button{
-            .heart{
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                z-index: 2;
-                cursor: pointer;
-                color: white;
-                font-size: 2.3rem;
-                background-color: #ffffff86;
-                border-radius: 50%;
-                padding: 7px;
-                color: rgba(0, 0, 0, 0.384);
-                &:hover{
-                    color: #164e3e;
-                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-                }
-                transition: color 0.3s ease;
-            }
+  position: relative;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 25px;
+  min-height: 450px;
+  .travel-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .image-container {
+      position: relative;
+      min-height: 225px;
+      overflow: hidden;
+      border-top-right-radius: 25px;
+      border-top-left-radius: 25px;
+      .heart-button {
+        .heart {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          z-index: 2;
+          cursor: pointer;
+          color: white;
+          font-size: 2.3rem;
+          background-color: #ffffff86;
+          border-radius: 50%;
+          padding: 7px;
+          color: rgba(0, 0, 0, 0.384);
+          &:hover {
+            color: #164e3e;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          }
+          transition: color 0.3s ease;
         }
-        .heart-button-active{
-            .heart{
-                background-color: #00ca43a2;
-                color: white;
-                transition: background-color 0.3s ease;
-                &:hover{
-                  color: white;
-                }
-            }
+      }
+      .heart-button-active {
+        .heart {
+          background-color: #00ca43a2;
+          color: white;
+          transition: background-color 0.3s ease;
+          &:hover {
+            color: white;
+          }
         }
-        .travel-card-img,
-        .travel-card-map {
+      }
+      .travel-card-img,
+      .travel-card-map {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .travel-card-img {
+        opacity: 1;
+        .loading-animation {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 100%;
           height: 100%;
           position: absolute;
-          top: 0;
-          left: 0;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+          background-color: rgba(255, 255, 255, 0.8);
+          z-index: 1;
+          p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-right: 10px;
+          }
+          &::after {
+            content: "";
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #164e3e;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
           }
         }
-        .travel-card-img {
-          opacity: 1;
-        }
-        &:hover {
-          .travel-card-img {
-            opacity: 0;
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
           }
-          .travel-card-map {
-            opacity: 1;
+          100% {
+            transform: rotate(360deg);
           }
         }
       }
-      .text-container {
-        padding: 10px 20px;
-        text-align: left;
+      &:hover {
+        .travel-card-img {
+          opacity: 0;
+        }
+        .travel-card-map {
+          opacity: 1;
+        }
+      }
+    }
+    .text-container {
+      padding: 10px 20px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      .title,
+      .description,
+      .description2,
+      .stars,
+      .prices,
+      .button {
+        position: relative;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      .title {
+        font-weight: 700;
+        margin-top: 15px;
+      }
+      .description,
+      .description2 {
+        font-weight: 200;
+      }
+      .description2 {
+        font-size: 0.8rem;
+        margin-top: -5px;
+      }
+      .bottom-row {
         display: flex;
-        flex-direction: column;
-        height: 100%;
-        .title,
-        .description,
-        .description2,
-        .stars,
-        .prices,
-        .button {
-          position: relative;
-          margin-bottom: 10px;
-          width: 100%;
-        }
-        .title{
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        .prices {
+          .old-price {
+            margin-right: 5px;
+            span {
+              text-decoration: line-through;
+            }
+          }
+          .new-price {
             font-weight: 700;
-            margin-top: 15px;
+            color: #038845;
+          }
         }
-        .description, .description2{
-            font-weight: 200;
-        }
-        .description2{
-            font-size: 0.8rem;
-            margin-top: -5px;
-        }
-        .bottom-row{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-            .prices {
-              .old-price{
-                margin-right: 5px;
-                span{
-                    text-decoration: line-through;
-                }
-              }
-              .new-price{
-                font-weight: 700;
-                color: #038845
-              }
-            }
-      
-            .button {
-                @include buttonStyles;
-                border: 1px solid black;
-                &:hover{
-                    background-color: #000000;
-                    color: white;
-                }
-                transition: background-color 0.3s ease;
-            }
+
+        .button {
+          @include buttonStyles;
+          border: 1px solid black;
+          &:hover {
+            background-color: #000000;
+            color: white;
+          }
+          transition: background-color 0.3s ease;
         }
       }
     }
   }
+}

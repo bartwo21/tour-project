@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,7 +8,6 @@ import {
 } from "../../src/store/features/authSlice/authSlice";
 import { useNavigate } from "react-router-dom";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
 import "./TravelCard.scss";
 
 type TravelCards = {
@@ -29,18 +29,22 @@ const TravelCard = ({ card, index }: { card: TravelCards; index: number }) => {
   const favoriteCards = useSelector(selectFavoriteCards);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   const mainControls = useAnimation();
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");
     }
   }, [isInView]);
+
+  const handleImageLoad = () => {
+    setIsImageLoaded(true);
+  };
 
   return (
     <motion.div
@@ -71,15 +75,18 @@ const TravelCard = ({ card, index }: { card: TravelCards; index: number }) => {
               <AiOutlineHeart className="heart" />
             </span>
           )}
-          <div
-            className="travel-card-img"
-            style={{
-              filter: imageLoaded
-                ? "none"
-                : "blur(20px) grayscale(60%) drop-shadow(8px 8px 10px gray)",
-            }}
-          >
-            <img src={card.img} alt="" onLoad={() => setImageLoaded(true)} />
+          <div className="travel-card-img">
+            {isImageLoaded && (
+              <div className="loading-animation">
+                <p>Loading...</p>
+              </div>
+            )}
+            <img
+              src={card.img}
+              alt=""
+              onLoad={handleImageLoad}
+              style={{ display: isImageLoaded ? "block" : "none" }}
+            />
           </div>
           <div className="travel-card-map">
             <img src={card.map} alt="" />
