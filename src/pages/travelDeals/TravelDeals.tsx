@@ -4,38 +4,28 @@ import { travelCards } from "../home/cardsArray";
 import { AiOutlineDown } from "react-icons/ai";
 import { useState, useRef, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-
-// multiple select
+import { useSearchParams } from "react-router-dom";
 
 const TravelDeals = () => {
   const destinations = Array.from(
     new Set(travelCards.map((card) => card.destination))
   );
   const prices = [100, 200, 400];
-  const groupSizes = [{ from: 0, to: 5 }, { from: 6, to: 10 }, { from: 11, to: 15 }];
-  const [rememberCheckedInputs, setRememberCheckedInputs] = useState<string[]>([]);
-  const controls = useAnimation(); 
-  const [filteredCards, setFilteredCards] = useState<
-    {
-      id: number;
-      img: string;
-      map: string;
-      url: string;
-      title: string;
-      destination: string;
-      description: string;
-      groupSize: number;
-      stars: number;
-      oldPrice: number;
-      price: number;
-      button: string;
-      favorite: boolean;
-    }[]
-  >(
-    travelCards.sort((a, b) => {
-      return parseFloat(b.price.toString()) - parseFloat(a.price.toString());
-    })
+  const groupSizes = [
+    { from: 0, to: 5 },
+    { from: 6, to: 10 },
+    { from: 11, to: 15 },
+  ];
+  let [searchParams, setSearchParams] = useSearchParams();
+  const [rememberCheckedInputs, setRememberCheckedInputs] = useState<string[]>(
+    searchParams.getAll("destination") ||
+      searchParams.getAll("price") ||
+      searchParams.getAll("group") ||
+      searchParams.getAll("sort") ||
+      []
   );
+  const controls = useAnimation();
+
   const [dropdownStates, setDropdownStates] = useState<{
     destination: boolean;
     price: boolean;
@@ -94,6 +84,55 @@ const TravelDeals = () => {
     setFilteredCards(sorted);
   };
 
+  const [filteredCards, setFilteredCards] = useState<
+    {
+      id: number;
+      img: string;
+      map: string;
+      url: string;
+      title: string;
+      destination: string;
+      description: string;
+      groupSize: number;
+      stars: number;
+      oldPrice: number;
+      price: number;
+      button: string;
+      favorite: boolean;
+    }[]
+  >(
+    searchParams.get("sort") == "asc"
+      ? travelCards.sort((a, b) => {
+          return (
+            parseFloat(a.price.toString()) - parseFloat(b.price.toString())
+          );
+        })
+      : travelCards.sort((a, b) => {
+          return (
+            parseFloat(b.price.toString()) - parseFloat(a.price.toString())
+          );
+        })
+  );
+  useEffect(() => {
+    const destinationParam = searchParams.get("destination");
+    const priceParam = searchParams.get("price");
+    const groupParam = searchParams.get("group");
+    if (destinationParam) {
+      handleFilter("destination", destinationParam);
+    }
+    if (priceParam) {
+      handleUpTo("price", parseFloat(priceParam));
+    }
+    if (groupParam) {
+      const [from, to] = groupParam.split("_");
+      groupNumberRange("groupSize", parseFloat(from), parseFloat(to));
+    }
+  }, [
+    searchParams.get("destination"),
+    searchParams.get("price"),
+    searchParams.get("group"),
+    searchParams.get("sort"),
+  ]);
   useEffect(() => {
     controls.set({ y: 2 });
     controls.start({ y: 0 });
@@ -133,34 +172,35 @@ const TravelDeals = () => {
                   </i>
                 </div>
                 {dropdownStates.destination && (
-                  <div
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
                     className="dropdown-content"
                     ref={dropdownRefs.destination}
                   >
                     {destinations.map((destination, index) => (
                       <span className="dropdown-link" key={index}>
                         <input
-                          id={`checkbox${index}`}
-                          type="checkbox"
+                          id={`radio${index}`}
+                          type="radio"
                           checked={rememberCheckedInputs.includes(destination)}
-                          onChange={
-                            (e) => {
-                              if (e.target.checked){
-                                handleFilter("destination", destination)
-                                setRememberCheckedInputs([...rememberCheckedInputs, destination])
-                              }else {
-                                setFilteredCards(travelCards);
-                                setRememberCheckedInputs(rememberCheckedInputs.filter((item: string) => item !== destination))
-                              }
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setRememberCheckedInputs([destination]);
+                              handleFilter("destination", destination);
+                              setSearchParams({ destination });
+                            } else {
+                              setRememberCheckedInputs([]);
+                              setFilteredCards(travelCards);
+                              setSearchParams({});
                             }
-                          }
+                          }}
                         />
-                        <label htmlFor={`checkbox${index}`}>
-                          {destination}
-                        </label>
+                        <label htmlFor={`radio${index}`}>{destination}</label>
                       </span>
                     ))}
-                  </div>
+                  </motion.div>
                 )}
               </li>
               <li>
@@ -182,29 +222,38 @@ const TravelDeals = () => {
                   </i>
                 </div>
                 {dropdownStates.price && (
-                  <div className="dropdown-content" ref={dropdownRefs.price}>
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="dropdown-content"
+                    ref={dropdownRefs.price}
+                  >
                     {prices.map((price, index) => (
                       <span className="dropdown-link" key={index}>
                         <input
-                          id={`checkbox${index}`}
-                          type="checkbox"
-                          checked={rememberCheckedInputs.includes(price.toString())}
-                          onChange={
-                            (e) => {
-                              if (e.target.checked){
-                                handleUpTo("price", price)
-                                setRememberCheckedInputs([...rememberCheckedInputs, price.toString()])
-                              }else {
-                                setFilteredCards(travelCards);
-                                setRememberCheckedInputs(rememberCheckedInputs.filter((item: string) => item !== price.toString()))
-                              }
-                            }
+                          id={`radio${index}`}
+                          type="radio"
+                          checked={
+                            rememberCheckedInputs.includes(price.toString()) ||
+                            searchParams.get("price") === price.toString()
                           }
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setRememberCheckedInputs([price.toString()]);
+                              handleUpTo("price", price);
+                              setSearchParams({ price: price.toString() });
+                            } else {
+                              setRememberCheckedInputs([]);
+                              setFilteredCards(travelCards);
+                              setSearchParams({});
+                            }
+                          }}
                         />
-                        <label htmlFor={`checkbox${index}`}>Up to {price}$</label>
+                        <label htmlFor={`radio${index}`}>Up to {price}$</label>
                       </span>
                     ))}
-                  </div>
+                  </motion.div>
                 )}
               </li>
               <li>
@@ -226,31 +275,54 @@ const TravelDeals = () => {
                   </i>
                 </div>
                 {dropdownStates.group && (
-                  <div className="dropdown-content" ref={dropdownRefs.group}>
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="dropdown-content"
+                    ref={dropdownRefs.group}
+                  >
                     {groupSizes.map((groupSize, index) => (
                       <span className="dropdown-link" key={index}>
                         <input
-                          id={`checkbox${index}`}
-                          type="checkbox"
-                          checked={rememberCheckedInputs.includes(groupSize.from.toString()) && rememberCheckedInputs.includes(groupSize.to.toString())}
-                          onChange={
-                            (e) => {
-                              if (e.target.checked){
-                                groupNumberRange("groupSize", groupSize.from, groupSize.to)
-                                setRememberCheckedInputs([...rememberCheckedInputs, groupSize.from.toString(), groupSize.to.toString()])
-                              }else {
-                                setFilteredCards(travelCards);
-                                setRememberCheckedInputs(rememberCheckedInputs.filter((item: string) => item !== groupSize.from.toString() && item !== groupSize.to.toString()))
-                              }
-                            }
+                          id={`radio${index}`}
+                          type="radio"
+                          checked={
+                            (rememberCheckedInputs.includes(
+                              groupSize.from.toString()
+                            ) &&
+                              rememberCheckedInputs.includes(
+                                groupSize.to.toString()
+                              )) ||
+                            searchParams.get("group") ===
+                              `${groupSize.from.toString()}_${groupSize.to.toString()}`
                           }
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              groupNumberRange(
+                                "groupSize",
+                                groupSize.from,
+                                groupSize.to
+                              );
+                              setRememberCheckedInputs([
+                                groupSize.from.toString(),
+                                groupSize.to.toString(),
+                              ]);
+                              const grp = `${groupSize.from.toString()}_${groupSize.to.toString()}`;
+                              setSearchParams({ group: grp });
+                            } else {
+                              setFilteredCards(travelCards);
+                              setRememberCheckedInputs([]);
+                              setSearchParams({});
+                            }
+                          }}
                         />
-                        <label htmlFor={`checkbox${index}`}>
+                        <label htmlFor={`radio${index}`}>
                           {groupSize.from}-{groupSize.to}
                         </label>
                       </span>
                     ))}
-                  </div>
+                  </motion.div>
                 )}
               </li>
               <li>
@@ -258,6 +330,9 @@ const TravelDeals = () => {
                   onClick={(e) => {
                     if (e.target) {
                       sortInAscendingOrDescendingOrderArray("price");
+                      const sort = dropdownStates.sort ? "desc" : "asc";
+                      setSearchParams({ sort });
+                      setRememberCheckedInputs([]);
                     } else {
                       setFilteredCards(travelCards);
                     }
@@ -272,17 +347,23 @@ const TravelDeals = () => {
                   className="select-box-title"
                 >
                   <span>Sort</span>
-                  {dropdownStates.sort ? <span className="sort-info">Price: Low to high</span> : <span className="sort-info">Price: High to low</span>}
-                  <i className={dropdownStates.sort ? "up" : "down"}>
+                  {searchParams.get("sort") == "asc" ? (
+                    <span className="sort-info">Price: Low to high</span>
+                  ) : (
+                    <span className="sort-info">Price: High to low</span>
+                  )}
+                  <i
+                    className={
+                      searchParams.get("sort") == "desc" ? "up" : "down"
+                    }
+                  >
                     <AiOutlineDown />
                   </i>
                 </div>
               </li>
             </ul>
           </div>
-          <motion.div
-          animate={controls}
-          className="travel-cards">
+          <motion.div animate={controls} className="travel-cards">
             {filteredCards.map((card, index) => {
               return <TravelCard card={card} index={index} />;
             })}

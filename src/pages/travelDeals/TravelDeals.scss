@@ -1,167 +1,169 @@
-.travel-deals{
-    padding-bottom: 40px;
-    min-height: 80vh;
-    .travel-cards-container{
+.travel-deals {
+  padding-bottom: 40px;
+  min-height: 80vh;
+  .travel-cards-container {
     text-align: center;
-    .titles{
-        background: linear-gradient(0deg, #f3f8e6cb 0%, #f3f8e652 50%, #ffffff);
-        width: 100%;
-        padding: 40px 0;
-        h1{
-            margin: 30px 0 20px 0;
-            color: #315801;
-        }
-        p{
-            width: 40%;
-            margin: 5px auto;
-        }
+    .titles {
+      background: linear-gradient(0deg, #f3f8e6cb 0%, #f3f8e652 50%, #ffffff);
+      width: 100%;
+      padding: 40px 0;
+      h1 {
+        margin: 30px 0 20px 0;
+        color: #315801;
+      }
+      p {
+        width: 40%;
+        margin: 5px auto;
+      }
     }
-    .travels{
-        width: 60%;
-        margin: 0 auto;
-        .filter-tab{
-            box-shadow: rgba(33, 35, 38, 0.205) 0px 10px 10px -10px;
-            ul{
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                margin-top: 30px;
-                border: 1px solid #00000028;
-                border-radius: 5px;
-                li{
-                    position: relative;
-                    border-right: 1px solid #00000028;
-                    cursor: pointer;
-                    list-style: none;
-                    width: 50%;
-                    text-align: left;
-                    .select-box-title{
-                        padding: 15px 20px;
-                        &:hover{
-                            .sort-info, i, span{
-                                color: #3d6e00;
-                            }
-                        }
-                        span{
-                            font-weight: 700;
-                            &:hover{
-                                text-decoration: underline;
-                            }
-                        }
-                        .sort-info{
-                            text-align: right;
-                            opacity: 0.7;
-                            position: absolute;
-                            right: 40px;
-                            &:hover{
-                                text-decoration: none;
-                            }
-                        }
-                        i{
-                            position: absolute;
-                            right: 20px;
-                            top: 35%;
-                        }
-                    }
-                    .up{
-                        width: 13px;
-                        height: 13px;
-                        transform-origin: center;
-                        transform: translateY(0px) rotate(180deg);
-                        transition: transform 0.2s ease-in-out;
-                    }
-                    .down{
-                        width: 13px;
-                        height: 13px;
-                        transform-origin: center;
-                        transform: translateY(0px) rotate(0deg);
-                        transition: transform 0.2s ease-in-out;
-                    }
-                    
-                    .dropdown-content {
-                        position: absolute;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        top: 60px;
-                        background-color: rgb(255, 255, 255); 
-                        box-shadow: rgba(0, 0, 0, 0.199) 0px 5px 15px;
-                        border-radius: 5px; 
-                        min-height: 200px;
-                        gap: 20px;
-                        flex-wrap: wrap;
-                        z-index: 22;
-                        padding: 10px;
-                        width: 15%;
-                        min-width: 250px;
-                        cursor: default;
-                        .dropdown-link{
-                            color: black;
-                            font-size: 1rem;
-                            width: 100%;
-                            display: flex;
-                            input {
-                                width: 30px;
-                                height: 20px;
-                            }
-                            label{
-                                margin-left: 5px;
-                            }
-                        }
-                    }
+    .travels {
+      width: 60%;
+      margin: 0 auto;
+      .filter-tab {
+        box-shadow: rgba(33, 35, 38, 0.205) 0px 10px 10px -10px;
+        ul {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          margin-top: 30px;
+          border: 1px solid #00000028;
+          border-radius: 5px;
+          li {
+            position: relative;
+            border-right: 1px solid #00000028;
+            cursor: pointer;
+            list-style: none;
+            width: 50%;
+            text-align: left;
+            .select-box-title {
+              padding: 15px 20px;
+              &:hover {
+                .sort-info,
+                i,
+                span {
+                  color: #3d6e00;
                 }
+              }
+              span {
+                font-weight: 700;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+              .sort-info {
+                text-align: right;
+                opacity: 0.7;
+                position: absolute;
+                right: 40px;
+                &:hover {
+                  text-decoration: none;
+                }
+              }
+              i {
+                position: absolute;
+                right: 20px;
+                top: 35%;
+              }
             }
-        }
-        .travel-cards{
-            display: flex;
-            justify-content: left;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 30px;
-            .card-t{
-                flex: 1 1;
-                min-width: 290px;
-                max-width: 31.5%;
+            .up {
+              width: 13px;
+              height: 13px;
+              transform-origin: center;
+              transform: translateY(0px) rotate(180deg);
+              transition: transform 0.2s ease-in-out;
             }
+            .down {
+              width: 13px;
+              height: 13px;
+              transform-origin: center;
+              transform: translateY(0px) rotate(0deg);
+              transition: transform 0.2s ease-in-out;
+            }
+
+            .dropdown-content {
+              position: absolute;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              top: 60px;
+              background-color: rgb(255, 255, 255);
+              box-shadow: rgba(0, 0, 0, 0.199) 0px 5px 15px;
+              border-radius: 5px;
+              min-height: 200px;
+              gap: 20px;
+              flex-wrap: wrap;
+              z-index: 22;
+              padding: 10px;
+              width: 15%;
+              min-width: 250px;
+              cursor: default;
+              .dropdown-link {
+                color: black;
+                font-size: 1rem;
+                width: 100%;
+                display: flex;
+                input {
+                  width: 30px;
+                  height: 20px;
+                }
+                label {
+                  margin-left: 5px;
+                }
+              }
+            }
+          }
         }
+      }
+      .travel-cards {
+        display: flex;
+        justify-content: left;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 30px;
+        .card-t {
+          flex: 1 1;
+          min-width: 290px;
+          max-width: 31.5%;
+        }
+      }
     }
-   }
+  }
 }
 
 @media screen and (max-width: 1600px) {
-        .card-t{
-            max-width: 100% !important;
-        }
+  .card-t {
+    max-width: 100% !important;
+  }
 }
 
 @media screen and (max-width: 1400px) {
-    .travel-deals{
-        .travel-cards-container{
-        .travels{
-            .filter-tab{
-                ul{
-                    flex-direction: column;
-                    li{
-                        width: 100%;
-                        border-bottom: 1px solid #00000028;
-                        }
-                        .dropdown-content {
-                            top: 50px !important;
-                            min-width: 200px !important;
-                        }
-                    }
-                }
-                .travel-cards{
-                    .card-t{
-                        max-width: 100%;
-                    }
-                }
+  .travel-deals {
+    .travel-cards-container {
+      .travels {
+        .filter-tab {
+          ul {
+            flex-direction: column;
+            li {
+              width: 100%;
+              border-bottom: 1px solid #00000028;
             }
+            .dropdown-content {
+              top: 50px !important;
+              min-width: 200px !important;
+            }
+          }
         }
-       }
+        .travel-cards {
+          .card-t {
+            max-width: 100%;
+          }
+        }
+      }
     }
+  }
+}
 @media screen and (max-width: 600px) {
-    .travel-cards{
-        justify-content: center !important;
-    }
+  .travel-cards {
+    justify-content: center !important;
+  }
 }
