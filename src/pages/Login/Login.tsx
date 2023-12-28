@@ -35,6 +35,16 @@ const Login = () => {
       return;
     }
 
+    function customHash(password: string) {
+      let hashedPassword = "";
+      for (let i = 0; i < password.length; i++) {
+        const charCode = password.charCodeAt(i);
+        hashedPassword += String.fromCharCode(charCode + 1);
+      }
+      return hashedPassword + "(hashed)";
+    }
+    const hashedPassword = customHash(password || "");
+
     const isValidEmail = /\S+@\S+\.\S+/.test(email);
     if (!isValidEmail) {
       toaster.push(
@@ -51,7 +61,7 @@ const Login = () => {
     }
 
     navigate("/");
-    dispatch(login({ name, email, password }));
+    dispatch(login({ name, email, password: hashedPassword }));
 
     toaster.push(
       <Notification>
