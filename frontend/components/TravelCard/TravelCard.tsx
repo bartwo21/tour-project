@@ -76,7 +76,7 @@ const TravelCard = ({ card, index }: { card: TravelCards; index: number }) => {
             </span>
           )}
           <div className="travel-card-img">
-            {isImageLoaded && (
+            {!isImageLoaded && (
               <div className="loading-animation">
                 <p>Loading...</p>
               </div>
