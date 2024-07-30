@@ -1,0 +1,362 @@
+@mixin buttonStyles {
+  background-color: rgb(250, 250, 250);
+  text-decoration: none;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 18px;
+  cursor: pointer;
+  outline: none;
+  width: max-content;
+  z-index: 2;
+  &:hover {
+    background-color: #def1d9;
+  }
+  transition: background-color 0.3s ease;
+}
+.home {
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #164E3E;
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    display: block;
+    z-index: 999;
+    animation: fadeOut 4s forwards;
+    
+    @keyframes fadeOut {
+      0% {
+        opacity: 0;
+      }  
+      20% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+          opacity: 0;
+          visibility: hidden;
+      }
+    }
+}
+  width: 100%;
+  margin: 0 auto;
+  .subtitle {
+    width: 60%;
+    margin: 0 auto;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #164e3e;
+    text-align: left;
+  }
+  .title {
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+    margin: 10px auto 30px auto;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .card-container {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  .card {
+    background-color: rgb(180, 245, 245);
+    height: 300px;
+    max-width: 600px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 10px 0 20px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-wrap: wrap;
+    .card-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      z-index: 2;
+    }
+    .card-p {
+      margin-top: -30px;
+      z-index: 2;
+      min-width: 100%;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.822);
+    }
+    .button {
+      @include buttonStyles;
+    }
+  }
+  
+  .card-1 {
+    min-width: 66%;
+    .card-title{
+      color: white;
+    }
+    .card-p {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      width: 60%;
+      color: white;
+    }
+  }
+  .card-2 {
+    background-color: #59e3e6;
+    color: #164e3e;
+    cursor: pointer;
+    .card-p {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      width: 80%;
+      color: #164e3e;
+    }
+    max-width: 400px;
+    .button {
+      color: black;
+    }
+  }
+  .card-3{
+    min-width: 100%;
+    .card-title{
+      font-size: 2rem;
+    }
+    .card-p{
+      font-size: 1.2rem;
+      color: #0000008e;
+    }
+  }
+  .slick-next:before,
+  .slick-prev:before {
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    background-color: transparent;
+    font-size: 1.5rem;
+  }
+    .slick-prev {
+        left: -23px;
+        z-index: 1;
+    }
+
+  .slider-container {
+    width: 100%;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding: 60px 0;
+    background-color: #F8F6F4;
+    .inner-slider{
+      width: 60%;
+      margin: 0 auto;
+    }
+    .card-s {
+      .slider-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 25px;
+        height: 320px;
+        width: 95%;
+        background-color: white;
+        border-radius: 34px;
+        border: 1px solid rgba(197, 197, 197, 0.281);
+        margin: 0 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        .slider-card-title {
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: rgba(0, 0, 0, 0.863);
+        }
+        .slider-card-p {
+          font-size: 1rem;
+          font-weight: 100;
+          color: rgba(0, 0, 0, 0.863);
+        }
+      }
+    }
+    .card-s-1 {
+      .slider-card {
+        background-color: #164e3e;
+        height: 350px;
+        .slider-card-title {
+          font-size: 1.9rem;
+          font-weight: 700;
+          letter-spacing: 1px;
+          color: rgb(255, 255, 255);
+        }
+        .slider-card-p {
+          font-size: 1.2rem;
+          font-weight: 100;
+          letter-spacing: 1px;
+          color: rgba(255, 255, 255, 0.863);
+        }
+        .button {
+          @include buttonStyles;
+          width: 100%;
+          margin-top: 20px;
+          text-align: center;
+        }
+      }
+    }
+    
+    
+    }        
+
+  .travel-cards {
+    margin: 40px 0;
+    .slider-container{
+        padding: 40px 0;
+        width: 100%;
+        margin: 0;
+        .description ,.description2{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .text-container{
+          height: 220px;
+        }
+        .slick-prev, .slick-next{
+          width: 41%;
+        }
+        .slick-slide{
+          > div{
+            margin: 0 10px;
+          }
+        }
+        .slick-list{
+          width: 60%;
+          margin: 0 auto;
+          padding: 20px 0;
+        }
+    }
+
+    .titles {
+      width: 100%;
+      background-color: #F8F6F4;
+      padding-top: 40px;
+      .inner-titles{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 60%;
+        margin: 0 auto;
+        margin-bottom: -70px;
+        .subtitle {
+          margin: 0;
+          h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000000;
+            text-align: left;
+            letter-spacing: 1px;
+          }
+          p {
+            font-weight: 100;
+            text-align: left;
+            margin: 10px auto 30px auto;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    .button-travel {
+      @include buttonStyles;
+      background-color: #038845;
+      color: white;
+      min-width: 120px;
+      &:hover {
+        background-color: #026b4d;
+      }
+    }
+  }
+  .logos{
+    width: 85%;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    .logo{
+      cursor: pointer;
+      margin: 0 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .card-bigger-3 {
+    min-height: 400px;
+    bottom: 0;
+    .card-title{
+      margin: -20px 0;
+    }
+    .card-p{
+      margin: 50px 0;
+    }
+    .button{
+      bottom: 0;
+      margin: 0 0 20px 0;
+      left: 20px;
+    }
+  }
+  .home{ 
+    .subtitle{
+      font-size: 2rem;
+    }
+    .card{
+      height: 420px;
+      .card-title{
+        font-size: 1.2rem;
+      }
+      .card-p{
+        font-size: 1rem;
+      }
+    }
+    .card-1{
+      min-width: 100%;
+      .card-title{
+        font-size: 1.8rem;
+      }
+      .card-p{
+        font-size: 1.2rem;
+      }
+    }
+    .travel-cards{
+      .titles{ 
+        .inner-titles {
+          justify-content: center;
+        }
+      }
+    }
+  }
+    .button-travel{
+      margin-bottom: 40px;
+    }
+    .logos{
+      width: 100%;
+      .logo{
+        padding: 10px;
+        img{
+          width: 90%;
+        }
+      }
+    }
+}
+

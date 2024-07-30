@@ -1,0 +1,31 @@
+.about-us {
+    background: linear-gradient(0deg, #f3f8e6cb 0%, #f3f8e652 50%, #ffffff);
+    padding: 20px;
+    border-radius: 8px;
+  
+    .about {
+      width: 61%;
+      margin: 5px auto;
+      text-align: left;
+  
+      h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #315801;
+      }
+  
+      h4, h5 {
+        font-size: 1.4rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 5px;
+        opacity: 0.9;
+      }
+    }
+  }
+  
