@@ -1,6 +1,6 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import "./SearchQueryPage.scss";
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { DateRangePicker, Divider, useToaster, Notification } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import reducer from "./reducer";
@@ -15,6 +15,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { travelCards } from "../home/cardsArray";
 import NotFoundPage from "../notFound/NotFoundPage";
+import { useUpdateUserMutation } from "../../store/features/usersApiSlice/usersApiSlice";
 
 const initialState = {
   date: null,
@@ -27,10 +28,11 @@ const initialState = {
 
 const SearchQueryPage = () => {
   const user = useSelector(selectUser);
+  const [updateProfile] = useUpdateUserMutation();
   const toaster = useToaster();
   const navigate = useNavigate();
   const dispatchCard = useDispatch();
-  const favoriteCards = useSelector(selectFavoriteCards);
+  const favoriteCards = useSelector(selectFavoriteCards) || [];
   const [state, dispatch] = useReducer(reducer, initialState);
   const [openPayment, setOpenPayment] = useState(false);
   const [data, setData] = useState<{
@@ -51,10 +53,36 @@ const SearchQueryPage = () => {
   const query = useLocation().pathname.split("/")[1];
   const matchingSearch =
     travelCards.find((travelCards) => travelCards.url === query) || undefined;
+  const [isFavorite, setIsFavorite] = useState(
+    user.favoriteCards.includes(matchingSearch?.id)
+  );
+  useEffect(() => {
+    setIsFavorite(
+      favoriteCards.includes(matchingSearch?.id) ||
+        user?.favoriteCards?.includes(matchingSearch?.id)
+    );
+  }, [navigate]);
 
   if (!matchingSearch) {
     return <NotFoundPage />;
   }
+  const handleFavorite = async () => {
+    try {
+      const updatedFavoriteCards = isFavorite
+        ? favoriteCards.filter((id: any) => id !== matchingSearch.id)
+        : [...favoriteCards, matchingSearch.id];
+
+      await updateProfile({
+        _id: user._id,
+        favoriteCards: updatedFavoriteCards,
+      }).unwrap();
+
+      dispatchCard(toggleFavoriteCard(matchingSearch.id));
+      setIsFavorite(!isFavorite);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSubmit = () => {
     if (
@@ -136,13 +164,11 @@ const SearchQueryPage = () => {
               {user && (
                 <span
                   className={
-                    favoriteCards.includes(matchingSearch.id)
+                    isFavorite
                       ? "heart-button heart-button-active"
                       : "heart-button"
                   }
-                  onClick={() => {
-                    dispatchCard(toggleFavoriteCard(matchingSearch.id));
-                  }}
+                  onClick={handleFavorite}
                 >
                   <AiOutlineHeart size={40} className="heart" />
                 </span>

@@ -25,7 +25,6 @@ const TravelDeals = () => {
       []
   );
   const controls = useAnimation();
-
   const [dropdownStates, setDropdownStates] = useState<{
     destination: boolean;
     price: boolean;
@@ -138,6 +137,18 @@ const TravelDeals = () => {
     controls.start({ y: 0 });
   }, [filteredCards]);
 
+  const resetFilters = () => {
+    setFilteredCards(travelCards);
+    setSearchParams({});
+    setRememberCheckedInputs([]);
+    setDropdownStates({
+      destination: false,
+      price: false,
+      group: false,
+      sort: false,
+    });
+  };
+
   return (
     <div className="travel-deals">
       <div className="travel-cards-container">
@@ -151,6 +162,9 @@ const TravelDeals = () => {
           </p>
         </div>
         <div className="travels">
+          <button onClick={resetFilters} className="reset-button">
+            Reset Filters
+          </button>
           <div className="filter-tab">
             <ul>
               <li>
@@ -365,7 +379,13 @@ const TravelDeals = () => {
           </div>
           <motion.div animate={controls} className="travel-cards">
             {filteredCards.map((card, index) => {
-              return <TravelCard card={card} index={index} />;
+              return (
+                <TravelCard
+                  card={card}
+                  index={index}
+                  handleFilter={handleFilter}
+                />
+              );
             })}
           </motion.div>
         </div>

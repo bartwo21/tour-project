@@ -19,13 +19,28 @@
     .travels {
       width: 60%;
       margin: 0 auto;
+      .reset-button {
+        margin-top: 15px;
+        background-color: #f3f8e6;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        margin-left: auto;
+        &:hover {
+          background-color: #6b913c83;
+          color: white;
+        }
+      }
       .filter-tab {
         box-shadow: rgba(33, 35, 38, 0.205) 0px 10px 10px -10px;
         ul {
           display: flex;
           justify-content: space-around;
           align-items: center;
-          margin-top: 30px;
+          margin-top: 15px;
           border: 1px solid #00000028;
           border-radius: 5px;
           li {

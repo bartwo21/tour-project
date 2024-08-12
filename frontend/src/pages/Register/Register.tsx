@@ -1,34 +1,32 @@
+import "./Register.scss";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Login.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { login as setCredantials } from "../../store/features/authSlice/authSlice";
-import { useToaster, Notification } from "rsuite";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { useRegisterMutation } from "../../store/features/usersApiSlice/usersApiSlice";
+import { login as setCredantials } from "../../store/features/authSlice/authSlice";
+import { useNavigate } from "react-router-dom";
+import { Notification, toaster } from "rsuite";
 import { FaExclamationCircle } from "react-icons/fa";
-import { useLoginMutation } from "../../store/features/usersApiSlice/usersApiSlice";
 
-const Login = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const toaster = useToaster();
-
+const Register = () => {
   const [email, setEmail] = useState<string>("");
+  const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const [login, { isLoading }] = useLoginMutation();
-
+  const [register, { isLoading }] = useRegisterMutation();
   const { user } = useSelector((state: any) => state.user);
 
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleClickButton = async () => {
-    if (!email || !password) {
+    if (!email || !password || !confirmPassword || !name) {
       toaster.push(
         <Notification>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
@@ -43,12 +41,12 @@ const Login = () => {
       return;
     }
 
-    const isValidEmail = /\S+@\S+\.\S+/.test(email);
-    if (!isValidEmail) {
+    if (password !== confirmPassword) {
       toaster.push(
-        <Notification type="error" header="Invalid email adress">
+        <Notification>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <h6>Please enter a valid email.</h6>
+            <FaExclamationCircle className="error-icon" />
+            <h6>Passwords do not match.</h6>
           </div>
         </Notification>,
         {
@@ -59,13 +57,14 @@ const Login = () => {
     }
 
     try {
-      const res = await login({ email, password }).unwrap();
+      const res = await register({ name, email, password }).unwrap();
+      console.log(res);
       dispatch(setCredantials({ ...res }));
       navigate("/");
       toaster.push(
         <Notification>
-          <div className="notification-content">
-            <h6>Successfully logged in 🎉</h6>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <h6>Successfully registered. Welcome {res.name}! 🎉</h6>
           </div>
         </Notification>,
         {
@@ -74,11 +73,10 @@ const Login = () => {
       );
     } catch (error: any) {
       toaster.push(
-        <Notification type="error" header="Error">
+        <Notification>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <h6>
-              {error.data.message || "An error occurred. Please try again."}
-            </h6>
+            <FaExclamationCircle className="error-icon" />
+            <h6>{error.data.message}</h6>
           </div>
         </Notification>,
         {
@@ -88,9 +86,11 @@ const Login = () => {
     }
   };
 
-  const handleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   return (
     <div className="page">
@@ -104,11 +104,20 @@ const Login = () => {
         }}
         className="container"
       >
-        <h1>Login</h1>
+        <h1>Register</h1>
+        <div className="input-space">
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
         <div className="input-space">
           <input
             type="email"
             placeholder="Email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -123,20 +132,24 @@ const Login = () => {
             {showPassword ? "Hide" : "Show"}
           </button>
         </div>
-        <p className="to-register">
-          Don't have an account?{" "}
-          <span onClick={() => navigate("/register")}>Register</span>
-        </p>
+        <div className="input-space">
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
         <button
           disabled={isLoading}
           onClick={handleClickButton}
           className="button"
         >
-          {isLoading ? "Loading..." : "Login"}
+          {isLoading ? "Loading..." : "Register"}
         </button>
       </motion.div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

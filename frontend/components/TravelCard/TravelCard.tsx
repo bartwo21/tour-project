@@ -9,6 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { motion, useInView, useAnimation } from "framer-motion";
 import "./TravelCard.scss";
+import { useUpdateUserMutation } from "../../src/store/features/usersApiSlice/usersApiSlice";
 
 type TravelCards = {
   id: number;
@@ -24,13 +25,24 @@ type TravelCards = {
   favorite: boolean;
 };
 
-const TravelCard = ({ card, index }: { card: TravelCards; index: number }) => {
+const TravelCard = ({
+  card,
+  index,
+  handleFilter,
+}: {
+  card: TravelCards;
+  index: number;
+  handleFilter: any;
+}) => {
+  const [updateProfile] = useUpdateUserMutation();
   const user = useSelector(selectUser);
-  const favoriteCards = useSelector(selectFavoriteCards);
+  const favoriteCards = useSelector(selectFavoriteCards) || [];
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-
+  const [isFavorite, setIsFavorite] = useState(
+    user?.favoriteCards?.includes(card.id)
+  );
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -44,6 +56,30 @@ const TravelCard = ({ card, index }: { card: TravelCards; index: number }) => {
 
   const handleImageLoad = () => {
     setIsImageLoaded(true);
+  };
+
+  useEffect(() => {
+    setIsFavorite(
+      favoriteCards.includes(card.id) || user?.favoriteCards?.includes(card.id)
+    );
+  }, [handleFilter, navigate, user]);
+
+  const handleFavorite = async () => {
+    try {
+      const updatedFavoriteCards = isFavorite
+        ? favoriteCards.filter((id: any) => id !== card.id)
+        : [...favoriteCards, card.id];
+
+      await updateProfile({
+        _id: user._id,
+        favoriteCards: updatedFavoriteCards,
+      }).unwrap();
+      console.log("updatedFavoriteCards", updatedFavoriteCards);
+      dispatch(toggleFavoriteCard(card.id));
+      setIsFavorite(!isFavorite);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -63,13 +99,9 @@ const TravelCard = ({ card, index }: { card: TravelCards; index: number }) => {
         <div className="image-container">
           {user && (
             <span
-              onClick={() => {
-                dispatch(toggleFavoriteCard(card.id));
-              }}
+              onClick={handleFavorite}
               className={
-                favoriteCards.includes(card.id)
-                  ? "heart-button heart-button-active"
-                  : "heart-button"
+                isFavorite ? "heart-button heart-button-active" : "heart-button"
               }
             >
               <AiOutlineHeart className="heart" />

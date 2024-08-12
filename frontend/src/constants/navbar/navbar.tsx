@@ -10,6 +10,7 @@ import { logout } from "../../store/features/authSlice/authSlice";
 import { travelCards } from "../../pages/home/cardsArray";
 import { useToaster, Notification } from "rsuite";
 import { motion } from "framer-motion";
+import { useLogoutMutation } from "../../store/features/usersApiSlice/usersApiSlice";
 
 type Props = {};
 
@@ -27,6 +28,8 @@ const Navbar: React.FC<Props> = ({}) => {
     useState(false);
   const [filterData, setFilterData] = useState<any[]>([]);
   const [wordEntered, setWordEntered] = useState<string>("");
+
+  const [logoutApiCall] = useLogoutMutation();
 
   const handleClickOutsideDropdown = (e: any) => {
     if (
@@ -78,18 +81,35 @@ const Navbar: React.FC<Props> = ({}) => {
   const activeLinksBorderBottom = (isActive: boolean) => {
     return isActive ? { borderBottom: "1px solid black" } : {};
   };
-  const handleLogout = () => {
-    dispatch(logout());
-    toaster.push(
-      <Notification>
-        <div className="notification-content">
-          <h6>Successfully logged out 🎉</h6>
-        </div>
-      </Notification>,
-      {
-        placement: "topEnd",
-      }
-    );
+  const handleLogout = async () => {
+    try {
+      await logoutApiCall("").unwrap();
+      dispatch(logout());
+      navigate("/");
+      toaster.push(
+        <Notification>
+          <div className="notification-content">
+            <h6>Successfully logged out 🎉</h6>
+          </div>
+        </Notification>,
+        {
+          placement: "topEnd",
+        }
+      );
+    } catch (error: any) {
+      toaster.push(
+        <Notification type="error" header="Error">
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <h6>
+              {error.data.message || "An error occurred. Please try again."}
+            </h6>
+          </div>
+        </Notification>,
+        {
+          placement: "topEnd",
+        }
+      );
+    }
   };
 
   return (
@@ -150,25 +170,40 @@ const Navbar: React.FC<Props> = ({}) => {
               </motion.div>
             )}
           </li>
-          <NavLink
+          {/* <NavLink
             to="aboutus"
             className="li"
             style={({ isActive }) => activeLinksBorderBottom(isActive)}
           >
             About us
-          </NavLink>
+          </NavLink> */}
           {user ? (
-            <NavLink to="/" className="li" onClick={handleLogout}>
-              Logout
-            </NavLink>
+            <>
+              <NavLink to="profile" className="li">
+                {" "}
+                Profile{" "}
+              </NavLink>
+              <NavLink to="/" className="li" onClick={handleLogout}>
+                Logout
+              </NavLink>
+            </>
           ) : (
-            <NavLink
-              to="login"
-              className="li"
-              style={({ isActive }) => activeLinksBorderBottom(isActive)}
-            >
-              Login
-            </NavLink>
+            <>
+              <NavLink
+                to="login"
+                className="li"
+                style={({ isActive }) => activeLinksBorderBottom(isActive)}
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="register"
+                className="li"
+                style={({ isActive }) => activeLinksBorderBottom(isActive)}
+              >
+                Register
+              </NavLink>
+            </>
           )}
         </ul>
         <div className="input-box">
