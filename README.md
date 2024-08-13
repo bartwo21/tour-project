@@ -109,5 +109,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 Bartu Çakır - [LinkedIn](https://linkedin.com/in/bartwocakir) - [Email](mailto:bartucakir21@gmail.com)
-
-Project Link: [https://github.com/your-username/tour-page](https://github.com/your-username/tour-page)
