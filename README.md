@@ -68,30 +68,6 @@ In this project, I've concentrated on refining my full stack development skills.
 - Users can view and delete their reservations and payments from their profile.
 - Favorite tours are connected to the backend, providing a persistent user experience.
 
-## Installation
-
-1. Clone the repo:
-    ```sh
-    git clone https://github.com/your-username/tour-page.git
-    ```
-2. Install NPM packages:
-    ```sh
-    npm install
-    ```
-3. Create a `.env` file in the root directory and add the following:
-    ```env
-    MONGODB_URI=your_mongodb_uri
-    JWT_SECRET=your_jwt_secret
-    ```
-
-## Usage
-
-1. Run the development server:
-    ```sh
-    npm run dev
-    ```
-2. Open your browser and navigate to `http://localhost:3000`.
-
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
