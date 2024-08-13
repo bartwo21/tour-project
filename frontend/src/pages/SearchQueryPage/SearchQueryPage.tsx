@@ -54,11 +54,11 @@ const SearchQueryPage = () => {
   const matchingSearch =
     travelCards.find((travelCards) => travelCards.url === query) || undefined;
   const [isFavorite, setIsFavorite] = useState(
-    user.favoriteCards.includes(matchingSearch?.id)
+    user?.favoriteCards?.includes(matchingSearch?.id)
   );
   useEffect(() => {
     setIsFavorite(
-      favoriteCards.includes(matchingSearch?.id) ||
+      favoriteCards?.includes(matchingSearch?.id) ||
         user?.favoriteCards?.includes(matchingSearch?.id)
     );
   }, [navigate]);
