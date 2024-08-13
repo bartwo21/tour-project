@@ -32,7 +32,7 @@ const TravelCard = ({
 }: {
   card: TravelCards;
   index: number;
-  handleFilter: any;
+  handleFilter?: any;
 }) => {
   const [updateProfile] = useUpdateUserMutation();
   const user = useSelector(selectUser);
