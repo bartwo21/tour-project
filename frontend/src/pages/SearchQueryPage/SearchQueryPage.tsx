@@ -307,6 +307,7 @@ const SearchQueryPage = () => {
           onePrice={matchingSearch.price}
           openPayment={openPayment}
           setOpenPayment={setOpenPayment}
+          location={matchingSearch.title}
         />
       )}
     </motion.div>

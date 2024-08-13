@@ -2,7 +2,7 @@
   margin-top: 8px;
   height: 34px;
   line-height: 28px;
-  padding: 0 .8rem;
+  padding: 0 0.8rem;
   border: 1px solid rgb(170, 170, 170);
   border-radius: 5px;
   outline: none;
@@ -42,32 +42,32 @@
   .rs-modal-body {
     display: flex;
     .left-card {
-        border: 1px solid #c9c9c9;
-        background-color: #FBFBFB;
-        border-radius: 7px 0 0 7px;
-        padding: 20px;
-        width: 80%;
+      border: 1px solid #c9c9c9;
+      background-color: #fbfbfb;
+      border-radius: 7px 0 0 7px;
+      padding: 20px;
+      width: 80%;
       .title {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 0 15px 35px 15px;
-        h4{
-            font-size: 1.8rem;
+        h4 {
+          font-size: 1.8rem;
         }
       }
       .payment-areas {
         margin: 15px;
         .creditCard {
-          border :1px solid #c9c9c9;
+          border: 1px solid #c9c9c9;
           border-radius: 5px;
           padding: 20px;
           .select-credit {
             display: flex;
             justify-content: space-between;
             .left {
-              label{
-                color: #164E3E;
+              label {
+                color: #164e3e;
                 font-size: 1.1rem;
                 margin-left: 8px;
               }
@@ -77,39 +77,39 @@
               }
             }
             .right {
-                margin: auto 0;
-                img{
-                    width: 60px;
-                    margin-left: 5px;
-                }
+              margin: auto 0;
+              img {
+                width: 60px;
+                margin-left: 5px;
+              }
             }
           }
           .inputs {
             .row {
-                display: flex;
-                gap: 40px;
-                justify-content: space-between;
-                width: 100%;
-                .col {
+              display: flex;
+              gap: 40px;
+              justify-content: space-between;
+              width: 100%;
+              .col {
                 width: 50%;
                 display: flex;
                 flex-direction: column;
                 margin-bottom: 20px;
                 input {
-                    @include cardInput;
+                  @include cardInput;
                 }
-                .credit-card-input{
-                    display: flex;
-                    position: relative;
-                    i{
-                      position: absolute;
-                      right: 10px;
-                      top: 14px;
-                    }
+                .credit-card-input {
+                  display: flex;
+                  position: relative;
+                  i {
+                    position: absolute;
+                    right: 10px;
+                    top: 14px;
+                  }
                 }
                 label {
-                    font-size: 0.9rem;
-                    color: #9e9ea7;
+                  font-size: 0.9rem;
+                  color: #9e9ea7;
                 }
               }
             }
@@ -124,16 +124,27 @@
                 margin-bottom: 20px;
                 width: 50%;
                 .box-s {
-                    display: flex;
-                    flex-direction: column;
-                    label {
-                        font-size: 0.9rem;
-                        color: #9e9ea7;
-                    }
+                  display: flex;
+                  flex-direction: column;
+                  label {
+                    font-size: 0.9rem;
+                    color: #9e9ea7;
+                  }
                   input {
                     @include cardInput;
                   }
                 }
+              }
+            }
+            .save-card-checkbox {
+              display: flex;
+              align-items: center;
+              input {
+                margin-right: 7px;
+              }
+              label {
+                font-size: 0.9rem;
+                color: #9e9ea7;
               }
             }
           }
@@ -147,7 +158,7 @@
             display: flex;
             justify-content: space-between;
             .left {
-              label{
+              label {
                 font-size: 1.1rem;
                 margin-left: 8px;
               }
@@ -157,118 +168,118 @@
               }
             }
             .right {
-                margin: auto 0;
-                img{
-                    width: 100px;
-                    margin-left: 10px;
-                }
+              margin: auto 0;
+              img {
+                width: 100px;
+                margin-left: 10px;
+              }
             }
           }
-          .paypal-input{
-            .name-surname{
-              label{
+          .paypal-input {
+            .name-surname {
+              label {
                 font-size: 0.9rem;
                 color: #9e9ea7;
               }
-              input{
+              input {
                 @include cardInput;
               }
             }
-            .input{
-              label{
+            .input {
+              label {
                 font-size: 0.9rem;
                 color: #9e9ea7;
               }
-              input{
+              input {
                 @include cardInput;
-            }
+              }
             }
           }
         }
       }
     }
-    .right-card{
-        width: 50%;
-        background-color: #164E3E;
-        border-radius: 0 7px 7px 0;
-        color: #fff;
-        padding: 20px;
+    .right-card {
+      width: 50%;
+      background-color: #164e3e;
+      border-radius: 0 7px 7px 0;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .title {
+        text-align: center;
+        margin-bottom: 30px;
+        h3 {
+          font-size: 1.8rem;
+          letter-spacing: 1px;
+        }
+      }
+      .row {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        .title{
-            text-align: center;
-            margin-bottom: 30px;
-            h3{
-                font-size: 1.8rem;
-                letter-spacing: 1px;
-            }
+        justify-content: space-between;
+        padding: 10px 0;
+        .col {
+          margin-bottom: 20px;
+          p {
+            color: rgb(223, 223, 223);
+          }
         }
-        .row{
+        .col-right {
           display: flex;
-          justify-content: space-between;
-          padding: 10px 0;
-          .col{
-            margin-bottom: 20px;
-            p{
-              color: rgb(223, 223, 223)
-            }
-          }
-          .col-right{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-          }
+          flex-direction: column;
+          align-items: flex-end;
         }
-        .buttons{
-          display: flex;
-          justify-content: flex-end;
-          margin-top: 10px;
-          margin-bottom: 10px;
-          >button{
-            margin-left: 10px;
-          }
+      }
+      .buttons {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        > button {
+          margin-left: 10px;
         }
+      }
     }
   }
 }
 
 @media screen and (max-width: 1300px) {
-    .rs-modal {
-        .rs-modal-body {
-            flex-wrap: wrap;
-        .left-card {
-            width: 100%;
-            .payment-areas {
-            .creditCard {
-                .inputs {
-                .row {
-                    .col {
+  .rs-modal {
+    .rs-modal-body {
+      flex-wrap: wrap;
+      .left-card {
+        width: 100%;
+        .payment-areas {
+          .creditCard {
+            .inputs {
+              .row {
+                .col {
+                  width: 100%;
+                }
+              }
+              .row-s {
+                .col-s {
+                  width: 100%;
+                  .box-s {
                     width: 100%;
-                    }
+                  }
                 }
-                .row-s {
-                    .col-s {
-                    width: 100%;
-                    .box-s {
-                        width: 100%;
-                    }
-                    }
-                }
-                }
+              }
             }
-            }
+          }
         }
-        .right-card {
-            width: 100%;
-            .title {
-            margin-top: 0;
-            margin-bottom: 20px;
-            h3 {
-                font-size: 1.5rem;
-            }
-            }
+      }
+      .right-card {
+        width: 100%;
+        .title {
+          margin-top: 0;
+          margin-bottom: 20px;
+          h3 {
+            font-size: 1.5rem;
+          }
         }
-        }
+      }
     }
+  }
 }

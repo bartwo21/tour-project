@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Payment.scss";
 import { Button, Divider, Modal, Notification, useToaster } from "rsuite";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
+import { useCreateTourMutation } from "../../src/store/features/tourApiSlice/tourApiSlice";
+import {
+  useCreatePaymentMutation,
+  useGetUserPaymentsQuery,
+} from "../../src/store/features/paymentApiSlice/paymentApiSlice";
 
 type Props = {
   person: number;
@@ -15,6 +20,7 @@ type Props = {
   onePrice: number;
   openPayment: boolean;
   setOpenPayment: (open: boolean) => void;
+  location: string;
 };
 
 const Payment = ({
@@ -26,14 +32,15 @@ const Payment = ({
   onePrice,
   openPayment,
   setOpenPayment,
+  location,
 }: Props) => {
   const toaster = useToaster();
   const navigate = useNavigate();
   const [cardType, setCardType] = useState<"visa" | "mastercard" | null>(null);
+  const [saveCard, setSaveCard] = useState(false);
   const [selectedSection, setSelectedSection] = useState<
     "credit" | "paypal" | null
   >("credit");
-  const [paymentSubmitted, setPaymentSubmitted] = useState<boolean>(false);
   const [paymentInfos, setPaymentInfos] = useState<{
     cardNumber: string;
     nameSurname: string;
@@ -51,6 +58,35 @@ const Payment = ({
     paypalNameSurname: "",
     paypalEmail: "",
   });
+
+  const [createTour, { isLoading }] = useCreateTourMutation();
+  const [createPayment] = useCreatePaymentMutation();
+
+  const { data: payments } = useGetUserPaymentsQuery();
+
+  useEffect(() => {
+    if (payments && payments.length > 0) {
+      setPaymentInfos({
+        cardNumber: payments[0].cardNumber,
+        nameSurname: payments[0].nameSurname,
+        email: payments[0].email,
+        expDate: payments[0].expDate,
+        cvv: payments[0].cvv,
+        paypalNameSurname: payments[0].paypalNameSurname,
+        paypalEmail: payments[0].paypalEmail,
+      } as {
+        cardNumber: string;
+        nameSurname: string;
+        email: string;
+        expDate: string;
+        cvv: string;
+        paypalNameSurname: string;
+        paypalEmail: string;
+      });
+    }
+  }, [payments]);
+
+  console.log("payments", paymentInfos);
 
   const checkCardType = (number: string) => {
     if (/^4/.test(number)) {
@@ -92,7 +128,7 @@ const Payment = ({
     );
   }
 
-  const handlePaymentSubmit = () => {
+  const handlePaymentSubmit = async () => {
     if (
       (paymentInfos.cardNumber &&
         paymentInfos.cvv &&
@@ -115,9 +151,28 @@ const Payment = ({
         displayEmailErrorNotification();
         return;
       }
-      setPaymentSubmitted(true);
-      setTimeout(() => {
-        setPaymentSubmitted(false);
+      try {
+        const resTour = await createTour({
+          date,
+          person,
+          nameSurname,
+          email,
+          ticket,
+          location,
+        }).unwrap();
+        if (saveCard) {
+          const resPayment = await createPayment({
+            cardNumber: paymentInfos.cardNumber,
+            nameSurname: paymentInfos.nameSurname,
+            email: paymentInfos.email,
+            expDate: paymentInfos.expDate,
+            cvv: paymentInfos.cvv,
+            paypalNameSurname: paymentInfos.paypalNameSurname,
+            paypalEmail: paymentInfos.paypalEmail,
+          }).unwrap();
+          console.log("resPayment", resPayment);
+        }
+        console.log("resTour", resTour);
         setOpenPayment(false);
         setPaymentInfos({
           cardNumber: "",
@@ -140,7 +195,9 @@ const Payment = ({
             placement: "topEnd",
           }
         );
-      }, 2000);
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       return toaster.push(
         <Notification>
@@ -225,6 +282,7 @@ const Payment = ({
                         <input
                           type="text"
                           id="cardNumber"
+                          value={paymentInfos.cardNumber}
                           maxLength={19}
                           onInput={(e) => {
                             const target = e.target as HTMLInputElement;
@@ -262,6 +320,7 @@ const Payment = ({
                       <input
                         type="text"
                         id="cardName"
+                        value={paymentInfos.nameSurname}
                         placeholder="John Smith"
                         onChange={(e) =>
                           setPaymentInfos({
@@ -278,6 +337,7 @@ const Payment = ({
                       <input
                         type="email"
                         id="zipCode"
+                        value={paymentInfos.email}
                         placeholder="test@gmail.com"
                         onChange={(e) =>
                           setPaymentInfos({
@@ -293,6 +353,7 @@ const Payment = ({
                         <input
                           type="text"
                           id="expDate"
+                          value={paymentInfos.expDate}
                           placeholder="MM/YY"
                           maxLength={5}
                           onInput={(e) => {
@@ -328,6 +389,7 @@ const Payment = ({
                         <input
                           type="text"
                           id="cvv"
+                          value={paymentInfos.cvv}
                           placeholder="123"
                           maxLength={4}
                           onInput={(e) => {
@@ -345,6 +407,17 @@ const Payment = ({
                         />
                       </div>
                     </div>
+                  </div>
+                  <div className="save-card-checkbox">
+                    <input
+                      type="checkbox"
+                      id="saveCard"
+                      onChange={() => setSaveCard(!saveCard)}
+                      checked={saveCard}
+                    />
+                    <label htmlFor="saveCard">
+                      Save card for future payments
+                    </label>
                   </div>
                 </motion.div>
               )}
@@ -383,6 +456,7 @@ const Payment = ({
                     <input
                       type="text"
                       id="nameSurname"
+                      value={paymentInfos.paypalNameSurname}
                       placeholder="John Smith"
                       onChange={(e) =>
                         setPaymentInfos({
@@ -397,6 +471,7 @@ const Payment = ({
                     <input
                       type="email"
                       id="email"
+                      value={paymentInfos.paypalEmail}
                       placeholder="test@gmail.com"
                       onChange={(e) =>
                         setPaymentInfos({
@@ -470,7 +545,7 @@ const Payment = ({
               appearance="primary"
               color="green"
               onSubmit={handlePaymentSubmit}
-              loading={paymentSubmitted}
+              loading={isLoading}
             >
               Make Payment
             </Button>
