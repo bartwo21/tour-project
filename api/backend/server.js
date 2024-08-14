@@ -1,15 +1,16 @@
-import express from "express";
-import dotenv from "dotenv";
-dotenv.config();
-import cookieParser from "cookie-parser";
-import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
-import connectDB from "./config/db.js";
-import cors from "cors";
-import userRoutes from "./routes/userRoutes.js";
-import tourRoutes from "./routes/tourRoute.js";
-import paymentRoutes from "./routes/paymentRoute.js";
+const express = require("express");
+const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+const connectDB = require("./config/db");
+const cors = require("cors");
+const userRoutes = require("./routes/userRoutes");
+const tourRoutes = require("./routes/tourRoute");
+const paymentRoutes = require("./routes/paymentRoute");
 
 const port = process.env.PORT || 5000;
+
+dotenv.config();
 
 connectDB();
 
@@ -36,5 +37,3 @@ app.use(notFound);
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
-
-module.exports = app;

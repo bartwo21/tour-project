@@ -1,14 +1,14 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import {
+const {
   createTour,
   getUserTours,
   deleteTour,
-} from "../controllers/tourController.js";
-import { protect } from "../middleware/authMiddleware.js";
+} = require("../controllers/tourController");
+const { protect } = require("../middleware/authMiddleware");
 
 router.route("/").post(protect, createTour).get(protect, getUserTours);
 
 router.route("/:id").delete(protect, deleteTour);
 
-export default router;
+module.exports = router;

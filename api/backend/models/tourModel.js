@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const tourSchema = mongoose.Schema(
   {
@@ -39,4 +39,4 @@ const tourSchema = mongoose.Schema(
 
 const Tour = mongoose.model("Tour", tourSchema);
 
-export default Tour;
+module.exports = Tour;

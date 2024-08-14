@@ -1,14 +1,14 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import {
+const {
   createPayment,
   getUserPayments,
   deletePayment,
-} from "../controllers/paymentController.js";
-import { protect } from "../middleware/authMiddleware.js";
+} = require("../controllers/paymentController");
+const { protect } = require("../middleware/authMiddleware");
 
 router.route("/").post(protect, createPayment).get(protect, getUserPayments);
 
 router.route("/:id").delete(protect, deletePayment);
 
-export default router;
+module.exports = router;

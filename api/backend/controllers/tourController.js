@@ -1,9 +1,6 @@
-import asyncHandler from "express-async-handler";
-import Tour from "../models/tourModel.js";
+const asyncHandler = require("express-async-handler");
+const Tour = require("../models/tourModel");
 
-// @desc    Create a new tour
-// @route   POST /api/tours
-// @access  Private
 const createTour = asyncHandler(async (req, res) => {
   const { date, person, nameSurname, email, ticket, location } = req.body;
 
@@ -21,17 +18,11 @@ const createTour = asyncHandler(async (req, res) => {
   res.status(201).json(createdTour);
 });
 
-// @desc    Get user's tours
-// @route   GET /api/tours
-// @access  Private
 const getUserTours = asyncHandler(async (req, res) => {
   const tours = await Tour.find({ user: req.user._id });
   res.json(tours);
 });
 
-// @desc    Delete a tour
-// @route   DELETE /api/tours/:id
-// @access  Private
 const deleteTour = asyncHandler(async (req, res) => {
   const tour = await Tour.findById(req.params.id);
 
@@ -48,4 +39,4 @@ const deleteTour = asyncHandler(async (req, res) => {
   }
 });
 
-export { createTour, getUserTours, deleteTour };
+module.exports = { createTour, getUserTours, deleteTour };

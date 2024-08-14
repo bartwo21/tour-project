@@ -1,10 +1,6 @@
-import asyncHandler from "express-async-handler";
-import User from "../models/userModel.js";
-import generateToken from "../utils/generateToken.js";
-
-// @desc:   Auth user/set token
-// @route:  POST /api/users/auth
-// @access: Public
+const asyncHandler = require("express-async-handler");
+const User = require("../models/userModel");
+const generateToken = require("../utils/generateToken");
 
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -24,10 +20,6 @@ const authUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid email or password");
   }
 });
-
-// @desc:   Register a new user
-// @route:  POST /api/users
-// @access: Public
 
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
@@ -57,10 +49,6 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc:   Logout user
-// @route:  POST /api/users/logout
-// @access: Public
-
 const logoutUser = asyncHandler(async (req, res) => {
   res.cookie("jwt", "", {
     httpOnly: true,
@@ -69,10 +57,6 @@ const logoutUser = asyncHandler(async (req, res) => {
 
   res.status(200).json({ message: "User Logged out" });
 });
-
-// @desc:   Get user profile
-// @route:  POST /api/users/profile
-// @access: Private
 
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = {
@@ -83,10 +67,6 @@ const getUserProfile = asyncHandler(async (req, res) => {
 
   res.status(200).json(user);
 });
-
-// @desc:   Update user profile
-// @route:  PUT /api/users/profile
-// @access: Private
 
 const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -117,7 +97,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-export {
+module.exports = {
   authUser,
   registerUser,
   logoutUser,

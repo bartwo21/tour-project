@@ -1,7 +1,7 @@
-import mangoose from "mongoose";
-import bcrypt from "bcryptjs";
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
-const userSchema = mangoose.Schema(
+const userSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -39,6 +39,6 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-const User = mangoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
-export default User;
+module.exports = User;

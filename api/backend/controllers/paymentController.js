@@ -1,9 +1,6 @@
-import asyncHandler from "express-async-handler";
-import Payment from "../models/paymentModel.js";
+const asyncHandler = require("express-async-handler");
+const Payment = require("../models/paymentModel");
 
-// @desc    Create a new payment
-// @route   POST /api/payments
-// @access  Private
 const createPayment = asyncHandler(async (req, res) => {
   const {
     cardNumber,
@@ -30,17 +27,11 @@ const createPayment = asyncHandler(async (req, res) => {
   res.status(201).json(createdPayment);
 });
 
-// @desc    Get user's payments
-// @route   GET /api/payments
-// @access  Private
 const getUserPayments = asyncHandler(async (req, res) => {
   const payments = await Payment.find({ user: req.user._id });
   res.json(payments);
 });
 
-// @desc    Delete a payment
-// @route   DELETE /api/payments/:id
-// @access  Private
 const deletePayment = asyncHandler(async (req, res) => {
   const paymentId = req.params.id;
 
@@ -59,4 +50,4 @@ const deletePayment = asyncHandler(async (req, res) => {
   }
 });
 
-export { createPayment, getUserPayments, deletePayment };
+module.exports = { createPayment, getUserPayments, deletePayment };
