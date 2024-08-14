@@ -17,7 +17,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://bartutourproject.netlify.app", // frontend url
+    origin: ["", "http://localhost:5173"],
     credentials: true,
   })
 );

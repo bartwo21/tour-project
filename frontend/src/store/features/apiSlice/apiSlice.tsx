@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://tour-project-api.onrender.com",
+  baseUrl: "http://localhost:5000",
   credentials: "include",
 });
 
