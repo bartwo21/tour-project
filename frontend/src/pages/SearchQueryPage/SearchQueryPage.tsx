@@ -28,7 +28,7 @@ const initialState = {
 
 const SearchQueryPage = () => {
   const user = useSelector(selectUser);
-  const [updateProfile] = useUpdateUserMutation();
+  const [updateProfile, { isLoading }] = useUpdateUserMutation();
   const toaster = useToaster();
   const navigate = useNavigate();
   const dispatchCard = useDispatch();
@@ -164,7 +164,9 @@ const SearchQueryPage = () => {
               {user && (
                 <span
                   className={
-                    isFavorite
+                    isLoading
+                      ? "heart-button heart-button-loading"
+                      : isFavorite
                       ? "heart-button heart-button-active"
                       : "heart-button"
                   }

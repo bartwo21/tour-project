@@ -3,7 +3,7 @@
   margin: 30px auto;
   background: linear-gradient(180deg, #e8f8e6cb 0%, #f3f8e652 50%, #ffffff);
   padding: 10px 0;
-  .subtitle{
+  .subtitle {
     font-size: 1.5rem;
     text-align: center;
     font-weight: 500;
@@ -22,6 +22,8 @@
       width: 300px;
       overflow: hidden;
       margin-bottom: 21px;
+      border-radius: 4px;
+      box-shadow: rgba(38, 77, 58, 0.562) 0px 20px 30px -10px;
       img {
         width: 100%;
         height: 100%;
@@ -103,17 +105,33 @@
               transition: color 0.3s ease;
             }
           }
-          .heart-button-active{
+          .heart-button-active {
             border: 1px solid #007e2aa2;
-            .heart{
-                background-color: #00ca43a2;
+            .heart {
+              background-color: #00ca43a2;
+              color: white;
+              transition: background-color 0.3s ease;
+              &:hover {
                 color: white;
-                transition: background-color 0.3s ease;
-                &:hover{
-                  color: white;
-                }
+              }
             }
-        }
+          }
+          .heart-button-loading {
+            border: 1px solid rgba(0, 128, 0, 0.1);
+            border-top: 1px solid #00ca43a2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transition: border 0.3s ease;
+          }
+
+          @keyframes spin {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
         }
       }
       .bottom-imgs {
@@ -126,11 +144,14 @@
         .bottom-img {
           height: 175px;
           overflow: hidden;
+          box-shadow: rgba(38, 77, 58, 0.562) 0px 20px 30px -10px;
           img {
             width: 150px;
             height: 100%;
-            transition: transform .75s;
+            transition: transform 0.75s;
             object-fit: cover;
+            border-radius: 4px;
+
             cursor: pointer;
             &:hover {
               transform: scale(1.07);
@@ -152,12 +173,15 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 80px;
+    max-width: 700px;
+    margin: 0 auto;
     .inputs {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       .row {
         margin: 0 40px;
+        width: 100%;
         .box {
           display: flex;
           flex-direction: column;
@@ -233,17 +257,17 @@
       }
     }
   }
-  .no-login{
+  .no-login {
     text-align: center;
     margin-top: 40px;
-    .no-login-title{
+    .no-login-title {
       font-size: 1.5rem;
       font-weight: 500;
-      letter-spacing: .5px;
-      .login{
+      letter-spacing: 0.5px;
+      .login {
         cursor: pointer;
         color: #1f976b;
-        &:hover{
+        &:hover {
           color: #31584a;
           transition: color 0.3s ease;
         }

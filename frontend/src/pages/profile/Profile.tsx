@@ -24,13 +24,17 @@ const Profile = () => {
   const { user } = useSelector((state: any) => state.user);
 
   const [updateProfile, { isLoading }] = useUpdateUserMutation();
-  const { data: payments, refetch: refetchPayments } = useGetUserPaymentsQuery(
-    user?._id
-  );
+  const {
+    data: payments,
+    refetch: refetchPayments,
+    isLoading: paymentsLoading,
+  } = useGetUserPaymentsQuery(user?._id);
   const [deletePayment] = useDeletePaymentMutation();
-  const { data: tours, refetch: refetchTours } = useGetUserToursQuery(
-    user?._id
-  );
+  const {
+    data: tours,
+    refetch: refetchTours,
+    isLoading: toursLoading,
+  } = useGetUserToursQuery(user?._id);
   const [deleteTour] = useDeleteTourMutation();
 
   useEffect(() => {
@@ -211,7 +215,9 @@ const Profile = () => {
         <div className="payments-section">
           <h2>Saved Payments</h2>
           <ul>
-            {payments && payments.length > 0 ? (
+            {paymentsLoading ? (
+              <div className="spinner"></div>
+            ) : payments && payments.length > 0 ? (
               payments?.map((payment: any) => (
                 <li key={payment._id}>
                   <span>
@@ -235,7 +241,9 @@ const Profile = () => {
         </div>
         <div className="tours-section">
           <h2>Booked Tours</h2>
-          {tours && tours.length > 0 ? (
+          {toursLoading ? (
+            <div className="spinner"></div>
+          ) : tours && tours.length > 0 ? (
             <ul>
               {tours?.map((tour: any) => (
                 <li key={tour._id}>

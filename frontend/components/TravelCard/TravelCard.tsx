@@ -34,7 +34,7 @@ const TravelCard = ({
   index: number;
   handleFilter?: any;
 }) => {
-  const [updateProfile] = useUpdateUserMutation();
+  const [updateProfile, { isLoading }] = useUpdateUserMutation();
   const user = useSelector(selectUser);
   const favoriteCards = useSelector(selectFavoriteCards) || [];
   const navigate = useNavigate();
@@ -101,7 +101,11 @@ const TravelCard = ({
             <span
               onClick={handleFavorite}
               className={
-                isFavorite ? "heart-button heart-button-active" : "heart-button"
+                isLoading
+                  ? "heart-button heart-button-loading"
+                  : isFavorite
+                  ? "heart-button heart-button-active"
+                  : "heart-button"
               }
             >
               <AiOutlineHeart className="heart" />

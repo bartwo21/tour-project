@@ -59,6 +59,15 @@
           }
         }
       }
+      .heart-button-loading {
+        .heart {
+          border: 1px solid rgba(0, 128, 0, 0.1);
+          border-top: 1px solid #00ca43a2;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+          transition: border 0.3s ease-in-out;
+        }
+      }
       .travel-card-img,
       .travel-card-map {
         width: 100%;
